@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+section: video
+permalink: "/video.html"
+---
+<article>
+
+  <header class="pb--4">
+
+    <div class="grid grid--intro">
+
+      <div class="grid__item--span-4 mw--readable markdown">{{ settings.metadata.site_description | renderUsingMarkdown | safe }}</div>
+
+    </div>
+
+  </header>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ruc_4oZmYeY?si=uXJOfTFylY3ovBZ2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</article>
+
+{# Appended to <head> during build #}
+{% include "components/opengraph.njk" %}
