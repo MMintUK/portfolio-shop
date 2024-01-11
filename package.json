@@ -39,8 +39,10 @@
     "uglify-js": "^3.17.4"
   },
   "dependencies": {
+    "@astro-community/astro-embed-youtube": "^0.4.3",
     "@progfay/react-lite-youtube-embed": "^1.0.3",
     "eleventy-plugin-embed-everything": "^1.18.1",
-    "eleventy-plugin-youtube-embed": "^1.10.1"
+    "eleventy-plugin-youtube-embed": "^1.10.1",
+    "vue-youtube-embed": "^2.2.2"
   }
 }

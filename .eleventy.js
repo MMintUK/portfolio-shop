@@ -10,19 +10,13 @@ const Image = require("@11ty/eleventy-img");
 const MarkdownIt = require("markdown-it");
 const mdRender = new MarkdownIt();
 
+const embeds = require("eleventy-plugin-embed-everything");
+
 
 module.exports = function(eleventyConfig) {
 
-  eleventyConfig.addShortcode("youtube", (videoURL, title) => {
-    const url = new URL(videoURL);
-    const id = url.searchParams.get("v");
-    return `
-<iframe class="yt-shortcode" src="https://www.youtube-nocookie.com/embed/${id}" title="YouTube video player${
-      title ? ` for ${title}` : ""
-    }" frameborder="0" allowfullscreen></iframe>
-`;
-  });
-
+  eleventyConfig.addPlugin(embeds);
+  
   eleventyConfig.addFilter("renderUsingMarkdown", function(rawString) {
     return mdRender.render(rawString);
   });
