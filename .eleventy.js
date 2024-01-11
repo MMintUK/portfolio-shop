@@ -10,13 +10,15 @@ const Image = require("@11ty/eleventy-img");
 const MarkdownIt = require("markdown-it");
 const mdRender = new MarkdownIt();
 
-const embeds = require("eleventy-plugin-embed-everything");
+const embedEverything = require("eleventy-plugin-embed-everything");
 
 
 module.exports = function(eleventyConfig) {
 
-  eleventyConfig.addPlugin(embeds);
-  
+  eleventyConfig.addPlugin(embedEverything, {
+    add: ['youtube']
+  }); 
+
   eleventyConfig.addFilter("renderUsingMarkdown", function(rawString) {
     return mdRender.render(rawString);
   });
