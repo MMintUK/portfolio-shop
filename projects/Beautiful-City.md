@@ -18,5 +18,7 @@ An additional fictitious project description.
 All images used in this demo are sourced from [Unsplash](https://unsplash.com/).
 
 <!-- In any other file (e.g., a blog post): -->
-{% set videoId = "Ruc_4oZmYeY" %}
+{% set videoTitle = "Vintage Bundles by Sia Karamalegos [ Magnolia JS ]" %}
+{% set videoId = "Qkc8p4D6JM0" %}
+{% set params = "start=10260&end=11280" %}
 {% include 'youtube.njk' %}
