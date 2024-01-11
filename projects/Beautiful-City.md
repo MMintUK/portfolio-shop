@@ -17,4 +17,4 @@ An additional fictitious project description.
 
 All images used in this demo are sourced from [Unsplash](https://unsplash.com/).
 
-https://www.youtube.com/watch?v=Ruc_4oZmYeY
+https://youtu.be/Ruc_4oZmYeY?si=a2kmsbEfjZc7v7wH
