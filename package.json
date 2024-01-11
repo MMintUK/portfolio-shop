@@ -39,6 +39,7 @@
     "uglify-js": "^3.17.4"
   },
   "dependencies": {
+    "@progfay/react-lite-youtube-embed": "^1.0.3",
     "eleventy-plugin-embed-everything": "^1.18.1",
     "eleventy-plugin-youtube-embed": "^1.10.1"
   }
