@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/l/font?kit=UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZtrib2Ai-7mddMLiWXMvoS5Isuo6w&skey=c491285d6722e4fa&v=v13) format('woff');
+}
