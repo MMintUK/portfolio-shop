@@ -15,5 +15,7 @@ images:
 date: 2023-11-10T12:28:51.623Z
 ---
 
-<iframe src="https://player.vimeo.com/video/891226137?h=c71608ae67" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-<p><a href="https://vimeo.com/891226137">Filmmaker interviewed while sleeping</a> from <a href="https://vimeo.com/kristofferborgli">Kristoffer Borgli</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+ <!-- Add your local MP4 video -->
+  <video width="640" height="360" controls>
+    <source src="/assets/videos/rob_green_Ikaroa_web.mp4" type="video/mp4">
+  </video>
