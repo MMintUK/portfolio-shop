@@ -23,3 +23,8 @@ All images used in this demo are sourced from [Unsplash](https://unsplash.com/).
     <source src="rob_green_Ikaroa_web.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+
+ <!-- Add your local MP4 video with styling -->
+  <video class="responsive-video" controls>
+    <source src="/assets/videos/rob_green_Ikaroa_web.mp4" type="video/mp4">
+  </video>  

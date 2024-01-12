@@ -15,7 +15,7 @@ images:
 date: 2023-11-10T12:28:51.623Z
 ---
 
- <!-- Add your local MP4 video -->
-  <video width="640" height="360" controls>
+   <!-- Add your local MP4 video -->
+  <video width="100%" height="auto" controls>
     <source src="/assets/videos/rob_green_Ikaroa_web.mp4" type="video/mp4">
   </video>
