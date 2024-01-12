@@ -4,11 +4,11 @@ title: The Making of an Ultraviolet Silkscreen Photography Print VIDEO | Collabo
 description: |
   Check out this nighttime cityscape collection of photographic silkscreen prints I made in collaboration with @noealzii.
 year: 25/10/2022
-position: 10
+position: 14
 images:
   - src: /assets/uploads/Ultraviolet-Silkscreen-Photography-Print.jpg
     caption: Ultraviolet Silkscreen Photography Print                 
-date: 2022-10-25T13:02:11.245Z
+date: 2022-10-20T13:02:11.245Z
 ---
 
  <!-- Add your local MP4 video -->
