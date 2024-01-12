@@ -13,6 +13,19 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const embedEverything = require("eleventy-plugin-embed-everything");
 const embedYouTube = require("eleventy-plugin-youtube-embed");
 
+// .eleventy.js
+module.exports = (eleventyConfig) => {
+  eleventyConfig.addShortcode("youtube", (videoURL, title) => {
+    const url = new URL(videoURL);
+    const id = url.searchParams.get("v");
+    return `
+<iframe class="yt-shortcode" src="https://www.youtube-nocookie.com/embed/${id}" title="YouTube video player${
+      title ? ` for ${title}` : ""
+    }" frameborder="0" allowfullscreen></iframe>
+`;
+  });
+};
+
 module.exports = function(eleventyConfig) {
 
 
