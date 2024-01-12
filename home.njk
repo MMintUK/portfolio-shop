@@ -3,16 +3,22 @@ layout: layouts/base.njk
 section: home
 permalink: "/index.html"
 ---
-<article>
-
-  <header class="pb--4">
-
-    <div class="grid grid--intro">
-
-      <div class="grid__item--span-4 mw--readable markdown">{{ settings.metadata.site_description | renderUsingMarkdown | safe }}</div>
-
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://www.youtube.com">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+  <!-- Add other head elements as needed -->
+</head>
+<body>
+
+<article>
+  <header class="pb--4">
+    <div class="grid grid--intro">
+      <div class="grid__item--span-4 mw--readable markdown">{{ settings.metadata.site_description | renderUsingMarkdown | safe }}</div>
+    </div>
   </header>
 
   {% set projectList = collections.projects | limit(settings.theme.theme_features.item_output_limit or 48) %}
@@ -22,3 +28,6 @@ permalink: "/index.html"
 
 {# Appended to <head> during build #}
 {% include "components/opengraph.njk" %}
+
+</body>
+</html>
