@@ -19,14 +19,13 @@ All images used in this demo are sourced from [Unsplash](https://unsplash.com/).
 
 
 <div class="video-container">
-
 <div  class="" id="VideoPlayer">
 <script async src="https://www.youtube.com/iframe_api"></script>
      <script>
                  function onYouTubeIframeAPIReady() {
                   var player;
                   player = new YT.Player('VideoPlayer', {
-                    videoId: 'A2vJaYiHVNY', // YouTube Video ID
+                    videoId: 'bbgYzPBe4b4', // YouTube Video ID
                     width: 560,               // Player width (in px)
                     height: 400,              // Player height (in px)
                     playerVars: {
