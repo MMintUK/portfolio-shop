@@ -24,4 +24,4 @@ High above in the mountain shrine, Coatlique hears their raised voices planning 
 
 This momentous battle between Huitzilopochtli and his siblings is etched into the heavens above us every day. Between sunrise and sunset Huitzilopochtli (the sun) chases Coyolxanuhqui (the moon) across the skies. Finally, our warrior battles his way through the underworld by night as Coyolxauhqui's dismembered head is hurled into the twilight skies above.
 
- **[SHOP NOW](https://shop.mmint.uk/products/huitzilopochtli)**
+**[SHOP NOW](https://shop.mmint.uk/products/huitzilopochtli)**
