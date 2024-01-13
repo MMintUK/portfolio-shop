@@ -5,8 +5,8 @@ metadata:
   site_url: 'https://velvety-marigold-3d18ba.netlify.app/'
   site_title: MMINT.UK
   # site subtitles are optional
-  site_subtitle_1: PORTFOLIO
-  site_subtitle_2: LONDON, UK
+  site_subtitle_1: LONDON, UK
+  site_subtitle_2: 
   # Home page description, accepts markdown
   site_description: >
     A collection of works by Artist Rob Green that explore the mythological, political and philosophical concepts through a lens of pop art and street art.

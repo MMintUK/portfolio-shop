@@ -15,3 +15,5 @@ date: 2023-09-11T08:24:31.507Z
   <video width="100%" height="auto" controls>
     <source src="/assets/videos/IKAROA_Holographic_Sticker_Rob_Green.mp4" type="video/mp4">
   </video>
+
+**[SHOP NOW](https://shop.mmint.uk/products/ikaroa-large-sticker)**  
