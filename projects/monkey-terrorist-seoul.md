@@ -8,7 +8,7 @@ year: 09/03/2015
 position: 33
 images:
   - src: /assets/uploads/monkey_terrorist_rob_green_artist_-mmint-uk_seoul_monkey_reading_newspaper_graffiti_streen_art_seoul_1280_opti.jpg
-    caption: MONKEY TERRORISM
+    caption: MONKEY TERRORISM 
 
 date: 2015-03-09T13:02:11.245Z
 ---
