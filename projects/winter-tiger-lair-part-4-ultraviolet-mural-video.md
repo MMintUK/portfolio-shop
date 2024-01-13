@@ -14,5 +14,5 @@ date: 2020-06-03T13:02:11.245Z
 ---
 
 <video width="100%" height="auto" controls>
-  <source src="assets/videos/TIGER_LAIR_Winter_Rob_Green.mp4" type="video/mp4">
+  <source src="/assets/videos/TIGER_LAIR_Winter_Rob_Green.mp4" type="video/mp4">
 </video>
