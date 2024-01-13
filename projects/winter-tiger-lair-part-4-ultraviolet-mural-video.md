@@ -7,7 +7,7 @@ description: |
 year: 07/06/2020
 position: 25
 images:
-  - src: /assets/uploads/Tiger_Lair_Winter.jpg
+  - src: /assets/uploads/Tiger_Lair_Winter_1080.jpg
     caption: TIGER LAIR WINTER MURAL    
   
 date: 2020-06-03T13:02:11.245Z
