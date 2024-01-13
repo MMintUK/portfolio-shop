@@ -7,7 +7,7 @@ description: |
 year: 14/06/2020
 position: 17
 images:
-  - src: /assets/uploads/Tiger_Lair_Vid.jpg
+  - src: /assets/uploads/Tiger-Lair-rob-green-1080.jpg
     caption: Tiger Lair                   
 date: 2020-06-14T13:02:11.245Z
 ---

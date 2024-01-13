@@ -6,7 +6,7 @@ description: |
 year: 25/10/2022
 position: 32
 images:
-  - src: /assets/uploads/Hong_Kong_Vid.jpg
+  - src: /assets/uploads/Hong-Kong-rob-green-1080.jpg
     caption: Ultraviolet Silkscreen Photography Print                 
 date: 2022-10-23T13:02:11.245Z
 ---
@@ -16,7 +16,7 @@ date: 2022-10-23T13:02:11.245Z
     <source src="/assets/videos/Noe_Alonzo_Rob_Green_Hong_Kong_Day.mp4" type="video/mp4">
   </video>
 
-For this collaboration I looked into the best method to print the daytime shot from Noe Alonzo. As the original photograph predominantly uses magenta & cyan I decided to print half the run without the yellow layer which would amplify the pinks within the image and half with yellow layer to bring out more reds. I added a metalic powder into an additional layer to accentuate the image and add a more unique and magical element to the print which is inline with the initial appeal of the photograph.
+For this collaboration I looked into the best method to print the daytime shot from Noe Alonzo. As the original photograph predominantly uses magenta & cyan I decided to print half the run without the yellow layer which would amplify the pinks within the image and half with yellow layer to bring out more reds. Adding a metalic powder into an additional layer to accentuate the image and add a more unique and magical element to the print which is inline with the initial appeal of the photograph.
 
 Photographer: @noealzii
 

@@ -6,7 +6,7 @@ description: |
 year: 11/05/2024
 position: 7
 images:
-  - src: /assets/uploads/Tiger_Blam_Vid.jpg
+  - src: /assets/uploads/tiger-balm-rob-green-1080.jpg
     caption: Tiger Balm
 date: 2024-05-11T08:24:31.507Z
 ---

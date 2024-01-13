@@ -2,11 +2,10 @@
 draft: false
 title: Collaborative Silkscreen Print VIDEO | Psoman | MMINT.UK | Seoul
 description: |
-  Check out this nighttime cityscape collection of photographic silkscreen prints I made in collaboration with @noealzii.
-year: 25/09/2022
+
 position: 13
 images:
-  - src: /assets/uploads/psoman-rob-green.jpg
+  - src: /assets/uploads/psoman-rob-green_1080.jpg
     caption: Ultraviolet Silkscreen Photography Print                 
 date: 2022-09-25T13:02:11.245Z
 ---

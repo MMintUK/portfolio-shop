@@ -6,7 +6,7 @@ description: |
 year: 25/10/2022
 position: 14
 images:
-  - src: /assets/uploads/Ultraviolet-Silkscreen-Photography-Print.jpg
+  - src: /assets/uploads/neon-silkscreen-seoul-1080.jpg
     caption: Ultraviolet Silkscreen Photography Print                 
 date: 2022-10-20T13:02:11.245Z
 ---
