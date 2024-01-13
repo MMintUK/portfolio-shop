@@ -2,7 +2,7 @@
 # Site metadata
 metadata:
   # site_url should match your full production URL
-  site_url: 'https://velvety-marigold-3d18ba.netlify.app/'
+  site_url: 'https://mmint.uk/'
   site_title: MMINT.UK
   # site subtitles are optional
   site_subtitle_1: LONDON, UK
@@ -15,9 +15,9 @@ metadata:
   # footer social link (the social title is defined in the i18n section)
   site_social_url: 'https://www.instagram.com/mmint.uk/'
   # SVG image used for sharing/bookmark icons
-  site_icon_svg: assets/icons/favicon.svg
+  site_icon_svg: /assets/icons/favicon.svg
   # optional PNG image used for sharing/bookmark icons
-  site_icon_png: 'assets/icons/favicon.svg'
+  site_icon_png: /assets/icons/favicon.png
   # add a GA4 ID to enable Google Analytics e.g. G-123456789
   site_ga4_id: ''
   # home page SEO fields
