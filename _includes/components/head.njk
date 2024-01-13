@@ -26,10 +26,29 @@
   {# Set a noindex tag in head sitewide or on per-page basis #}
   {% if ( settings.metadata.seo.no_index === true or seo.no_index === true ) %}
     <meta name="robots" content="noindex">
-  {# No point specifiying a canonical URL if noindex is set :p #}
+  {# No point specifying a canonical URL if noindex is set :p #}
   {% else %}
     <link rel="canonical" href="{{ settings.metadata.site_url | url }}{{ page.url }}">
   {% endif %}
+
+  {# Critical CSS in the head #}
+  <style>
+    /* Critical CSS rules go here */
+    :root {
+      --font-size-base: 0.95rem;
+      --font-size-small: calc(var(--font-size-base) / 1.25);
+      --space: calc(var(--space-scale) / 100 * 1rem);
+      /* Add other critical styles as needed */
+    }
+
+    /* Other critical styles from base.css go here */
+  </style>
+
+  <!-- Step 2: Preload non-critical CSS -->
+  <link rel="preload" as="style" href="/assets/css/base.css">
+
+  <!-- Step 3: Load non-critical styles asynchronously -->
+  <link rel="stylesheet" href="/assets/css/base.css" onload="this.onload=null;this.rel='stylesheet'">
 
   {# Set theme and base styles #}
   {% set css %}

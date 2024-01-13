@@ -2,31 +2,31 @@
 # Site metadata
 metadata:
   # site_url should match your full production URL
-  site_url: 'https://halide.netlify.app'
-  site_title: Halide
+  site_url: 'https://velvety-marigold-3d18ba.netlify.app/'
+  site_title: MMINT.UK
   # site subtitles are optional
-  site_subtitle_1: Image Portfolio
-  site_subtitle_2: Sometown, CA
+  site_subtitle_1: PORTFOLIO
+  site_subtitle_2: LONDON, UK
   # Home page description, accepts markdown
   site_description: >
-    Halide is a customizable Jamstack portfolio theme designed for photographers and still image creators. Read the docs at [github.com/danurbanowicz/halide](https://github.com/danurbanowicz/halide)
+    A collection of works by Artist Rob Green that explore the mythological, political and philosophical concepts through a lens of pop art and street art.
   # footer contact email
-  site_email: dan.urbanowicz@gmail.com
+  site_email: info@mmint.uk
   # footer social link (the social title is defined in the i18n section)
-  site_social_url: 'https://github.com/danurbanowicz/halide'
+  site_social_url: 'https://www.instagram.com/mmint.uk/'
   # SVG image used for sharing/bookmark icons
   site_icon_svg: assets/icons/favicon.svg
   # optional PNG image used for sharing/bookmark icons
-  site_icon_png: ''
+  site_icon_png: 'assets/icons/favicon.svg'
   # add a GA4 ID to enable Google Analytics e.g. G-123456789
   site_ga4_id: ''
   # home page SEO fields
   seo:
     # <title> tag
-    site_title: Halide - Jamstack portfolio theme
+    site_title: MMINT
     # meta description
     site_description: >-
-      A customizable, minimalist portfolio website designed for photographers and still image creators.
+      A collection of works by Artist Rob Green that explore the mythological, political and philosophical concepts through a lens of pop art and street art.
     # Adds a noindex <meta> tag on all site pages, be careful y'all!
     # Instead you can block indexing per-project with no_index: true
     no_index: false
@@ -40,7 +40,7 @@ theme:
     # default colors aka "light mode"
     background: '#ffffff'
     text: '#101010'
-    link: '#542BFF'
+    link: '#101010'
     # dark mode colors
     background_dark: '#101010'
     text_dark: '#c1c1c1'
@@ -81,7 +81,7 @@ i18n:
   # any valid ISO language code e.g. en or en-US
   site_language: en
   # single-language translations can be defined here
-  site_social_title: GitHub
+  site_social_title: INSTAGRAM
 # Internal config, hidden from Tina CMS
 config:
   # define responsive image widths for project thumbnails and large images

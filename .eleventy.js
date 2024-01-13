@@ -13,8 +13,20 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const embedEverything = require("eleventy-plugin-embed-everything");
 const embedYouTube = require("eleventy-plugin-youtube-embed");
 
+
 module.exports = function(eleventyConfig) {
 
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+
+  eleventyConfig.addPlugin(embedEverything, {
+    add: ['youtube']
+  }); 
+
+  eleventyConfig.addPlugin(embedYouTube);
+
+  eleventyConfig.addFilter("renderUsingMarkdown", function(rawString) {
+    return mdRender.render(rawString);
+  });
 
   // https://www.11ty.dev/docs/plugins/image/
   // Generate PNG icon files and a link tag from a source SVG or PNG file
@@ -220,18 +232,6 @@ module.exports = function(eleventyConfig) {
   // Disable 11ty dev server live reload when using CMS locally
   eleventyConfig.setServerOptions({
     liveReload: false
-  });
-
-  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-
-  eleventyConfig.addPlugin(embedEverything, {
-    add: ['youtube']
-  }); 
-
-  eleventyConfig.addPlugin(embedYouTube);
-
-  eleventyConfig.addFilter("renderUsingMarkdown", function(rawString) {
-    return mdRender.render(rawString);
   });
 
   return {
