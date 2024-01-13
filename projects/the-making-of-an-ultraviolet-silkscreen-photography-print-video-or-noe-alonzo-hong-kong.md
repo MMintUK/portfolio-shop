@@ -4,11 +4,11 @@ title: The Making of an Ultraviolet Silkscreen Photography Print VIDEO | Noe Alo
 description: |
   Check out this nighttime cityscape collection of photographic silkscreen prints I made in collaboration with @noealzii.
 year: 25/10/2022
-position: 11
+position: 32
 images:
   - src: /assets/uploads/Hong_Kong_Vid.jpg
     caption: Ultraviolet Silkscreen Photography Print                 
-date: 2022-10-25T13:02:11.245Z
+date: 2022-10-23T13:02:11.245Z
 ---
 
  <!-- Add your local MP4 video -->
