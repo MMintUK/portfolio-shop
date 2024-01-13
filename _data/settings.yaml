@@ -5,8 +5,8 @@ metadata:
   site_url: 'https://mmint.uk/'
   site_title: MMINT.UK
   # site subtitles are optional
-  site_subtitle_1: LONDON, UK
-  site_subtitle_2: 
+  site_subtitle_1: SHOP
+  site_subtitle_2: LONDON, UK
   # Home page description, accepts markdown
   site_description: >
     A collection of works by Artist Rob Green that explore the mythological, political and philosophical concepts through a lens of pop art and street art.
@@ -81,7 +81,7 @@ i18n:
   # any valid ISO language code e.g. en or en-US
   site_language: en
   # single-language translations can be defined here
-  site_social_title: INSTAGRAM
+  site_social_title: INSTAGRAM/@MMINT.UK
 # Internal config, hidden from Tina CMS
 config:
   # define responsive image widths for project thumbnails and large images
