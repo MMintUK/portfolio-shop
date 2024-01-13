@@ -6,7 +6,7 @@ description: |
 year: 11/09/2023
 position: 8
 images:
-  - src: /assets/uploads/Spiv_Vid.jpg
+  - src: /assets/uploads/Spiv_1080.jpg
     caption: Holographic Sticker
 date: 2023-09-11T08:24:31.507Z
 ---
