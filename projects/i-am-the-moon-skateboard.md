@@ -5,7 +5,7 @@ description: |
   Skateboard for the 'Decked Out' Exhibition, Seoul, S.Korea
 
 year: 10/04/2018
-position: 27
+position: 10
 images:
   - src: /assets/uploads/Iam_The_Moon_Rob_Green_Wyllie_1800.jpg
     caption: I AM THE MOON   

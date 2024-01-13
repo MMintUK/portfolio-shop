@@ -1,12 +1,12 @@
 ---
 draft: false
-title: The Making of an Ultraviolet Silkscreen Photography Print VIDEO | Collaboration with Noe Alonzo - Neon Cityscape, Seoul
+title: THE MAKING OF AN ULTRAVIOLET SILKSCREEN PHOTOGRAPHY PRINT | VIDEO | Collaboration with Noe Alonzo - Neon Cityscape, Seoul
 description: |
   Check out this nighttime cityscape collection of photographic silkscreen prints I made in collaboration with @noealzii.
 year: 25/10/2022
-position: 14
+position: 10
 images:
-  - src: /assets/uploads/neon-silkscreen-seoul-1080.jpg
+  - src: /assets/uploads/neon-night-combo.jpg
     caption: Ultraviolet Silkscreen Photography Print                 
 date: 2022-10-20T13:02:11.245Z
 ---

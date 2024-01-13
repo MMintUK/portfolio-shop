@@ -4,7 +4,7 @@ title: NIGHT | Stencil On Wood
 description: |
   
 year: 14/06/2013
-position: 38
+position: 10
 images:
   - src: /assets/uploads/untitled_wood_panel_rob_green_mmint_1660.jpg
     caption: Kim Jong Un

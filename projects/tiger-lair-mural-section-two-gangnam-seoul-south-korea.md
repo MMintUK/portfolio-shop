@@ -5,7 +5,7 @@ description: |
   Travel to a realm of enlightenment inspired by ancient Korean mythology. A tiger undergoes a spiritual journey shifting through layers of enlightenment on his path to becoming human. Along the way he encounters shrines, temples and mediation gardens inhabited by Buddha & Yama (The Lord of Hell).
 
 year: 09/06/2020
-position: 18
+position: 10
 images:
   - src: /assets/uploads/tiger_lair_ultraviolet_neon_mural_rob_green_artist__1660_opti.jpg
     caption: TIGER LAIR MURAL 

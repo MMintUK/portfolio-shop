@@ -1,13 +1,13 @@
 ---
 draft: false
-title: IKAROA VIDEO | Ultraviolet Silkscreen Printing
+title: IKAROA | VIDEO | Ultraviolet Silkscreen Printing
 description: |
 
 
 year: 17/06/2020
-position: 16
+position: 10
 images:
-  - src: /assets/uploads/ikaroa-rob-green-1080.jpg
+  - src: /assets/uploads/Ikaroa-combo.jpg
     caption: IKAROA                   
 date: 2020-06-17T13:02:11.245Z
 ---

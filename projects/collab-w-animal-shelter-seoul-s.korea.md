@@ -1,11 +1,11 @@
 ---
 draft: false
-title: Collab w Animal Shelter | Seoul, S.Korea
+title: COLLAB W ANIMAL SHELTER | Seoul, S.Korea
 description: |
   Quality times working on a collab with @animal_shelter.
 
 year: 20/11/2016
-position: 30
+position: 10
 images:
   - src: /assets/uploads/rob_green_mmint_seoul_street_art_graffiti_animal_shelter_1660_opti.jpg
     caption: Collab w Animal Shelter   

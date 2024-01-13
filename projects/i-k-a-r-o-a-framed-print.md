@@ -5,7 +5,7 @@ description: |
   I K A R O A - Framed, two colour silkscreen print. Taking its name from the Maori word for ‘the long fish that gave birth to all the stars in the Milky Way’ depicts a carp, bringing together Japanese and Maori culture within a retro framework.silkscreen print.
 
 year: 03/06/2020
-position: 21
+position: 10
 images:
   - src: /assets/uploads/ikaroa_rob_green_mmint_black_white_gallery_1880_opti.jpg
     caption: IKAROA Silkscreen   

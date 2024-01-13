@@ -1,10 +1,10 @@
 ---
 draft: false
-title: Huitzilopochtli | Canvas Bamboo Scroll
+title: HUITZILOPOCHTLI | Canvas Bamboo Scroll
 description: |
   Canvas & bamboo fluorescent scroll painting, canvas tag and hand plaited rope. Nine limited edition 66cm X 86cm pieces!
 year: 14/08/2023
-position: 8
+position: 10
 images:
   - src: /assets/uploads/Rob-Green-Frames-MockUp_CUT_NEWSATEDIT.jpg
     caption: Huitzilopochtli | Canvas & Bamboo Scroll

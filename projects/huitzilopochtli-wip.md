@@ -4,7 +4,7 @@ title: HUITZILOPOCHTLI VIDEO | Painting Timelapse
 description: |
   Check out this nighttime cityscape collection of photographic silkscreen prints I made in collaboration with @noealzii.
 year: 22/09/2022
-position: 12
+position: 10
 images:
   - src: /assets/uploads/Huitzilopochtli-video-1080.jpg
     caption: Painting Timelapse Video              

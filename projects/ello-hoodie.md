@@ -1,10 +1,10 @@
 ---
 draft: false
-title: Ello Hoodie
+title: Ello | Hoodie
 description: >
   Meet our character with a cheeky charm!
 year: 04/10/2024
-position: 5
+position: 10
 images:
   - src: /assets/uploads/ello-hoodie_White_1660.jpg
     caption: Ello Hoodie

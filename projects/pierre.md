@@ -1,10 +1,10 @@
 ---
 draft: false
-title: Pierre | Itaewon, Seoul, S.Korea
+title: PIERRE | Seoul
 description: |
   
 year: 18/08/2015
-position: 32
+position: 10
 images:
   - src: /assets/uploads/rob_green_artist_mmint_pierre_seoul_street_art_itaewon_1660_opti.jpg
     caption: Pierre

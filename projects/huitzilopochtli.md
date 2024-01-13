@@ -1,10 +1,10 @@
 ---
 draft: false
-title: Huitzilopochtli | A Story of Wrath, Retribution & Triumph..
+title: HUITZILOPOCHTLI | A Story of Wrath, Retribution & Triumph..
 description: |
 
 year: 05/09/2022
-position: 13
+position: 10
 images:
   - src: /assets/uploads/huitzilopochli_rob_green_mmint_texture_web_1440.jpg
     caption: Huitzilopochtli              

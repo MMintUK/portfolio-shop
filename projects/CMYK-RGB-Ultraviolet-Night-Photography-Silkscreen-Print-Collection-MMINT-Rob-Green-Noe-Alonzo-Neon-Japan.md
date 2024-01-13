@@ -1,13 +1,15 @@
 ---
 draft: false
-title: CMYK & RGB Ultraviolet Night Photography Silkscreen Print Collection | MMINT.UK | Rob Green | Noe Alonzo - Neon Japan
+title: CMYK & RGB ULTRAVIOLET NIGHT PHOTOGRAPHY SILKSCREEN PRINT COLLECTION | MMINT.UK | Rob Green | Noe Alonzo - Neon Japan
 description: |
   Check out this nighttime cityscape collection of photographic silkscreen prints I made in collaboration with @noealzii.
 year: 25/10/2022
-position: 9
+position: 10
 images:
-  - src: /assets/uploads/37D8BAB4-213D-459B-9EE7-EFE1DD306465.JPG
+  - src: /assets/uploads/Ultraviolet_Silkscreen_combo.jpg
     caption: Neon Japan
+  - src: /assets/uploads/37D8BAB4-213D-459B-9EE7-EFE1DD306465.JPG
+    caption: Neon Japan    
   - src: /assets/uploads/217BA876-FB23-4C1F-A3B7-55B38C9BD25B.JPG
   - src: /assets/uploads/09AA4B74-9494-419D-9181-4BCECE4552A9.JPG
   - src: /assets/uploads/D6CDE030-5998-431A-B91C-6E92A1188909.JPG

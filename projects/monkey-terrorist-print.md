@@ -4,7 +4,7 @@ title: Monkey Terrorist | Seoul
 description: |
  This piece looks at the false narratives propagated by major media outlets and how its effects can be seen within society. A sarcastic observation of how the masses are unwittingly being misinformed and blinded as a consequence.
 year: 22/09/2023
-position: 3
+position: 2
 images:
   - src: /assets/uploads/Monkey_Terrorist_Rob_Green_MMINT_1080.jpg
     caption: Monkey Terrorist

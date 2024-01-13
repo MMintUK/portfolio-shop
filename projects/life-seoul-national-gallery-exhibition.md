@@ -5,7 +5,7 @@ description: |
   
   
 year: 20/10/2014
-position: 34
+position: 10
 images:
   - src: /assets/uploads/t-shirt_rob_green_seoul_national_gallery_mmint_1660.jpg
     caption: LIFE

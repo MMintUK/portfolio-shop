@@ -4,7 +4,7 @@ title: Ello Sticker
 description: |
   An example project description
 year: 23/10/2023
-position: 2
+position: 10
 images:
   - src: /assets/uploads/ello_mmint_Rob_Green_1660.jpg
     caption: Ello Sticker

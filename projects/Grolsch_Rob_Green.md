@@ -1,11 +1,11 @@
 ---
 draft: false
-title: GROLSCH MURAL | Seoul
+title: GROLSCH | Mural | Seoul
 description: |
   Grolsch Mural Commission
   
 year: 14/06/2023
-position: 38
+position: 10
 images:
   - src: /assets/uploads/Grolsch_Rob_Green_artist_art_Illustration_1800.jpg
     caption: Grolsch

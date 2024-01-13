@@ -2,10 +2,10 @@
 draft: false
 title: Collaborative Silkscreen Print VIDEO | Psoman | MMINT.UK | Seoul
 description: |
-
-position: 13
+year: 25/09/2022
+position: 10
 images:
-  - src: /assets/uploads/psoman-rob-green_1080.jpg
+  - src: /assets/uploads/psoman-combo.jpg
     caption: Ultraviolet Silkscreen Photography Print                 
 date: 2022-09-25T13:02:11.245Z
 ---

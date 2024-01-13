@@ -1,14 +1,14 @@
 ---
 draft: false
-title: Collaborative Silkscreen Print VIDEO | SPIV | MMINT.UK | Seoul
+title: COLLABORATIVE SILKSCREEN PRINT | VIDEO | SPIV | MMINT.UK | Seoul
 description: |
-  Hold onto your monocles, folks! Get ready to add a pop of colour to your life with this eye-catching piece of art. Snag this little beauty for yourself! **[SHOP NOW](https://shop.mmint.uk/products/ikaroa-large-sticker)** 
-year: 11/09/2023
-position: 8
+
+year: 20/09/2022
+position: 10
 images:
-  - src: /assets/uploads/Spiv_1080.jpg
+  - src: /assets/uploads/Spiv_combo.jpg
     caption: Holographic Sticker
-date: 2023-09-11T08:24:31.507Z
+date: 2022-09-20T08:24:31.507Z
 ---
 
 <!-- Add your local MP4 video -->
