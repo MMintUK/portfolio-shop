@@ -64,9 +64,9 @@ module.exports = function(eleventyConfig) {
       viewportSizes = "",
       outputWidths = ["1080","1800","2400"],
       outputFormats = ["jpeg"],
-      outputQualityJpeg = 75,
-      outputQualityWebp = 75,
-      outputQualityAvif = 75
+      outputQualityJpeg = 100,
+      outputQualityWebp = 100,
+      outputQualityAvif = 100,
     } = params;
 
     // Tina CMS prefixes uploaded img src with a forward slash (?)
