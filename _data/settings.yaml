@@ -19,6 +19,7 @@ metadata:
   # optional PNG image used for sharing/bookmark icons
   site_icon_png: https://mmint.uk/favicon.png
   # add a GA4 ID to enable Google Analytics e.g. G-123456789
+  G-0TXN4M3QXN
   site_ga4_id: ''
   # home page SEO fields
   seo:
