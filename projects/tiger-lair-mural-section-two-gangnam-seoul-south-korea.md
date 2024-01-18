@@ -13,7 +13,7 @@ images:
     caption: TIGER LAIR MURAL     
   - src: /assets/uploads/tiger_lair_rob_green_artist_section_02_b_1456_opti-copy.jpg
     caption: TIGER LAIR MURAL
-  - src: /assets/uploads/tiger_lair_rob_green_artist_section_02_1660-copy.jpg
+  - src: /assets/uploads/Tiger_Lair_Rob_Green_Artist_Section_02_Full_Colour_1800.jpg
     caption: TIGER LAIR MURAL 
   - src: /assets/uploads/tiger_lair_panel_two_full_1660.jpg
     caption: TIGER LAIR MURAL
