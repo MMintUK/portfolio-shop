@@ -12,7 +12,7 @@
 		</a>
 
 		{% if settings.metadata.site_subtitle_1 %}
-			<span class="grid__item"><a href="https://shop.mmint.uk/" target="_blank">SHOP</a></span>
+			<span class="grid__item">{{ settings.metadata.site_subtitle_1 }}</span>
 		{% endif %}
 
 		{% if settings.metadata.site_subtitle_2 %}
@@ -22,6 +22,8 @@
 		{% if settings.theme.theme_features.enable_dark_mode %}
 
 		{% endif %}
+
+		<meta name="p:domain_verify" content="aba207fe0f055d3143aa6dab5da33099"/>
 
 	</div>
 	
