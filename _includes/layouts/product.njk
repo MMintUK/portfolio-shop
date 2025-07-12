@@ -1,0 +1,67 @@
+---
+layout: layouts/base.njk
+---
+
+<main class="page product-page">
+  <div class="product-header">
+    <h1>{{ title }}</h1>
+    <p class="product-price">£{{ price }}</p>
+  </div>
+
+  {%- if images -%}
+    <div class="product-images">
+      {%- for image in images -%}
+        {% generateImage {
+          src: image.src,
+          alt: image.caption or title,
+          classes: "product-image-large",
+          outputWidths: ["1080", "1800", "2400"],
+          viewportSizes: "(min-width: 1200px) 1200px, 100vw"
+        } %}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <div class="product-details">
+    {%- if description -%}
+      <div class="product-description">
+        {{ description | renderUsingMarkdown | safe }}
+      </div>
+    {%- endif -%}
+
+    {%- if dimensions -%}
+      <div class="product-dimensions">
+        <h3>Dimensions</h3>
+        <ul>
+          {%- if dimensions.width -%}<li>Width: {{ dimensions.width }}</li>{%- endif -%}
+          {%- if dimensions.height -%}<li>Height: {{ dimensions.height }}</li>{%- endif -%}
+          {%- if dimensions.depth -%}<li>Depth: {{ dimensions.depth }}</li>{%- endif -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    <div class="product-actions">
+      {%- if inStock -%}
+        <button class="add-to-cart-btn btn-primary" 
+                data-product-id="{{ title | slug }}"
+                data-product-name="{{ title }}"
+                data-product-price="{{ price }}"
+                data-stripe-id="{{ stripeProductId }}">
+          Add to Cart - £{{ price }}
+        </button>
+      {%- else -%}
+        <button class="out-of-stock-btn" disabled>Currently Out of Stock</button>
+      {%- endif -%}
+    </div>
+
+    {%- if body -%}
+      <div class="product-additional-info">
+        {{ content | safe }}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="product-nav">
+    <a href="/shop/" class="back-to-shop">← Back to Shop</a>
+  </div>
+</main>

@@ -18,14 +18,14 @@ export default defineConfig({
       publicFolder: "",
     },
   },
-  search: {
-    tina: {
-      indexerToken: process.env.TINA_CMS_SEARCH_TOKEN,
-      stopwordLanguages: ["eng"]
-    },
-    indexBatchSize: 100,
-    maxSearchIndexFieldLength: 100
-  },
+  // search: {
+  //   tina: {
+  //     indexerToken: process.env.TINA_CMS_SEARCH_TOKEN,
+  //     stopwordLanguages: ["eng"]
+  //   },
+  //   indexBatchSize: 100,
+  //   maxSearchIndexFieldLength: 100
+  // },
   schema: {
     collections: [
       {
@@ -261,10 +261,46 @@ export default defineConfig({
             description: "The project's short description",
           },
           {
-            type: "number",
+            type: "string",
             name: "year",
             label: "Year",
             description: "The year the project was realized e.g. 2023",
+          },
+          {
+            type: "string",
+            name: "caption",
+            label: "Caption",
+            description: "Project caption",
+          },
+          {
+            type: "string",
+            name: "video",
+            label: "Video URL",
+            description: "Path to video file",
+          },
+          {
+            type: "string",
+            name: "thumbnail",
+            label: "Video Thumbnail",
+            description: "Path to video thumbnail image",
+          },
+          {
+            type: "string",
+            name: "layout",
+            label: "Layout",
+            description: "Layout template",
+            ui: {
+              component: "hidden",
+            }
+          },
+          {
+            type: "string",
+            name: "permalink",
+            label: "Permalink",
+            description: "Custom permalink",
+            ui: {
+              component: "hidden",
+            }
           },
           {
             type: "object",

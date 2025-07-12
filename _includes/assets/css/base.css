@@ -222,6 +222,13 @@ img {
 
 /* Media Queries */
 
+/* Mobile specific adjustments for home page */
+@media (max-width: 539px) {
+	[data-current="home"] main.p--2 {
+		padding: var(--space);
+	}
+}
+
 /* Tablet Breakpoint */
 
 @media (min-width: 540px) {
@@ -408,4 +415,4 @@ img {
 .responsive-video {
 	width: 100%;
 	height: auto;
-	}	
+}	

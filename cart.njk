@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+title: Shopping Cart
+permalink: /cart/
+---
+
+<main class="page cart-page">
+  <h1>Shopping Cart</h1>
+  
+  <div id="cart-container">
+    <div id="cart-items">
+      <!-- Cart items will be populated by JavaScript -->
+    </div>
+    
+    <div id="cart-empty" style="display: none;">
+      <p>Your cart is empty.</p>
+      <a href="/shop/" class="btn-primary">Continue Shopping</a>
+    </div>
+    
+    <div id="cart-summary" style="display: none;">
+      <div class="cart-total">
+        <strong>Total: £<span id="cart-total-amount">0.00</span></strong>
+      </div>
+      
+      <div class="cart-actions">
+        <button id="checkout-btn" class="btn-primary">
+          Proceed to Checkout
+        </button>
+        <a href="/shop/" class="btn-secondary">Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+// Cart functionality will be added here
+</script>

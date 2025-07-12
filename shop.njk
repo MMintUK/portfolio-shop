@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+title: Shop
+permalink: /shop/
+---
+
+<main class="page">
+  <h1>Shop</h1>
+  <p>Browse our collection of art prints, apparel, and original works.</p>
+  
+  <div class="shop-grid">
+    {%- for product in collections.products -%}
+      <article class="product-card">
+        {%- if product.data.images and product.data.images[0] -%}
+          {% generateImage {
+            src: product.data.images[0].src,
+            alt: product.data.images[0].caption or product.data.title,
+            classes: "product-image",
+            outputWidths: ["640", "1080"],
+            viewportSizes: "(min-width: 768px) 50vw, 100vw"
+          } %}
+        {%- endif -%}
+        
+        <div class="product-info">
+          <h2><a href="{{ product.url }}">{{ product.data.title }}</a></h2>
+          <p class="product-price">£{{ product.data.price }}</p>
+          {%- if product.data.description -%}
+            <div class="product-description">{{ product.data.description | renderUsingMarkdown | safe }}</div>
+          {%- endif -%}
+          
+          {%- if product.data.inStock -%}
+            <button class="add-to-cart-btn" 
+                    data-product-id="{{ product.data.title | slug }}"
+                    data-product-name="{{ product.data.title }}"
+                    data-product-price="{{ product.data.price }}"
+                    data-stripe-id="{{ product.data.stripeProductId }}">
+              Add to Cart
+            </button>
+          {%- else -%}
+            <button class="out-of-stock-btn" disabled>Out of Stock</button>
+          {%- endif -%}
+        </div>
+      </article>
+    {%- endfor -%}
+  </div>
+</main>

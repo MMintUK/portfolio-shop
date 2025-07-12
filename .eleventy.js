@@ -69,6 +69,12 @@ module.exports = function(eleventyConfig) {
       outputQualityAvif = 100,
     } = params;
 
+    // Handle undefined src
+    if (!src) {
+      console.warn('generateImage shortcode called without src parameter');
+      return '';
+    }
+
     // Tina CMS prefixes uploaded img src with a forward slash (?)
     // Remove it from the image path if it exists
     src = src.startsWith("/") ? src.slice(1) : src;
@@ -132,6 +138,13 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("projects/*.md")
       //.filter(project => !Boolean(project.data.draft))
       .sort((a, b) => b.data.position - a.data.position);
+  });
+
+  // The products collection for the shop
+  eleventyConfig.addCollection("products", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("products/*.md")
+      .filter(product => !Boolean(product.data.draft))
+      .sort((a, b) => (a.data.position || 999) - (b.data.position || 999));
   });
 
   // A filter to limit output of collection items

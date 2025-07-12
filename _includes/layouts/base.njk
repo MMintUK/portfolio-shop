@@ -20,6 +20,7 @@
 			{% if settings.theme.theme_features.enable_dark_mode %}
 				{% include "assets/js/dark_mode.js" %}
 			{% endif %}
+			{% include "assets/js/cart.js" %}
   	{% endset %}
  		<script>{{ js | jsmin | safe }}</script>
 
