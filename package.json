@@ -3,10 +3,13 @@
   "version": "0.0.1",
   "description": "Halide is a new, minimalist, responsive portfolio website designed for photographers and still image creators",
   "scripts": {
-    "build": "npx @11ty/eleventy",
+    "build": "tinacms build && npx @11ty/eleventy",
     "watch": "npx @11ty/eleventy --watch",
     "serve": "npx @11ty/eleventy --serve",
-    "debug": "DEBUG=* npx @11ty/eleventy"
+    "debug": "DEBUG=* npx @11ty/eleventy",
+    "dev": "tinacms dev -c \"npm run serve\"",
+    "tina:build": "tinacms build",
+    "tina:dev": "tinacms dev"
   },
   "repository": {
     "type": "git",
@@ -26,7 +29,7 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-fetch": "^4.0.0",
     "@11ty/eleventy-img": "^3.1.8",
-    "@tinacms/cli": "^1.5.39",
+    "@tinacms/cli": "^1.6.9",
     "clean-css": "^5.3.3",
     "dotenv": "^16.3.1",
     "eleventy-plugin-helmet": "^0.2.2",
@@ -43,6 +46,8 @@
     "@progfay/react-lite-youtube-embed": "^1.0.3",
     "eleventy-plugin-embed-everything": "^1.18.1",
     "eleventy-plugin-youtube-embed": "^1.10.1",
+    "jsonpath-plus": "^10.1.0",
+    "sharp": "^0.33.5",
     "vue-youtube-embed": "^2.2.2"
   }
 }

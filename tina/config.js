@@ -29,6 +29,195 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        name: "product",
+        label: "Products", 
+        path: "products",
+        format: "md",
+        // set some default values for this collection
+        defaultItem: () => {
+          return {
+            draft: false,
+            date: new Date().toISOString(),
+            inStock: true,
+            featured: false,
+          }
+        },
+        ui: {
+          filename: {
+            readonly: false,
+            slugify: (values) => {
+              return `${values?.title
+                ?.toLowerCase()
+                .replace(/ /g, '-')}`
+            },
+          },
+        },
+        fields: [
+          {
+            type: "boolean",
+            name: "draft",
+            label: "Draft",
+            description: "If this is checked the product will not be published",
+          },
+          {
+            type: "string",
+            name: "title",
+            label: "Product Name",
+            description: "The product's name",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "description",
+            label: "Product Description",
+            description: "The product's description",
+            required: true,
+          },
+          {
+            type: "number",
+            name: "price",
+            label: "Price (£)",
+            description: "Product price in pounds",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "sku",
+            label: "SKU",
+            description: "Stock Keeping Unit / Product Code",
+          },
+          {
+            type: "string",
+            name: "stripeProductId",
+            label: "Stripe Product ID",
+            description: "The Stripe product ID for checkout integration",
+          },
+          {
+            type: "boolean",
+            name: "inStock",
+            label: "In Stock",
+            description: "Whether this product is currently available",
+          },
+          {
+            type: "boolean", 
+            name: "featured",
+            label: "Featured Product",
+            description: "Show this product prominently in shop listings",
+          },
+          {
+            type: "string",
+            name: "category",
+            label: "Category",
+            description: "Product category",
+            options: [
+              { value: "prints", label: "Art Prints" },
+              { value: "apparel", label: "Apparel" },
+              { value: "stickers", label: "Stickers" },
+              { value: "original", label: "Original Art" },
+            ],
+          },
+          {
+            type: "object",
+            name: "images",
+            label: "Product Images",
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.caption };
+              },
+            },
+            fields: [
+              {
+                type: "image",
+                name: "src",
+                label: "Image",
+                description: "Upload product image in JPEG or PNG format with minimum width of 2000 pixels",
+              },
+              {
+                type: "string",
+                name: "caption",
+                label: "Caption",
+                description: "Descriptive image caption, used for alt text",
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "dimensions",
+            label: "Dimensions",
+            description: "Product dimensions (for prints, apparel sizing, etc.)",
+            fields: [
+              {
+                type: "string",
+                name: "width",
+                label: "Width",
+              },
+              {
+                type: "string", 
+                name: "height",
+                label: "Height",
+              },
+              {
+                type: "string",
+                name: "depth",
+                label: "Depth/Thickness",
+              },
+            ],
+          },
+          {
+            type: "datetime",
+            name: "date",
+            label: "Date Added",
+            description: "When this product was added",
+            ui: {
+              dateFormat: 'YYYY-MM-DD',
+              timeFormat: 'HH:MM:SS',
+              component: "hidden",
+            }
+          },
+          {
+            type: "object",
+            name: "seo",
+            label: "SEO",
+            fields: [
+              {
+                type: "string",
+                name: "title",
+                label: "SEO Title", 
+                description: "Title for SEO purposes. Defaults to product name",
+              },
+              {
+                type: "string",
+                name: "description",
+                label: "Meta Description",
+                description: "Meta description for SEO. Defaults to product description",
+              },
+            ]
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Additional Details",
+            description: "Additional product details, care instructions, etc.",
+            isBody: true,
+          },
+          {
+            type: "number",
+            name: "position",
+            label: "Display Position",
+            description: "Product position in shop listings (0-999, lower = higher position)",
+            ui:{
+              validate: (val)=>{
+                if (val < 0 || val >= 1000 ) {
+                  return "The number must be between 0 and 999"
+                }
+              },
+            },
+          },
+        ],
+      },
+      {
         name: "project",
         label: "Projects",
         path: "projects",
