@@ -36,7 +36,7 @@ variants:
         price: 30
         inStock: false
 images:
-  - src: /assets/uploads/Tiger_Balm_Vid.jpg
+  - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_black_1080.png
     caption: Black Dog White Dog Tee
 dimensions:
   care: "Machine wash cold, tumble dry low"
