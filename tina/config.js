@@ -82,6 +82,12 @@ export default defineConfig({
             required: true,
           },
           {
+            type: "number",
+            name: "basePrice",
+            label: "Base Price (£)",
+            description: "Base price for products with variants (optional - defaults to price)",
+          },
+          {
             type: "string",
             name: "sku",
             label: "SKU",
@@ -144,6 +150,84 @@ export default defineConfig({
           },
           {
             type: "object",
+            name: "variants",
+            label: "Product Variants",
+            description: "Size options, color variants, etc.",
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.name || "Variant" };
+              },
+            },
+            fields: [
+              {
+                type: "string",
+                name: "name",
+                label: "Variant Name",
+                description: "e.g., 'Size', 'Color', 'Frame'",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "type",
+                label: "Variant Type",
+                description: "How this variant should be displayed",
+                options: [
+                  { value: "size", label: "Size (radio buttons)" },
+                  { value: "option", label: "Option (radio buttons)" },
+                  { value: "dropdown", label: "Dropdown (select)" },
+                ],
+              },
+              {
+                type: "boolean",
+                name: "required",
+                label: "Required",
+                description: "Must customer select this variant?",
+              },
+              {
+                type: "object",
+                name: "options",
+                label: "Variant Options",
+                list: true,
+                ui: {
+                  itemProps: (item) => {
+                    return { label: `${item?.label || item?.value} - £${item?.price || 0}` };
+                  },
+                },
+                fields: [
+                  {
+                    type: "string",
+                    name: "value",
+                    label: "Value",
+                    description: "Internal value (e.g., 'S', 'M', 'L')",
+                    required: true,
+                  },
+                  {
+                    type: "string",
+                    name: "label",
+                    label: "Display Label",
+                    description: "What customers see (e.g., 'Small', 'Medium', 'Large')",
+                    required: true,
+                  },
+                  {
+                    type: "number",
+                    name: "price",
+                    label: "Price (£)",
+                    description: "Price for this variant",
+                    required: true,
+                  },
+                  {
+                    type: "boolean",
+                    name: "inStock",
+                    label: "In Stock",
+                    description: "Is this variant available?",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "object",
             name: "dimensions",
             label: "Dimensions",
             description: "Product dimensions (for prints, apparel sizing, etc.)",
@@ -162,6 +246,26 @@ export default defineConfig({
                 type: "string",
                 name: "depth",
                 label: "Depth/Thickness",
+              },
+              {
+                type: "string",
+                name: "material",
+                label: "Material",
+              },
+              {
+                type: "string",
+                name: "weight",
+                label: "Weight",
+              },
+              {
+                type: "string",
+                name: "care",
+                label: "Care Instructions",
+              },
+              {
+                type: "string",
+                name: "finish",
+                label: "Finish",
               },
             ],
           },
