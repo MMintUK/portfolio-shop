@@ -66,22 +66,28 @@ exports.handler = async (event, context) => {
           variantDescription = `Selected options: ${variantParts.join(', ')}`;
         }
         
+        // Extract variant info for display
+        const baseProductName = item.name.split(' (')[0];
+        const displayName = item.name; // This should include variants like "Black Dog Tee (Size: Medium)"
+        
         return {
           price_data: {
             currency: 'gbp',
             product_data: {
-              name: item.name,
-              description: variantDescription || `Product: ${item.name}`,
+              name: displayName,
+              description: variantDescription || `${baseProductName}`,
               metadata: {
-                base_product: item.name.split(' (')[0],
+                base_product: baseProductName,
                 variants: item.variants ? JSON.stringify(item.variants) : '',
                 product_id: item.id,
-                full_name: item.name,
+                full_item_name: displayName,
+                variant_summary: variantDescription,
               },
             },
             unit_amount: Math.round(item.price * 100), // Convert pounds to pence
           },
           quantity: item.quantity,
+          description: variantDescription, // This might show in some Stripe interfaces
         };
       }),
       mode: 'payment',
@@ -102,6 +108,10 @@ exports.handler = async (event, context) => {
         order_from: 'MMINT.UK',
         items_summary: items.map(item => `${item.name} (Qty: ${item.quantity})`).join('; '),
         total_items: items.reduce((sum, item) => sum + item.quantity, 0).toString(),
+        order_details: items.map(item => {
+          const variants = item.variants ? Object.entries(item.variants).map(([k,v]) => `${k}: ${v.value || v}`).join(', ') : '';
+          return `${item.name}${variants ? ` [${variants}]` : ''} - £${item.price} x ${item.quantity}`;
+        }).join(' | '),
       },
       // Enable automatic receipt emails
       invoice_creation: {
@@ -109,7 +119,11 @@ exports.handler = async (event, context) => {
         invoice_data: {
           description: 'Purchase from MMINT.UK',
           metadata: {
-            order_details: items.map(item => `${item.name} - £${item.price} x ${item.quantity}`).join('; '),
+            order_details: items.map(item => {
+              const variants = item.variants ? Object.entries(item.variants).map(([k,v]) => `${k}: ${v.value || v}`).join(', ') : '';
+              return `${item.name}${variants ? ` [${variants}]` : ''} - £${item.price} x ${item.quantity}`;
+            }).join('; '),
+            full_order_summary: items.map(item => `${item.name} (£${item.price} x ${item.quantity} = £${(item.price * item.quantity).toFixed(2)})`).join(' | '),
           },
           rendering_options: {
             amount_tax_display: 'include_inclusive_tax',
