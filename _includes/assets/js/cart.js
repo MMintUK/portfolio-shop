@@ -155,7 +155,7 @@ class ShoppingCart {
     const cartCountElements = document.querySelectorAll('.cart-count');
     cartCountElements.forEach(element => {
       element.textContent = count;
-      element.style.display = count > 0 ? 'inline' : 'none';
+      element.style.display = 'inline'; // Always show count, including 0
     });
   }
 

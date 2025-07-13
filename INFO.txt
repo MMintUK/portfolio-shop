@@ -1,8 +1,88 @@
 
-Always use: netlify dev or sudo netlify dev 
+# MMINT.UK Portfolio & E-commerce Site Development Guide
 
 
-
+Alternative development options:
+```bash
+# Basic Eleventy server (without serverless functions)
 npm run serve
 
+## Building the Site
+```bash
+# Production build
+npm run build
+# or if permissions needed:
 sudo npm run build
+
+## Git Workflow
+```bash
+# Check status
+git status
+
+# Add changes
+git add .
+
+# Commit changes
+git commit -m "Your commit message"
+
+# Push to GitHub
+git push origin main
+```
+
+## Prerequisites
+- Node.js (v16+ recommended)
+- npm
+- Git
+- Netlify CLI (for local development with serverless functions)
+
+## Installation
+```bash
+npm install
+```
+
+## Development Server
+For local development with TinaCMS and Stripe integration:
+```bash
+netlify dev
+# or if permissions needed:
+sudo netlify dev
+```
+
+# TinaCMS development mode
+npm run dev
+```
+
+## Building the Site
+```bash
+# Production build
+npm run build
+# or if permissions needed:
+sudo npm run build
+
+# Build TinaCMS only
+npm run tina:build
+```
+
+
+## Available Scripts
+- `npm run serve` - Start Eleventy development server
+- `npm run build` - Build site for production
+- `npm run dev` - TinaCMS development mode with Eleventy
+- `npm run watch` - Watch files and rebuild
+- `netlify dev` - Local development with serverless functions
+
+## Project Structure
+- `_includes/` - Templates, components, CSS, JS
+- `products/` - Product markdown files
+- `projects/` - Project markdown files  
+- `_site/` - Generated site output
+- `tina/` - TinaCMS configuration
+- `netlify/functions/` - Serverless functions for Stripe
+
+## Environment Variables
+Create `.env` file for:
+- Stripe keys (development/production)
+- Other API keys as needed
+
+## Deployment
+Site auto-deploys to Netlify on push to main branch.

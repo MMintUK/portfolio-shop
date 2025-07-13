@@ -7,7 +7,7 @@
 
 /* Shop Category Filters */
 .shop-filters {
-  text-align: center;
+  text-align: left;
   margin: 2rem 0;
 }
 
@@ -15,6 +15,13 @@
   display: inline-flex;
   gap: 2rem;
   align-items: center;
+}
+
+/* Mobile view - center the filters */
+@media (max-width: 768px) {
+  .shop-filters {
+    text-align: center;
+  }
 }
 
 .filter-btn {
@@ -62,24 +69,61 @@
 }
 
 /* Unified Button System */
-.btn-primary, .add-to-cart-btn {
-  background: var(--color-text, #101010);
-  color: var(--color-background, #ffffff);
-  border: 1px solid var(--color-text, #101010);
+.btn-primary, .add-to-cart-btn, .btn-checkout, .btn-continue, .btn-secondary {
   padding: 0.75rem 1.5rem;
   cursor: pointer;
   font-size: 1rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
   text-align: center;
   font-family: inherit;
+  border: 1px solid var(--color-text, #101010);
+}
+
+/* Default dark button style */
+.btn-primary, .add-to-cart-btn {
+  background: var(--color-text, #101010);
+  color: var(--color-background, #ffffff);
 }
 
 .btn-primary:hover, .add-to-cart-btn:hover {
   background: var(--color-background, #ffffff);
   color: var(--color-text, #101010);
-  border: 1px solid var(--color-text, #101010);
+}
+
+/* Checkout button - white background */
+.btn-checkout {
+  background: var(--color-background, #ffffff);
+  color: var(--color-text, #101010);
+}
+
+.btn-checkout:hover {
+  background: var(--color-text, #101010);
+  color: var(--color-background, #ffffff);
+}
+
+/* Continue shopping button - white with black text on hover */
+.btn-continue {
+  background: var(--color-background, #ffffff);
+  color: var(--color-text, #101010);
+}
+
+.btn-continue:hover {
+  background: var(--color-background, #ffffff);
+  color: var(--color-text, #101010);
+  opacity: 0.8;
+}
+
+/* Secondary button */
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text, #101010);
+}
+
+.btn-secondary:hover {
+  background: var(--color-text, #101010);
+  color: var(--color-background, #ffffff);
 }
 
 .out-of-stock-btn {
@@ -95,29 +139,42 @@
   font-family: inherit;
 }
 
-.btn-secondary {
-  background: transparent;
-  color: var(--color-text, #101010);
-  border: 1px solid var(--color-text, #101010);
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  transition: all 0.2s ease;
-  font-family: inherit;
-}
-
-.btn-secondary:hover {
-  background: var(--color-text, #101010);
-  color: var(--color-background, #ffffff);
-}
-
 /* Product Page Styles */
 .product-page {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
+  /* Override parent padding for sticky to work */
+  margin-left: calc(-1 * var(--p--2, 2rem));
+  margin-right: calc(-1 * var(--p--2, 2rem));
+  padding-left: var(--p--2, 2rem);
+  padding-right: var(--p--2, 2rem);
+}
+
+/* Two-column layout for desktop */
+.product-container {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+  position: relative;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-images-column {
+  flex: 1.4;
+  position: relative;
+}
+
+.product-content-column {
+  flex: 1;
+  position: relative;
+}
+
+.product-content-sticky {
+  padding: 2rem 0;
+  background: var(--color-background, #ffffff);
+  width: 100%;
 }
 
 .product-header {
@@ -135,15 +192,120 @@
 
 .product-image-large {
   width: 100%;
-  max-width: 800px;
-  margin: 0 0 1rem 0;
+  margin: 0 0 2rem 0;
   display: block;
 }
 
+.product-video-large {
+  width: 100%;
+  margin: 0 0 2rem 0;
+  display: block;
+}
+
+.product-video-large video {
+  width: 100%;
+  height: auto;
+}
+
 .product-details {
-  max-width: 800px;
-  margin: 0;
   text-align: left;
+}
+
+/* Project page styles - reusing product layout */
+.project-page .product-container {
+  /* Inherits the two-column layout from product pages */
+}
+
+.project-page .product-nav {
+  margin: 5rem 0 1rem 0;
+}
+
+.project-year {
+  margin: 0.5rem 0 0 0;
+  color: var(--color-accent, #666);
+  font-size: 0.9rem;
+}
+
+/* Tablet layout adjustments */
+@media (max-width: 1140px) {
+  .product-container {
+    margin-right: auto;
+  }
+}
+
+/* Desktop layout - align to right */
+@media (min-width: 1141px) {
+  .product-container {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+/* Mobile layout - revert to single column */
+@media (max-width: 768px) {
+  .product-container {
+    display: block;
+    gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+  }
+  
+  .product-images-column {
+    flex: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+  }
+  
+  .product-content-column {
+    flex: none;
+    margin: 0 !important;
+    padding: var(--space) !important;
+    width: 100%;
+  }
+  
+  /* Project page mobile spacing to match product page */
+  .project-page .product-content-column {
+    padding: var(--space) !important;
+  }
+  
+  .product-content-sticky {
+    position: static;
+    top: auto;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent;
+    z-index: auto;
+    width: 100%;
+  }
+  
+  .product-images {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+  }
+  
+  .product-image-large {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .product-page,
+  .page.product-page {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
 }
 
 .product-description {
@@ -295,15 +457,16 @@
   align-items: center;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  border: 0.5px solid var(--color-text, #101010);
+  border: 2px solid transparent;
   background: transparent;
   color: var(--color-text, #101010);
   transition: all 0.2s ease;
   position: relative;
+  box-shadow: inset 0 0 0 0.5px var(--color-text, #101010);
 }
 
 .variant-option:hover {
-  border-width: 2px;
+  box-shadow: inset 0 0 0 2px var(--color-text, #101010);
 }
 
 .variant-option input[type="radio"] {
@@ -315,7 +478,7 @@
 }
 
 .variant-option:has(input[type="radio"]:checked) {
-  border: 2px solid var(--color-text, #101010);
+  box-shadow: inset 0 0 0 2px var(--color-text, #101010);
   background: transparent;
   color: var(--color-text, #101010);
 }

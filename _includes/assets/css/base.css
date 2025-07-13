@@ -55,7 +55,8 @@ body {
 }
 
 .grid--header {
-	grid-template-columns: 3fr 1fr;
+	grid-template-columns: 1fr auto;
+	align-items: center;
 }
 
 .grid--footer {
@@ -227,6 +228,19 @@ img {
 	[data-current="home"] main.p--2 {
 		padding: var(--space);
 	}
+	
+	/* Remove padding from shop, project, and product pages on mobile */
+	[data-current="shop"] main.p--2,
+	[data-current="project"] main.p--2,
+	[data-current="product"] main.p--2,
+	main.product-page {
+		padding: 0;
+	}
+	
+	/* Add top padding for project page to match product spacing after header */
+	main.project-page {
+		padding-top: var(--space);
+	}
 }
 
 /* Tablet Breakpoint */
@@ -271,7 +285,10 @@ img {
 		grid-column: span 2/5;
 	}
 
-	.grid--header,
+	.grid--header {
+		grid-template-columns: 1fr auto;
+	}
+	
 	.grid--intro,
 	.grid--project,
 	.grid--description,
@@ -324,6 +341,101 @@ img {
 		grid-column: 3 / span 2;
 	}
 
+}
+
+/* Header Navigation */
+.header-logo {
+	justify-self: start;
+}
+
+.header-nav {
+	justify-self: end;
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: var(--color-text, #101010);
+}
+
+.cart-link {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.cart-icon {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* Site description alignment */
+.site-description {
+	text-align: right;
+}
+
+@media (max-width: 768px) {
+	.site-description {
+		text-align: left;
+	}
+}
+
+/* Desktop header - hide duplicate nav-main */
+@media (min-width: 769px) {
+	.nav-main {
+		display: none;
+	}
+}
+
+/* Mobile header adjustments */
+@media (max-width: 768px) {
+	.grid--header {
+		grid-template-columns: 1fr auto;
+		grid-template-rows: auto auto;
+		gap: 1rem;
+		align-items: flex-start;
+	}
+	
+	.header-logo {
+		justify-self: start;
+		grid-column: 1;
+		grid-row: 1;
+	}
+	
+	.header-nav {
+		justify-self: end;
+		grid-column: 2;
+		grid-row: 1;
+		display: flex;
+		align-items: center;
+		gap: 0;
+	}
+	
+	/* Hide INSTAGRAM and SHOP from header-nav on mobile */
+	.header-nav .nav-link:not(.cart-link) {
+		display: none;
+	}
+	
+	.nav-main {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+		grid-column: 1;
+		grid-row: 2;
+		justify-self: start;
+	}
+	
+	.cart-text {
+		display: none;
+	}
+	
+	.cart-icon {
+		width: 20px;
+		height: 20px;
+	}
 }
 
 /* Padding */

@@ -3,7 +3,7 @@ class ShopFilter {
   constructor() {
     this.filterButtons = document.querySelectorAll('.filter-btn');
     this.productItems = document.querySelectorAll('.product-item');
-    this.currentFilter = 'all';
+    this.currentFilter = 'prints';
     
     this.init();
   }
@@ -12,7 +12,7 @@ class ShopFilter {
     if (this.filterButtons.length === 0) return;
     
     this.bindEvents();
-    this.showAllProducts(); // Show all products initially
+    this.filterProducts('prints'); // Show prints by default
   }
 
   bindEvents() {

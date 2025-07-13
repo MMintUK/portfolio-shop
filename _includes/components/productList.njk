@@ -1,0 +1,52 @@
+{% if productList and productList.length > 0 %}
+
+	<section class="columns columns--shop">
+
+		{% for product in productList %}
+
+			<div class="columns__item mb--1 product-item">
+
+				<a href="{{ product.url | url }}">
+
+					<figure>
+
+						{# Set the first product image from the product #}
+						{% if product.data.images and product.data.images[0] %}
+							{% set image = product.data.images[0] %}
+							{% set params = 
+								{
+									"src": image.src,
+									"alt": image.caption or product.data.title,
+									"loadingType": "lazy",
+									"viewportSizes": "(min-width: 1140px) 22vw, (min-width: 540px) 45vw, 85vw",
+									"outputWidths": [400, 800, 1200],
+									"outputFormats": ["webp", "jpeg"],
+									"outputQualityJpeg": 85,
+									"outputQualityWebp": 80
+								}
+							%}
+							{% generateImage params %}
+						{% endif %}
+						
+						<figcaption class="pb--1">
+							<span class="text--small arrow arrow--right">{{ product.data.title }}</span>
+							<div class="product-price">
+								{%- if product.data.variants and product.data.variants.length > 0 -%}
+									From £{{ product.data.basePrice or product.data.price }}
+								{%- else -%}
+									£{{ product.data.price }}
+								{%- endif -%}
+							</div>
+						</figcaption>
+
+					</figure>
+
+				</a>
+
+			</div>
+
+		{% endfor %}
+
+	</section>
+
+{% endif %}

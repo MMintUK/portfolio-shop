@@ -31,6 +31,26 @@ variants:
         label: "A1 (59.4 x 84.1 cm)"
         price: 135
         inStock: false
+  - name: "Color"
+    type: "option"
+    required: true
+    options:
+      - value: "black"
+        label: "Black"
+        price: 0
+        inStock: true
+      - value: "red"
+        label: "Red"
+        price: 0
+        inStock: true
+      - value: "yellow"
+        label: "Yellow"
+        price: 0
+        inStock: true
+      - value: "red-white"
+        label: "Red & White"
+        price: 0
+        inStock: true
   - name: "Frame"
     type: "option"
     required: false
@@ -49,9 +69,23 @@ variants:
         inStock: true
 images:
   - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_black_1080.png
-    caption: IKAROA Print - Black variant
+    caption: IKAROA Print - Black
+  - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_red_1080.png
+    caption: IKAROA Print - Red
+  - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_yellow_1080.png
+    caption: IKAROA Print - Yellow
+  - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_red_white_1080.png
+    caption: IKAROA Print - Red & White
   - src: /assets/uploads/IKAROA_Texture_Print_Red_1660.png
-    caption: IKAROA Print - Red variant
+    caption: IKAROA Print - Texture Detail
+  - src: /assets/uploads/ikaroa_rob_green_mmint_detail_1660.jpg
+    caption: IKAROA Print - Close-up Detail
+  - src: /assets/uploads/ikaroa_rob_green_mmint_black_white_gallery_1880_opti.jpg
+    caption: IKAROA Print - Gallery Display
+  - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_seoul_ultraviolet_silkscreen_art_prints_hannam_1660.jpg
+    caption: IKAROA Print - Ultraviolet Process
+  - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_seoul_ultraviolet_silkscreen_art_prints_ultraviolet_seoul_itaewon_1660.jpg
+    caption: IKAROA Print - Silkscreen Process
 dimensions:
   weight: "250gsm premium paper"
   finish: "Matte finish"
