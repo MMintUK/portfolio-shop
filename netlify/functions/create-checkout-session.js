@@ -1,5 +1,3 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
 exports.handler = async (event, context) => {
   // Set CORS headers for all responses
   const headers = {
@@ -26,7 +24,24 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    // Check if Stripe secret key is available
+    if (!process.env.STRIPE_SECRET_KEY) {
+      console.error('STRIPE_SECRET_KEY environment variable is not set');
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ 
+          error: 'Server configuration error: Missing Stripe secret key' 
+        })
+      };
+    }
+
+    // Initialize Stripe with the secret key
+    const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+    
+    console.log('Request body:', event.body);
     const { items } = JSON.parse(event.body);
+    console.log('Parsed items:', items);
 
     if (!items || !Array.isArray(items) || items.length === 0) {
       return {
@@ -72,13 +87,21 @@ exports.handler = async (event, context) => {
 
   } catch (error) {
     console.error('Stripe error:', error);
+    console.error('Error details:', {
+      message: error.message,
+      type: error.type,
+      code: error.code,
+      stack: error.stack
+    });
     
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({ 
         error: 'Failed to create checkout session',
-        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        message: error.message,
+        type: error.type || 'unknown',
+        details: error.code || 'No error code'
       })
     };
   }
