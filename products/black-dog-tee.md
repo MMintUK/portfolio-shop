@@ -36,10 +36,8 @@ variants:
         price: 30
         inStock: false
 images:
-  - src: /assets/uploads/black-dog-white-dog-tee-front.jpg
-    caption: Black Dog White Dog Tee - Front
-  - src: /assets/uploads/black-dog-white-dog-tee-back.jpg
-    caption: Black Dog White Dog Tee - Back
+  - src: /assets/uploads/Tiger_Balm_Vid.jpg
+    caption: Black Dog White Dog Tee
 dimensions:
   care: "Machine wash cold, tumble dry low"
   material: "100% Cotton"
