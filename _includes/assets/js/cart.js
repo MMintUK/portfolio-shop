@@ -14,9 +14,18 @@ class ShoppingCart {
   bindEvents() {
     // Add to cart buttons
     document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('add-to-cart-btn')) {
+      console.log('Click detected on:', e.target);
+      
+      // Check if the clicked element or its parent is an add-to-cart button
+      let button = e.target;
+      if (e.target.tagName === 'SPAN' && e.target.closest('.add-to-cart-btn')) {
+        button = e.target.closest('.add-to-cart-btn');
+      }
+      
+      if (button.classList && button.classList.contains('add-to-cart-btn')) {
+        console.log('Add to cart button clicked');
         e.preventDefault();
-        this.addToCart(e.target);
+        this.addToCart(button);
       }
       
       if (e.target.classList.contains('remove-item-btn')) {
@@ -260,7 +269,9 @@ Your order details are ready for Stripe checkout!`;
 
 // Initialize cart when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('Initializing shopping cart...');
   window.cart = new ShoppingCart();
+  console.log('Shopping cart initialized:', window.cart);
 });
 
 // Add some basic CSS for cart notifications
