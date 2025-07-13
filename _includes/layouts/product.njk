@@ -5,7 +5,13 @@ layout: layouts/base.njk
 <main class="page product-page">
   <div class="product-header">
     <h1>{{ title }}</h1>
-    <p class="product-price">£{{ price }}</p>
+    <p class="product-price" id="current-price">
+      {%- if variants and variants.length > 0 -%}
+        From £{{ basePrice or price }}
+      {%- else -%}
+        £{{ price }}
+      {%- endif -%}
+    </p>
   </div>
 
   {%- if images -%}
@@ -29,13 +35,87 @@ layout: layouts/base.njk
       </div>
     {%- endif -%}
 
+    {%- if variants and variants.length > 0 -%}
+      <div class="product-variants">
+        <form id="product-form">
+          {%- for variant in variants -%}
+            <div class="variant-group">
+              <label class="variant-label">
+                {{ variant.name }}
+                {%- if variant.required -%}<span class="required">*</span>{%- endif -%}
+              </label>
+              
+              {%- if variant.type == "size" or variant.options.length <= 4 -%}
+                {# Radio buttons for sizes or small option sets #}
+                <div class="variant-options variant-options--radio">
+                  {%- for option in variant.options -%}
+                    <label class="variant-option">
+                      <input type="radio" 
+                             name="{{ variant.name | slug }}" 
+                             value="{{ option.value }}"
+                             data-price="{{ option.price }}"
+                             data-in-stock="{{ option.inStock }}"
+                             {%- if variant.required and loop.first -%} checked{%- endif -%}
+                             {%- if not option.inStock -%} disabled{%- endif -%}>
+                      <span class="variant-option-label">
+                        {{ option.label }}
+                        {%- if option.price != (basePrice or price) -%}
+                          <span class="price-difference">
+                            {%- if option.price > (basePrice or price) -%}
+                              +£{{ (option.price - (basePrice or price)) }}
+                            {%- else -%}
+                              -£{{ ((basePrice or price) - option.price) }}
+                            {%- endif -%}
+                          </span>
+                        {%- endif -%}
+                        {%- if not option.inStock -%}
+                          <span class="out-of-stock-label">(Out of Stock)</span>
+                        {%- endif -%}
+                      </span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              {%- else -%}
+                {# Dropdown for large option sets #}
+                <select name="{{ variant.name | slug }}" class="variant-select">
+                  {%- if not variant.required -%}
+                    <option value="">Choose {{ variant.name }}</option>
+                  {%- endif -%}
+                  {%- for option in variant.options -%}
+                    <option value="{{ option.value }}" 
+                            data-price="{{ option.price }}"
+                            data-in-stock="{{ option.inStock }}"
+                            {%- if not option.inStock -%} disabled{%- endif -%}>
+                      {{ option.label }}
+                      {%- if option.price != (basePrice or price) -%}
+                        {%- if option.price > (basePrice or price) -%}
+                          (+£{{ (option.price - (basePrice or price)) }})
+                        {%- else -%}
+                          (-£{{ ((basePrice or price) - option.price) }})
+                        {%- endif -%}
+                      {%- endif -%}
+                      {%- if not option.inStock -%} (Out of Stock){%- endif -%}
+                    </option>
+                  {%- endfor -%}
+                </select>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </form>
+      </div>
+    {%- endif -%}
+
     {%- if dimensions -%}
       <div class="product-dimensions">
-        <h3>Dimensions</h3>
+        <h3>Details</h3>
         <ul>
           {%- if dimensions.width -%}<li>Width: {{ dimensions.width }}</li>{%- endif -%}
           {%- if dimensions.height -%}<li>Height: {{ dimensions.height }}</li>{%- endif -%}
           {%- if dimensions.depth -%}<li>Depth: {{ dimensions.depth }}</li>{%- endif -%}
+          {%- if dimensions.material -%}<li>Material: {{ dimensions.material }}</li>{%- endif -%}
+          {%- if dimensions.weight -%}<li>Weight: {{ dimensions.weight }}</li>{%- endif -%}
+          {%- if dimensions.care -%}<li>Care: {{ dimensions.care }}</li>{%- endif -%}
+          {%- if dimensions.finish -%}<li>Finish: {{ dimensions.finish }}</li>{%- endif -%}
         </ul>
       </div>
     {%- endif -%}
@@ -43,18 +123,20 @@ layout: layouts/base.njk
     <div class="product-actions">
       {%- if inStock -%}
         <button class="add-to-cart-btn btn-primary" 
+                id="add-to-cart-btn"
                 data-product-id="{{ title | slug }}"
                 data-product-name="{{ title }}"
-                data-product-price="{{ price }}"
-                data-stripe-id="{{ stripeProductId }}">
-          Add to Cart - £{{ price }}
+                data-product-price="{{ basePrice or price }}"
+                data-stripe-id="{{ stripeProductId }}"
+                data-has-variants="{{ 'true' if variants and variants.length > 0 else 'false' }}">
+          <span id="add-to-cart-text">Add to Cart - £{{ basePrice or price }}</span>
         </button>
       {%- else -%}
         <button class="out-of-stock-btn" disabled>Currently Out of Stock</button>
       {%- endif -%}
     </div>
 
-    {%- if body -%}
+    {%- if content -%}
       <div class="product-additional-info">
         {{ content | safe }}
       </div>
