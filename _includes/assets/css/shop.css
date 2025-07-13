@@ -5,6 +5,50 @@
   /* Inherit the base columns layout */
 }
 
+/* Shop Category Filters */
+.shop-filters {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.filter-nav {
+  display: inline-flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  color: var(--color-text, #101010);
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  opacity: 0.7;
+}
+
+.filter-btn.active {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Product filtering */
+.product-item {
+  transition: opacity 0.3s ease;
+}
+
+.product-item.hidden {
+  display: none;
+}
+
 .columns--shop .product-price {
   font-size: 0.9rem;
   font-weight: bold;
