@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="{{ settings.theme.theme_colors.background }}">
+  
+  {# Stripe publishable key for client-side integration #}
+  <meta name="stripe-publishable-key" content="{{ process.env.STRIPE_PUBLISHABLE_KEY or 'pk_test_add_your_key_here' }}">
 
   {# Set the SVG favicon for browsers that support it #}
   <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">

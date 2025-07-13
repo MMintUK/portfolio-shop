@@ -149,19 +149,59 @@ class ShoppingCart {
     return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
   }
 
-  proceedToCheckout() {
+  async proceedToCheckout() {
     if (this.items.length === 0) {
       alert('Your cart is empty!');
       return;
     }
 
-    // Here you would integrate with Stripe Checkout
-    // For now, we'll just show an alert
+    // Show loading state
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const originalText = checkoutBtn.textContent;
+    checkoutBtn.textContent = 'Processing...';
+    checkoutBtn.disabled = true;
+
+    try {
+      // Use Stripe Checkout if available
+      if (window.stripeCheckout && window.stripeCheckout.stripe) {
+        await window.stripeCheckout.createCheckoutSession(this.items);
+      } else {
+        // Fallback for development - show order summary
+        this.showCheckoutInstructions();
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      this.showCheckoutError(error.message);
+    } finally {
+      // Restore button state
+      checkoutBtn.textContent = originalText;
+      checkoutBtn.disabled = false;
+    }
+  }
+
+  showCheckoutInstructions() {
     const total = this.getTotal();
-    alert(`Proceeding to checkout with total: £${total.toFixed(2)}\n\nStripe integration will be added next!`);
-    
-    // TODO: Integrate with Stripe Checkout
-    // this.createStripeCheckout();
+    const itemsList = this.items.map(item => 
+      `• ${item.name} (Qty: ${item.quantity}) - £${(item.price * item.quantity).toFixed(2)}`
+    ).join('\n');
+
+    const message = `Order Summary:
+${itemsList}
+
+Total: £${total.toFixed(2)}
+
+To complete Stripe integration:
+1. Add your Stripe publishable key
+2. Set up a backend API for checkout sessions
+3. Configure webhook handling for order processing
+
+Your order details are ready for Stripe checkout!`;
+
+    alert(message);
+  }
+
+  showCheckoutError(errorMessage) {
+    alert(`Checkout Error:\n\n${errorMessage}`);
   }
 
   showAddedToCartMessage(productName) {

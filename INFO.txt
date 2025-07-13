@@ -1,3 +1,8 @@
+
+Always use: netlify dev or sudo netlify dev 
+
+
+
 npm run serve
 
-npm run build
+sudo npm run build

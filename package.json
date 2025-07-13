@@ -48,6 +48,7 @@
     "eleventy-plugin-youtube-embed": "^1.10.1",
     "jsonpath-plus": "^10.1.0",
     "sharp": "^0.33.5",
+    "stripe": "^14.25.0",
     "vue-youtube-embed": "^2.2.2"
   }
 }

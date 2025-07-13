@@ -21,8 +21,10 @@
 				{% include "assets/js/dark_mode.js" %}
 			{% endif %}
 			{% include "assets/js/cart.js" %}
+			{% include "assets/js/stripe.js" %}
   	{% endset %}
  		<script>{{ js | jsmin | safe }}</script>
+		<!-- Force cache refresh: {{ 'now' | date }} -->
 
 		{# Fallback for image visibility when JS is unavailable #}
 		<noscript>

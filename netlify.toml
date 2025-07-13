@@ -7,6 +7,11 @@
 [build]
   publish = "_site"
   command = "eleventy"
+  functions = "netlify/functions"
+
+# Development settings
+[dev]
+  port = 4000
 
 # Cache generated content between builds (e.g. images)
 [[plugins]]
@@ -30,8 +35,9 @@ package = "netlify-plugin-11ty"
 
   [plugins.inputs.policies]
     defaultSrc = "'self'"
-    scriptSrc = "'self' www.google-analytics.com www.googletagmanager.com"
+    scriptSrc = "'self' www.google-analytics.com www.googletagmanager.com js.stripe.com"
     fontSrc = "'self' data: fonts.gstatic.com"
     imgSrc = "'self' www.google-analytics.com"
-    connectSrc = "www.google-analytics.com identity.tinajs.io content.tinajs.io"
+    connectSrc = "'self' www.google-analytics.com identity.tinajs.io content.tinajs.io api.stripe.com checkout.stripe.com"
     frameAncestors = "'none'"
+    frameSrc = "js.stripe.com checkout.stripe.com"
