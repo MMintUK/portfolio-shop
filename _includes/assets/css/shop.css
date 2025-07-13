@@ -68,7 +68,7 @@
 }
 
 .product-header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 2rem;
 }
 
@@ -90,6 +90,7 @@
 .product-details {
   max-width: 600px;
   margin: 0 auto;
+  text-align: left;
 }
 
 .product-dimensions ul {
@@ -192,8 +193,9 @@
 .product-variants {
   margin: 2rem 0;
   padding: 1.5rem;
-  border: 1px solid var(--color-border, #e1e1e1);
-  background: var(--color-background-alt, #fafafa);
+  border: 2px solid var(--color-text, #101010);
+  background: var(--color-text, #101010);
+  color: var(--color-background, #ffffff);
 }
 
 .variant-group {
@@ -208,7 +210,7 @@
   display: block;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: var(--color-text, #101010);
+  color: var(--color-background, #ffffff);
 }
 
 .required {
@@ -227,14 +229,16 @@
   align-items: center;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--color-border, #e1e1e1);
-  background: var(--color-background, #ffffff);
+  border: 2px solid var(--color-background, #ffffff);
+  background: var(--color-text, #101010);
+  color: var(--color-background, #ffffff);
   transition: all 0.2s ease;
   position: relative;
 }
 
 .variant-option:hover {
-  border-color: var(--color-text, #101010);
+  background: var(--color-background, #ffffff);
+  color: var(--color-text, #101010);
 }
 
 .variant-option input[type="radio"] {
@@ -245,8 +249,9 @@
   font-weight: bold;
 }
 
-.variant-option input[type="radio"]:checked {
-  background: var(--color-text, #101010);
+.variant-option:has(input[type="radio"]:checked) {
+  background: var(--color-background, #ffffff);
+  color: var(--color-text, #101010);
 }
 
 .variant-option input[type="radio"]:disabled {
@@ -257,7 +262,8 @@
 .variant-option:has(input[type="radio"]:disabled) {
   opacity: 0.5;
   cursor: not-allowed;
-  background: #f5f5f5;
+  background: #333;
+  border-color: #666;
 }
 
 .variant-option-label {
@@ -268,28 +274,30 @@
 
 .price-difference {
   font-size: 0.85rem;
-  color: var(--color-accent, #666);
+  color: #ccc;
   margin-top: 0.25rem;
 }
 
 .out-of-stock-label {
   font-size: 0.85rem;
-  color: #dc3545;
+  color: #ff6b6b;
   margin-top: 0.25rem;
 }
 
 .variant-select {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--color-border, #e1e1e1);
-  background: var(--color-background, #ffffff);
+  border: 2px solid var(--color-background, #ffffff);
+  background: var(--color-text, #101010);
+  color: var(--color-background, #ffffff);
   font-size: 1rem;
   cursor: pointer;
 }
 
 .variant-select:focus {
   outline: none;
-  border-color: var(--color-text, #101010);
+  background: var(--color-background, #ffffff);
+  color: var(--color-text, #101010);
 }
 
 /* Responsive Design */

@@ -59,6 +59,12 @@ exports.handler = async (event, context) => {
           currency: 'gbp',
           product_data: {
             name: item.name,
+            description: item.variants ? `Variants: ${Object.entries(item.variants).map(([key, variant]) => `${key}: ${variant.value}`).join(', ')}` : undefined,
+            metadata: {
+              base_product: item.name.split(' (')[0], // Get base product name without variants
+              variants: item.variants ? JSON.stringify(item.variants) : '',
+              product_id: item.id,
+            },
             // You can add more product data here like images
             // images: ['https://yoursite.com/product-image.jpg'],
           },
@@ -71,18 +77,28 @@ exports.handler = async (event, context) => {
       cancel_url: `${process.env.URL || 'https://localhost:8080'}/checkout-cancelled/`,
       // Collect customer email for receipts
       customer_creation: 'always',
+      // Set locale to UK
+      locale: 'en-GB',
       // Optional: Add shipping address collection
       shipping_address_collection: {
         allowed_countries: ['GB', 'US', 'CA', 'AU'], // Adjust countries as needed
       },
       // Optional: Add billing address collection
       billing_address_collection: 'required',
+      // Add session metadata for order tracking
+      metadata: {
+        order_from: 'MMINT.UK',
+        items_summary: items.map(item => `${item.name} (Qty: ${item.quantity})`).join('; '),
+        total_items: items.reduce((sum, item) => sum + item.quantity, 0).toString(),
+      },
       // Enable automatic receipt emails
       invoice_creation: {
         enabled: true,
         invoice_data: {
           description: 'Purchase from MMINT.UK',
-          metadata: {},
+          metadata: {
+            order_details: items.map(item => `${item.name} - £${item.price} x ${item.quantity}`).join('; '),
+          },
           rendering_options: {
             amount_tax_display: 'include_inclusive_tax',
           },
