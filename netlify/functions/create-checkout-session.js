@@ -69,8 +69,6 @@ exports.handler = async (event, context) => {
       mode: 'payment',
       success_url: `${process.env.URL || 'https://localhost:8080'}/checkout-success/`,
       cancel_url: `${process.env.URL || 'https://localhost:8080'}/checkout-cancelled/`,
-      // Optional: Add customer email collection
-      customer_email: null, // You can enable this: customer_email: 'required'
       // Optional: Add shipping address collection
       shipping_address_collection: {
         allowed_countries: ['GB', 'US', 'CA', 'AU'], // Adjust countries as needed
