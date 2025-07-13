@@ -77,10 +77,6 @@ exports.handler = async (event, context) => {
       },
       // Optional: Add billing address collection
       billing_address_collection: 'required',
-      // Automatically send receipts
-      payment_intent_data: {
-        receipt_email: null, // Will use the customer's email from checkout
-      },
     });
 
     return {
