@@ -20,13 +20,13 @@ sudo npm run build
 git status
 
 # Add changes
-git add .
+sudo git add .
 
 # Commit changes
-git commit -m "Your commit message"
+sudo git commit -m "update"
 
 # Push to GitHub
-git push origin main
+sudo git push origin main
 ```
 
 ## Prerequisites

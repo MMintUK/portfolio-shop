@@ -157,6 +157,12 @@ class ShoppingCart {
       element.textContent = count;
       element.style.display = 'inline'; // Always show count, including 0
     });
+    
+    // Update data-count attribute for mobile display
+    const cartLinks = document.querySelectorAll('.cart-link');
+    cartLinks.forEach(link => {
+      link.setAttribute('data-count', count);
+    });
   }
 
   getTotal() {

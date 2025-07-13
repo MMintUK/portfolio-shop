@@ -432,6 +432,12 @@ img {
 		display: none;
 	}
 	
+	/* Show only the count in brackets on mobile */
+	.cart-link::after {
+		content: "(" attr(data-count) ")";
+		margin-left: 0.5rem;
+	}
+	
 	.cart-icon {
 		width: 20px;
 		height: 20px;
