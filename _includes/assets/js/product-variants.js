@@ -151,17 +151,26 @@ class ProductVariants {
   }
 
   addToCart(button) {
+    console.log('ProductVariants addToCart called');
     const variants = JSON.parse(button.dataset.productVariants || '{}');
     const variantDisplay = this.getVariantDisplayName(variants);
+    console.log('Variants:', variants, 'Display:', variantDisplay);
     
     const product = {
-      id: button.dataset.productId + (variantDisplay ? `-${Object.values(variants).map(v => v.value).join('-')}` : ''),
+      id: button.dataset.productId + (variantDisplay ? `-${Object.values(variants).map(v => v.value || v).join('-')}` : ''),
       name: button.dataset.productName + (variantDisplay ? ` (${variantDisplay})` : ''),
       price: parseFloat(button.dataset.productPrice),
       stripeId: button.dataset.stripeId,
       variants: variants,
       quantity: 1
     };
+    
+    console.log('Product to add:', product);
+    
+    if (!window.cart) {
+      console.error('Cart not available');
+      return;
+    }
     
     // Check if this exact variant combination already exists in cart
     const existingItemIndex = window.cart.items.findIndex(item => item.id === product.id);

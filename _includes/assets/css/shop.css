@@ -56,6 +56,18 @@
   transition: all 0.2s ease;
 }
 
+.btn-secondary.cart-continue {
+  background: var(--color-text, #101010);
+  color: var(--color-background, #ffffff);
+  border: 1px solid var(--color-background, #ffffff);
+}
+
+.btn-secondary.cart-continue:hover {
+  background: var(--color-background, #ffffff);
+  color: var(--color-text, #101010);
+  border: 1px solid var(--color-text, #101010);
+}
+
 .btn-secondary:hover {
   background: var(--color-text, #101010);
   color: var(--color-background, #ffffff);

@@ -41,13 +41,18 @@ class ShoppingCart {
   }
 
   addToCart(button) {
+    console.log('Cart addToCart called with button:', button);
     const hasVariants = button.dataset.hasVariants === 'true';
+    console.log('Has variants:', hasVariants, 'ProductVariants available:', !!window.productVariants);
     
-    if (hasVariants && window.productVariants) {
+    if (hasVariants && window.productVariants && typeof window.productVariants.addToCart === 'function') {
       // Use enhanced variant handling from product-variants.js
+      console.log('Using product variants addToCart');
       window.productVariants.addToCart(button);
       return;
     }
+    
+    console.log('Using standard addToCart');
     
     const product = {
       id: button.dataset.productId,
