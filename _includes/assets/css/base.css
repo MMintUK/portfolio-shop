@@ -373,12 +373,15 @@ img {
 
 /* Site description alignment */
 .site-description {
-	text-align: right;
+	text-align: left;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1140px) {
 	.site-description {
+		margin-left: auto;
+		margin-right: 0;
 		text-align: left;
+		max-width: 400px;
 	}
 }
 
@@ -439,8 +442,8 @@ img {
 	}
 	
 	.cart-icon {
-		width: 20px;
-		height: 20px;
+		width: 16px;
+		height: 16px;
 	}
 }
 

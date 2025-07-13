@@ -1,6 +1,59 @@
 
 # MMINT.UK Portfolio & E-commerce Site Development Guide
 
+## Adding New Content
+
+### Adding a New Project
+1. Create a new `.md` file in the `/projects/` folder
+2. Use this frontmatter template:
+```
+---
+title: "Your Project Title"
+description: "Brief description of the project"
+year: 2024
+images:
+  - src: "/images/your-image.jpg"
+    caption: "Image description"
+---
+Your project content here (markdown supported)
+```
+3. Add your images to `/images/` folder
+4. Build the site to see changes
+
+### Adding a New Product
+1. Create a new `.md` file in the `/products/` folder
+2. Use this frontmatter template:
+```
+---
+title: "Product Name"
+description: "Product description"
+price: 50
+category: "prints" # or "apparel", "paintings"
+inStock: true
+stripeProductId: "prod_your_stripe_id"
+images:
+  - src: "/images/product-image.jpg"
+    caption: "Product image"
+variants:
+  - name: "Size"
+    type: "size"
+    required: true
+    options:
+      - label: "A4"
+        value: "a4"
+        price: 50
+        inStock: true
+---
+Additional product details (markdown supported)
+```
+3. Set up the corresponding product in Stripe dashboard
+4. Add product images to `/images/` folder
+5. Build the site to see changes
+
+## Content Management
+- Use TinaCMS for easier content editing: `npm run dev`
+- Access TinaCMS admin at: http://localhost:4001/admin
+
 
 Alternative development options:
 ```bash

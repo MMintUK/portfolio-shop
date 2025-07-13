@@ -190,10 +190,22 @@
   margin-bottom: 2rem;
 }
 
+/* Product images - normal display */
 .product-image-large {
   width: 100%;
   margin: 0 0 2rem 0;
   display: block;
+  position: relative;
+  opacity: 1;
+}
+
+/* Project pages - normal image display */
+.project-page .product-image-large {
+  width: 100%;
+  margin: 0 0 2rem 0;
+  display: block;
+  position: relative;
+  opacity: 1;
 }
 
 .product-video-large {
