@@ -45,7 +45,8 @@ class ShoppingCart {
     
     if (hasVariants && window.productVariants) {
       // Use enhanced variant handling from product-variants.js
-      return window.productVariants.addToCart(button);
+      window.productVariants.addToCart(button);
+      return;
     }
     
     const product = {

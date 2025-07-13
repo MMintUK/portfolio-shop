@@ -79,7 +79,7 @@ class StripeCheckout {
   }
 
   async createCheckoutSessionOnBackend(cartItems) {
-    console.log('Creating checkout session for:', cartItems);
+    console.log('Creating checkout session for:', JSON.stringify(cartItems, null, 2));
     
     try {
       const response = await fetch('/.netlify/functions/create-checkout-session', {

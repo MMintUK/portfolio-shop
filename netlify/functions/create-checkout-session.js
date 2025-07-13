@@ -41,7 +41,7 @@ exports.handler = async (event, context) => {
     
     console.log('Request body:', event.body);
     const { items } = JSON.parse(event.body);
-    console.log('Parsed items:', items);
+    console.log('Parsed items:', JSON.stringify(items, null, 2));
 
     if (!items || !Array.isArray(items) || items.length === 0) {
       return {
@@ -54,24 +54,36 @@ exports.handler = async (event, context) => {
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: items.map(item => ({
-        price_data: {
-          currency: 'gbp',
-          product_data: {
-            name: item.name,
-            description: item.variants ? `Variants: ${Object.entries(item.variants).map(([key, variant]) => `${key}: ${variant.value}`).join(', ')}` : undefined,
-            metadata: {
-              base_product: item.name.split(' (')[0], // Get base product name without variants
-              variants: item.variants ? JSON.stringify(item.variants) : '',
-              product_id: item.id,
+      line_items: items.map(item => {
+        console.log('Processing item:', JSON.stringify(item, null, 2));
+        
+        // Create variant description if variants exist
+        let variantDescription = '';
+        if (item.variants && Object.keys(item.variants).length > 0) {
+          const variantParts = Object.entries(item.variants).map(([key, variant]) => {
+            return `${key}: ${variant.value || variant}`;
+          });
+          variantDescription = `Selected options: ${variantParts.join(', ')}`;
+        }
+        
+        return {
+          price_data: {
+            currency: 'gbp',
+            product_data: {
+              name: item.name,
+              description: variantDescription || `Product: ${item.name}`,
+              metadata: {
+                base_product: item.name.split(' (')[0],
+                variants: item.variants ? JSON.stringify(item.variants) : '',
+                product_id: item.id,
+                full_name: item.name,
+              },
             },
-            // You can add more product data here like images
-            // images: ['https://yoursite.com/product-image.jpg'],
+            unit_amount: Math.round(item.price * 100), // Convert pounds to pence
           },
-          unit_amount: Math.round(item.price * 100), // Convert pounds to pence
-        },
-        quantity: item.quantity,
-      })),
+          quantity: item.quantity,
+        };
+      }),
       mode: 'payment',
       success_url: `${process.env.URL || 'https://localhost:8080'}/checkout-success/`,
       cancel_url: `${process.env.URL || 'https://localhost:8080'}/checkout-cancelled/`,

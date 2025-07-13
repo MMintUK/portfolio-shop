@@ -83,13 +83,13 @@
 .product-image-large {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto 1rem auto;
+  margin: 0 0 1rem 0;
   display: block;
 }
 
 .product-details {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 0;
   text-align: left;
 }
 
@@ -242,16 +242,15 @@
   align-items: center;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  border: 2px solid var(--color-text, #101010);
-  background: var(--color-text, #101010);
-  color: var(--color-background, #ffffff);
+  border: 1px solid var(--color-text, #101010);
+  background: transparent;
+  color: var(--color-text, #101010);
   transition: all 0.2s ease;
   position: relative;
 }
 
 .variant-option:hover {
-  background: var(--color-background, #ffffff);
-  color: var(--color-text, #101010);
+  border-width: 2px;
 }
 
 .variant-option input[type="radio"] {
@@ -263,7 +262,8 @@
 }
 
 .variant-option:has(input[type="radio"]:checked) {
-  background: var(--color-background, #ffffff);
+  border: 2px solid var(--color-text, #101010);
+  background: transparent;
   color: var(--color-text, #101010);
 }
 
@@ -275,8 +275,8 @@
 .variant-option:has(input[type="radio"]:disabled) {
   opacity: 0.5;
   cursor: not-allowed;
-  background: #333;
-  border-color: #666;
+  background: transparent;
+  border-color: #ccc;
 }
 
 .variant-option-label {
@@ -300,17 +300,16 @@
 .variant-select {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid var(--color-text, #101010);
-  background: var(--color-text, #101010);
-  color: var(--color-background, #ffffff);
+  border: 1px solid var(--color-text, #101010);
+  background: transparent;
+  color: var(--color-text, #101010);
   font-size: 1rem;
   cursor: pointer;
 }
 
 .variant-select:focus {
   outline: none;
-  background: var(--color-background, #ffffff);
-  color: var(--color-text, #101010);
+  border: 2px solid var(--color-text, #101010);
 }
 
 /* Responsive Design */
