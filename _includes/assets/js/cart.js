@@ -41,6 +41,13 @@ class ShoppingCart {
   }
 
   addToCart(button) {
+    const hasVariants = button.dataset.hasVariants === 'true';
+    
+    if (hasVariants && window.productVariants) {
+      // Use enhanced variant handling from product-variants.js
+      return window.productVariants.addToCart(button);
+    }
+    
     const product = {
       id: button.dataset.productId,
       name: button.dataset.productName,

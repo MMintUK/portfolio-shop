@@ -149,61 +149,47 @@ class ProductVariants {
     
     return variantNames.join(', ');
   }
+
+  addToCart(button) {
+    const variants = JSON.parse(button.dataset.productVariants || '{}');
+    const variantDisplay = this.getVariantDisplayName(variants);
+    
+    const product = {
+      id: button.dataset.productId + (variantDisplay ? `-${Object.values(variants).map(v => v.value).join('-')}` : ''),
+      name: button.dataset.productName + (variantDisplay ? ` (${variantDisplay})` : ''),
+      price: parseFloat(button.dataset.productPrice),
+      stripeId: button.dataset.stripeId,
+      variants: variants,
+      quantity: 1
+    };
+    
+    // Check if this exact variant combination already exists in cart
+    const existingItemIndex = window.cart.items.findIndex(item => item.id === product.id);
+    
+    if (existingItemIndex > -1) {
+      window.cart.items[existingItemIndex].quantity += 1;
+    } else {
+      window.cart.items.push(product);
+    }
+    
+    window.cart.saveCart();
+    window.cart.updateCartDisplay();
+    window.cart.updateCartCount();
+    window.cart.showAddedToCartMessage(product.name);
+    
+    // Show feedback
+    const originalText = button.textContent;
+    button.textContent = 'Added!';
+    button.disabled = true;
+    
+    setTimeout(() => {
+      button.textContent = originalText;
+      button.disabled = false;
+    }, 1000);
+  }
 }
 
 // Initialize product variants when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   window.productVariants = new ProductVariants();
-});
-
-// Update cart functionality to handle variants
-document.addEventListener('DOMContentLoaded', () => {
-  const originalAddToCart = window.cart?.addToCart;
-  
-  if (originalAddToCart && window.cart) {
-    window.cart.addToCart = function(button) {
-      const hasVariants = button.dataset.hasVariants === 'true';
-      
-      if (hasVariants) {
-        const variants = JSON.parse(button.dataset.productVariants || '{}');
-        const variantDisplay = window.productVariants?.getVariantDisplayName(variants) || '';
-        
-        const product = {
-          id: button.dataset.productId + (variantDisplay ? `-${Object.values(variants).map(v => v.value).join('-')}` : ''),
-          name: button.dataset.productName + (variantDisplay ? ` (${variantDisplay})` : ''),
-          price: parseFloat(button.dataset.productPrice),
-          stripeId: button.dataset.stripeId,
-          variants: variants,
-          quantity: 1
-        };
-        
-        // Check if this exact variant combination already exists in cart
-        const existingItemIndex = this.items.findIndex(item => item.id === product.id);
-        
-        if (existingItemIndex > -1) {
-          this.items[existingItemIndex].quantity += 1;
-        } else {
-          this.items.push(product);
-        }
-      } else {
-        // Use original function for products without variants
-        originalAddToCart.call(this, button);
-        return;
-      }
-      
-      this.saveCart();
-      this.updateCartDisplay();
-      this.updateCartCount();
-      
-      // Show feedback
-      const originalText = button.textContent;
-      button.textContent = 'Added!';
-      button.disabled = true;
-      
-      setTimeout(() => {
-        button.textContent = originalText;
-        button.disabled = false;
-      }, 1000);
-    };
-  }
 });
