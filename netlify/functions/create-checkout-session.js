@@ -77,6 +77,17 @@ exports.handler = async (event, context) => {
       },
       // Optional: Add billing address collection
       billing_address_collection: 'required',
+      // Enable automatic receipt emails
+      invoice_creation: {
+        enabled: true,
+        invoice_data: {
+          description: 'Purchase from MMINT.UK',
+          metadata: {},
+          rendering_options: {
+            amount_tax_display: 'include_inclusive_tax',
+          },
+        },
+      },
     });
 
     return {
