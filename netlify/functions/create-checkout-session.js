@@ -39,9 +39,7 @@ exports.handler = async (event, context) => {
     // Initialize Stripe with the secret key
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
     
-    console.log('Request body:', event.body);
     const { items } = JSON.parse(event.body);
-    console.log('Parsed items:', JSON.stringify(items, null, 2));
 
     if (!items || !Array.isArray(items) || items.length === 0) {
       return {
@@ -55,7 +53,6 @@ exports.handler = async (event, context) => {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: items.map(item => {
-        console.log('Processing item:', JSON.stringify(item, null, 2));
         
         // Create variant description if variants exist
         let variantDescription = '';
@@ -66,22 +63,17 @@ exports.handler = async (event, context) => {
           variantDescription = `Selected options: ${variantParts.join(', ')}`;
         }
         
-        // Extract variant info for display
-        const baseProductName = item.name.split(' (')[0];
-        const displayName = item.name; // This should include variants like "Black Dog Tee (Size: Medium)"
-        
         return {
           price_data: {
             currency: 'gbp',
             product_data: {
-              name: displayName,
-              description: variantDescription || `Product: ${baseProductName}`,
+              name: item.name,
+              description: variantDescription ? variantDescription : `Product: ${item.name.split(' (')[0]}`,
               metadata: {
-                base_product: baseProductName,
+                base_product: item.name.split(' (')[0],
                 variants: item.variants ? JSON.stringify(item.variants) : '',
                 product_id: item.id,
-                full_item_name: displayName,
-                variant_summary: variantDescription || '',
+                full_name: item.name,
               },
             },
             unit_amount: Math.round(item.price * 100), // Convert pounds to pence
