@@ -75,19 +75,18 @@ exports.handler = async (event, context) => {
             currency: 'gbp',
             product_data: {
               name: displayName,
-              description: variantDescription || `${baseProductName}`,
+              description: variantDescription || `Product: ${baseProductName}`,
               metadata: {
                 base_product: baseProductName,
                 variants: item.variants ? JSON.stringify(item.variants) : '',
                 product_id: item.id,
                 full_item_name: displayName,
-                variant_summary: variantDescription,
+                variant_summary: variantDescription || '',
               },
             },
             unit_amount: Math.round(item.price * 100), // Convert pounds to pence
           },
           quantity: item.quantity,
-          description: variantDescription, // This might show in some Stripe interfaces
         };
       }),
       mode: 'payment',

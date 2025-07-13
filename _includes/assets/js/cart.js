@@ -14,8 +14,6 @@ class ShoppingCart {
   bindEvents() {
     // Add to cart buttons
     document.addEventListener('click', (e) => {
-      console.log('Click detected on:', e.target);
-      
       // Check if the clicked element or its parent is an add-to-cart button
       let button = e.target;
       if (e.target.tagName === 'SPAN' && e.target.closest('.add-to-cart-btn')) {
@@ -23,7 +21,6 @@ class ShoppingCart {
       }
       
       if (button.classList && button.classList.contains('add-to-cart-btn')) {
-        console.log('Add to cart button clicked');
         e.preventDefault();
         this.addToCart(button);
       }
@@ -50,18 +47,13 @@ class ShoppingCart {
   }
 
   addToCart(button) {
-    console.log('Cart addToCart called with button:', button);
     const hasVariants = button.dataset.hasVariants === 'true';
-    console.log('Has variants:', hasVariants, 'ProductVariants available:', !!window.productVariants);
     
     if (hasVariants && window.productVariants && typeof window.productVariants.addToCart === 'function') {
       // Use enhanced variant handling from product-variants.js
-      console.log('Using product variants addToCart');
       window.productVariants.addToCart(button);
       return;
     }
-    
-    console.log('Using standard addToCart');
     
     const product = {
       id: button.dataset.productId,
@@ -269,9 +261,7 @@ Your order details are ready for Stripe checkout!`;
 
 // Initialize cart when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Initializing shopping cart...');
   window.cart = new ShoppingCart();
-  console.log('Shopping cart initialized:', window.cart);
 });
 
 // Add some basic CSS for cart notifications

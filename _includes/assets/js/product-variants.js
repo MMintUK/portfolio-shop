@@ -53,10 +53,6 @@ class ProductVariants {
       // Update data attributes for cart functionality
       this.addToCartBtn.dataset.productPrice = totalPrice.toFixed(2);
       this.addToCartBtn.dataset.productVariants = JSON.stringify(variants);
-      console.log('Updated button data:', {
-        price: this.addToCartBtn.dataset.productPrice,
-        variants: this.addToCartBtn.dataset.productVariants
-      });
     }
   }
 
@@ -155,10 +151,8 @@ class ProductVariants {
   }
 
   addToCart(button) {
-    console.log('ProductVariants addToCart called');
     const variants = JSON.parse(button.dataset.productVariants || '{}');
     const variantDisplay = this.getVariantDisplayName(variants);
-    console.log('Variants:', variants, 'Display:', variantDisplay);
     
     const product = {
       id: button.dataset.productId + (variantDisplay ? `-${Object.values(variants).map(v => v.value || v).join('-')}` : ''),
@@ -169,10 +163,7 @@ class ProductVariants {
       quantity: 1
     };
     
-    console.log('Product to add:', product);
-    
     if (!window.cart) {
-      console.error('Cart not available');
       return;
     }
     
@@ -204,7 +195,5 @@ class ProductVariants {
 
 // Initialize product variants when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Initializing product variants...');
   window.productVariants = new ProductVariants();
-  console.log('Product variants initialized:', window.productVariants);
 });
