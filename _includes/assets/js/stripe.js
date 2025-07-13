@@ -98,28 +98,36 @@ class StripeCheckout {
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Error response text:', errorText);
+        console.error('Response status:', response.status);
         
         // Try to parse as JSON, fallback to text
         let errorMessage;
         try {
           const errorData = JSON.parse(errorText);
-          errorMessage = errorData.error || `HTTP error! status: ${response.status}`;
+          console.error('Parsed error data:', errorData);
+          errorMessage = `${errorData.error || 'Unknown error'}`;
+          if (errorData.message) errorMessage += ` - ${errorData.message}`;
+          if (errorData.details) errorMessage += ` (${errorData.details})`;
+          if (errorData.type) errorMessage += ` [${errorData.type}]`;
         } catch (parseError) {
-          errorMessage = `Server error: ${errorText || response.statusText}`;
+          console.error('Failed to parse error response as JSON:', parseError);
+          errorMessage = `Server error (${response.status}): ${errorText || response.statusText}`;
         }
         throw new Error(errorMessage);
       }
 
       const responseText = await response.text();
-      console.log('Response text:', responseText);
+      console.log('Success response text:', responseText);
       
       // Try to parse the response as JSON
       try {
         const data = JSON.parse(responseText);
+        console.log('Parsed response data:', data);
         return data;
       } catch (parseError) {
         console.error('Failed to parse JSON response:', parseError);
-        throw new Error(`Invalid JSON response from server: ${responseText}`);
+        console.error('Raw response text was:', responseText);
+        throw new Error(`Invalid JSON response from server: ${responseText.substring(0, 200)}...`);
       }
     } catch (error) {
       console.error('Backend API error:', error);
@@ -166,28 +174,36 @@ class StripeCheckout {
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Error response text:', errorText);
+        console.error('Response status:', response.status);
         
         // Try to parse as JSON, fallback to text
         let errorMessage;
         try {
           const errorData = JSON.parse(errorText);
-          errorMessage = errorData.error || `HTTP error! status: ${response.status}`;
+          console.error('Parsed error data:', errorData);
+          errorMessage = `${errorData.error || 'Unknown error'}`;
+          if (errorData.message) errorMessage += ` - ${errorData.message}`;
+          if (errorData.details) errorMessage += ` (${errorData.details})`;
+          if (errorData.type) errorMessage += ` [${errorData.type}]`;
         } catch (parseError) {
-          errorMessage = `Server error: ${errorText || response.statusText}`;
+          console.error('Failed to parse error response as JSON:', parseError);
+          errorMessage = `Server error (${response.status}): ${errorText || response.statusText}`;
         }
         throw new Error(errorMessage);
       }
 
       const responseText = await response.text();
-      console.log('Response text:', responseText);
+      console.log('Success response text:', responseText);
       
       // Try to parse the response as JSON
       try {
         const data = JSON.parse(responseText);
+        console.log('Parsed response data:', data);
         return data;
       } catch (parseError) {
         console.error('Failed to parse JSON response:', parseError);
-        throw new Error(`Invalid JSON response from server: ${responseText}`);
+        console.error('Raw response text was:', responseText);
+        throw new Error(`Invalid JSON response from server: ${responseText.substring(0, 200)}...`);
       }
     } catch (error) {
       console.error('Backend API error:', error);
