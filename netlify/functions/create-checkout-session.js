@@ -69,12 +69,18 @@ exports.handler = async (event, context) => {
       mode: 'payment',
       success_url: `${process.env.URL || 'https://localhost:8080'}/checkout-success/`,
       cancel_url: `${process.env.URL || 'https://localhost:8080'}/checkout-cancelled/`,
+      // Collect customer email for receipts
+      customer_creation: 'always',
       // Optional: Add shipping address collection
       shipping_address_collection: {
         allowed_countries: ['GB', 'US', 'CA', 'AU'], // Adjust countries as needed
       },
       // Optional: Add billing address collection
       billing_address_collection: 'required',
+      // Automatically send receipts
+      payment_intent_data: {
+        receipt_email: null, // Will use the customer's email from checkout
+      },
     });
 
     return {
