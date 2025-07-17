@@ -6,7 +6,46 @@ layout: layouts/base.njk
   <div class="product-container">
     <div class="product-images-column">
       {%- if images -%}
-        <div class="product-images">
+        <div class="thumbnail-gallery-widget">
+          <div class="image-display-window">
+            <img src="" alt="" class="gallery-main-image" id="gallery-main-image" loading="lazy">
+          </div>
+          {%- if images.length > 1 -%}
+            <div class="thumbnail-gallery" id="thumbnail-gallery">
+              {%- for image in images -%}
+                <div class="thumbnail-item {% if loop.first %}active{% endif %}" 
+                     data-index="{{ loop.index0 }}"
+                     data-full-src="{{ image.src }}"
+                     data-alt="{{ image.caption or title }}">
+                  {% generateImage {
+                    src: image.src,
+                    alt: image.caption or title,
+                    classes: "thumbnail-image",
+                    outputWidths: ["150", "300"],
+                    viewportSizes: "150px"
+                  } %}
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          {%- if images.length == 1 -%}
+            <div class="thumbnail-gallery" id="thumbnail-gallery">
+              <div class="thumbnail-item active" 
+                   data-index="0"
+                   data-full-src="{{ images[0].src }}"
+                   data-alt="{{ images[0].caption or title }}">
+                {% generateImage {
+                  src: images[0].src,
+                  alt: images[0].caption or title,
+                  classes: "thumbnail-image",
+                  outputWidths: ["150", "300"],
+                  viewportSizes: "150px"
+                } %}
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+        <div class="product-images" style="display: none;">
           {%- for image in images -%}
             {% generateImage {
               src: image.src,
