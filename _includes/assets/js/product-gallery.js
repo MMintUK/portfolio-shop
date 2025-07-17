@@ -137,6 +137,7 @@ class ProductGallery {
   setupZoomAndPan() {
     if (!this.displayWindow || !this.mainImage) return;
     
+    // Mouse events for desktop
     this.displayWindow.addEventListener('mousemove', (e) => {
       const rect = this.displayWindow.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -146,6 +147,25 @@ class ProductGallery {
     });
     
     this.displayWindow.addEventListener('mouseleave', () => {
+      this.mainImage.style.transformOrigin = 'center';
+    });
+    
+    // Touch events for mobile
+    this.displayWindow.addEventListener('touchmove', (e) => {
+      e.preventDefault(); // Prevent scrolling
+      const touch = e.touches[0];
+      const rect = this.displayWindow.getBoundingClientRect();
+      const x = ((touch.clientX - rect.left) / rect.width) * 100;
+      const y = ((touch.clientY - rect.top) / rect.height) * 100;
+      
+      this.mainImage.style.transformOrigin = `${x}% ${y}%`;
+    });
+    
+    this.displayWindow.addEventListener('touchend', () => {
+      this.mainImage.style.transformOrigin = 'center';
+    });
+    
+    this.displayWindow.addEventListener('touchcancel', () => {
       this.mainImage.style.transformOrigin = 'center';
     });
   }

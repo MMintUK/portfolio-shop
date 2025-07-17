@@ -209,6 +209,15 @@
   transform-origin: center;
 }
 
+/* Mobile touch zoom - activate on touch */
+@media (max-width: 768px) {
+  .image-display-window:active .gallery-main-image {
+    object-fit: cover;
+    transform: scale(2);
+    transform-origin: center;
+  }
+}
+
 /* All images use object-fit: contain within square window */
 
 /* Loading state */
