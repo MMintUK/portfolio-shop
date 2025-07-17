@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 title: LACHESIS | Print
 description: |
   In the grand theatre of life, the Moirae pull the cosmic strings. Clotho, the string-spinner; Lachesis, the puppet master; Atropos, the ultimate string-cutter. Birth, life, and a snip-snip the finale – they're the maestros of the divine puppet show. No backstage passes; they control the strings!

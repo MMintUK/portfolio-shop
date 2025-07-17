@@ -461,6 +461,20 @@
     width: 100%;
   }
   
+  /* Project pages - reverse column order on mobile */
+  .project-page .product-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-page .product-content-column {
+    order: 1;
+  }
+  
+  .project-page .product-images-column {
+    order: 2;
+  }
+  
   /* Project page mobile spacing to match product page */
   .project-page .product-content-column {
     padding: var(--space) !important;

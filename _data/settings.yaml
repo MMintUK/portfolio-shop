@@ -8,7 +8,7 @@ metadata:
   site_subtitle_1: INSTA
   # Home page description, accepts markdown
   site_description: >
-    A collection of works by Artist Rob Green that explore the mythological, political and philosophical concepts through a lens of pop art and street art.
+    A collection of works by Robert Green that explore mythological, political and philosophical concepts through a lens of pop art and street art.
   # footer contact email
   site_email: info@mmint.uk
   # footer social link (the social title is defined in the i18n section)
@@ -26,7 +26,7 @@ metadata:
     site_title: MMINT
     # meta description
     site_description: >-
-      A collection of works by Artist Rob Green that explore the mythological, political and philosophical concepts through a lens of pop art and street art.
+      A collection of works by Artist Robert Green that explore mythological, political and philosophical concepts through a lens of pop art and street art.
     # Adds a noindex <meta> tag on all site pages, be careful y'all!
     # Instead you can block indexing per-project with no_index: true
     no_index: false
