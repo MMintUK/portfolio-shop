@@ -31,6 +31,16 @@ class ProjectVideoMover {
       videoClone.style.height = 'auto';
       videoClone.style.marginBottom = '2rem';
       
+      // Add mobile fullscreen attributes
+      videoClone.setAttribute('playsinline', '');
+      videoClone.setAttribute('webkit-playsinline', '');
+      
+      // For mobile devices, remove playsinline to enable fullscreen
+      if (this.isMobileDevice()) {
+        videoClone.removeAttribute('playsinline');
+        videoClone.removeAttribute('webkit-playsinline');
+      }
+      
       // Add the video to the wrapper
       videoWrapper.appendChild(videoClone);
       
@@ -40,6 +50,11 @@ class ProjectVideoMover {
       // Remove original video from content
       video.remove();
     });
+  }
+  
+  isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           window.innerWidth <= 768;
   }
 }
 
