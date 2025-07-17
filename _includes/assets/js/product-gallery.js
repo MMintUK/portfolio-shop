@@ -89,6 +89,9 @@ class ProductGallery {
       });
     });
     
+    // Zoom and pan on hover
+    this.setupZoomAndPan();
+    
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (!this.galleryWidget.contains(document.activeElement) && 
@@ -129,6 +132,22 @@ class ProductGallery {
   setupResponsiveHandling() {
     // Ensure display window maintains proper size within left column
     this.updateDisplayWindowSize();
+  }
+  
+  setupZoomAndPan() {
+    if (!this.displayWindow || !this.mainImage) return;
+    
+    this.displayWindow.addEventListener('mousemove', (e) => {
+      const rect = this.displayWindow.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      
+      this.mainImage.style.transformOrigin = `${x}% ${y}%`;
+    });
+    
+    this.displayWindow.addEventListener('mouseleave', () => {
+      this.mainImage.style.transformOrigin = 'center';
+    });
   }
   
   updateDisplayWindowSize() {

@@ -64,6 +64,22 @@ variants:
         label: "XX Large"
         price: 30
         inStock: true
+  - name: "Color"
+    type: "option"
+    required: true
+    options:
+      - value: "black"
+        label: "Black"
+        price: 25
+        inStock: true
+      - value: "grey"
+        label: "Grey"
+        price: 25
+        inStock: true
+      - value: "white"
+        label: "White"
+        price: 25
+        inStock: true
 ---
 
 A classic t-shirt design featuring the striking Black Dog White Dog artwork. This comfortable, everyday wear piece brings art into your wardrobe.
