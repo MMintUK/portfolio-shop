@@ -16,6 +16,7 @@ class ProductGallery {
     this.currentIndex = 0;
     this.images = [];
     this.isLoading = false;
+    this.isMobileZoomed = false;
     
     if (this.galleryWidget && this.mainImage && this.thumbnailContainer) {
       this.init();
@@ -151,7 +152,22 @@ class ProductGallery {
     });
     
     // Touch events for mobile
+    this.displayWindow.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      this.isMobileZoomed = true;
+      this.displayWindow.classList.add('mobile-zoomed');
+      
+      const touch = e.touches[0];
+      const rect = this.displayWindow.getBoundingClientRect();
+      const x = ((touch.clientX - rect.left) / rect.width) * 100;
+      const y = ((touch.clientY - rect.top) / rect.height) * 100;
+      
+      this.mainImage.style.transformOrigin = `${x}% ${y}%`;
+    });
+    
     this.displayWindow.addEventListener('touchmove', (e) => {
+      if (!this.isMobileZoomed) return;
+      
       e.preventDefault(); // Prevent scrolling
       const touch = e.touches[0];
       const rect = this.displayWindow.getBoundingClientRect();
@@ -162,10 +178,14 @@ class ProductGallery {
     });
     
     this.displayWindow.addEventListener('touchend', () => {
+      this.isMobileZoomed = false;
+      this.displayWindow.classList.remove('mobile-zoomed');
       this.mainImage.style.transformOrigin = 'center';
     });
     
     this.displayWindow.addEventListener('touchcancel', () => {
+      this.isMobileZoomed = false;
+      this.displayWindow.classList.remove('mobile-zoomed');
       this.mainImage.style.transformOrigin = 'center';
     });
   }

@@ -209,9 +209,9 @@
   transform-origin: center;
 }
 
-/* Mobile touch zoom - activate on touch */
+/* Mobile touch zoom - activate when mobile-zoomed class is added */
 @media (max-width: 768px) {
-  .image-display-window:active .gallery-main-image {
+  .image-display-window.mobile-zoomed .gallery-main-image {
     object-fit: cover;
     transform: scale(2);
     transform-origin: center;
