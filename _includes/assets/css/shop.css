@@ -375,14 +375,6 @@
   height: auto;
 }
 
-/* Mobile video fullscreen behavior */
-@media (max-width: 768px) {
-  .product-video-large video {
-    /* Remove playsinline on mobile to enable fullscreen */
-    -webkit-playsinline: unset;
-  }
-}
-
 .product-details {
   text-align: left;
 }
