@@ -100,6 +100,7 @@ layout: layouts/base.njk
                                  value="{{ option.value }}"
                                  data-price="{{ option.price }}"
                                  data-in-stock="{{ option.inStock }}"
+                                 {%- if option.dependsOn -%} data-depends-on="{{ option.dependsOn | dump }}"{%- endif -%}
                                  {%- if variant.required and loop.first -%} checked{%- endif -%}
                                  {%- if not option.inStock -%} disabled{%- endif -%}>
                           <span class="variant-option-label">
@@ -130,6 +131,7 @@ layout: layouts/base.njk
                         <option value="{{ option.value }}" 
                                 data-price="{{ option.price }}"
                                 data-in-stock="{{ option.inStock }}"
+                                {%- if option.dependsOn -%} data-depends-on="{{ option.dependsOn | dump }}"{%- endif -%}
                                 {%- if not option.inStock -%} disabled{%- endif -%}>
                           {{ option.label }}
                           {%- if option.price != (basePrice or price) -%}

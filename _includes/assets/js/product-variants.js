@@ -15,6 +15,7 @@ class ProductVariants {
 
   init() {
     this.bindEvents();
+    this.updateConditionalVariants();
     this.updatePricing();
     // Initial image update based on default selected variants
     setTimeout(() => {
@@ -26,6 +27,7 @@ class ProductVariants {
     // Listen for changes on all variant inputs
     this.form.addEventListener('change', (e) => {
       if (e.target.matches('input[type="radio"], select')) {
+        this.updateConditionalVariants();
         this.updatePricing();
         this.updateAvailability();
         this.updateProductImages();
@@ -61,6 +63,48 @@ class ProductVariants {
     }
   }
 
+  updateConditionalVariants() {
+    // Get selected variants to check dependencies
+    const selectedVariants = this.getSelectedVariants();
+    
+    // Find all variant options that have dependencies
+    const conditionalOptions = this.form.querySelectorAll('[data-depends-on]');
+    
+    conditionalOptions.forEach(option => {
+      const dependsOn = option.dataset.dependsOn;
+      if (!dependsOn) return;
+      
+      try {
+        const dependencies = JSON.parse(dependsOn);
+        let shouldShow = true;
+        
+        // Check if all dependencies are met
+        for (const [depVariantName, depValue] of Object.entries(dependencies)) {
+          const selectedValue = selectedVariants[depVariantName]?.value;
+          if (selectedValue !== depValue) {
+            shouldShow = false;
+            break;
+          }
+        }
+        
+        // Show/hide the option and its parent label
+        const parentLabel = option.closest('.variant-option');
+        if (parentLabel) {
+          if (shouldShow) {
+            parentLabel.style.display = '';
+            option.disabled = false;
+          } else {
+            parentLabel.style.display = 'none';
+            option.disabled = true;
+            option.checked = false; // Uncheck if hidden
+          }
+        }
+      } catch (e) {
+        console.warn('Invalid dependsOn data:', dependsOn);
+      }
+    });
+  }
+
   updateAvailability() {
     // Check if all required variants are selected and available
     const requiredInputs = this.form.querySelectorAll('input[type="radio"][required], select[required]');
@@ -69,7 +113,7 @@ class ProductVariants {
     requiredInputs.forEach(input => {
       if (input.type === 'radio') {
         const radioGroup = this.form.querySelectorAll(`input[name="${input.name}"]`);
-        const selectedRadio = Array.from(radioGroup).find(radio => radio.checked);
+        const selectedRadio = Array.from(radioGroup).find(radio => radio.checked && !radio.disabled);
         if (!selectedRadio || selectedRadio.dataset.inStock !== 'true') {
           allRequiredSelected = false;
         }
@@ -112,29 +156,38 @@ class ProductVariants {
       const imageAlt = img.alt || thumbnail.dataset.alt || '';
       const imageVariant = thumbnail.dataset.variant;
       
-      // Look for variant matches in various ways
+      let bestMatch = null;
+      let bestPriority = -1;
+      
+      // Look for variant matches in various ways - check ALL variants to find the best match
       for (const [variantName, variantData] of Object.entries(selectedVariants)) {
         const variantValue = variantData.value.toLowerCase();
+        let currentPriority = -1;
         
         // First check for exact variant data attribute match (highest priority)
         if (imageVariant && imageVariant.toLowerCase() === variantValue) {
-          matchingImages.push({
-            index: index,
-            thumbnail: thumbnail,
-            priority: this.getImagePriority(variantName, variantValue) + 5 // Higher priority for exact matches
-          });
-          break;
+          currentPriority = this.getImagePriority(variantName, variantValue) + 5; // Higher priority for exact matches
         }
         // Then check if image src or alt contains the variant value
         else if (imageSrc.toLowerCase().includes(variantValue) || 
                  imageAlt.toLowerCase().includes(variantValue)) {
-          matchingImages.push({
+          currentPriority = this.getImagePriority(variantName, variantValue);
+        }
+        
+        // Keep track of the best match for this image
+        if (currentPriority > bestPriority) {
+          bestPriority = currentPriority;
+          bestMatch = {
             index: index,
             thumbnail: thumbnail,
-            priority: this.getImagePriority(variantName, variantValue)
-          });
-          break;
+            priority: currentPriority
+          };
         }
+      }
+      
+      // Add the best match if we found one
+      if (bestMatch) {
+        matchingImages.push(bestMatch);
       }
     });
     
@@ -143,12 +196,12 @@ class ProductVariants {
   }
 
   getImagePriority(variantName, variantValue) {
-    // Size variants get higher priority for image switching
-    if (variantName.toLowerCase().includes('size')) {
+    // Color variants get highest priority for image switching
+    if (variantName.toLowerCase().includes('color') || variantName.toLowerCase().includes('colour')) {
       return 10;
     }
-    // Color variants get medium priority
-    if (variantName.toLowerCase().includes('color') || variantName.toLowerCase().includes('colour')) {
+    // Size variants get medium priority
+    if (variantName.toLowerCase().includes('size')) {
       return 5;
     }
     // Other variants get lower priority
