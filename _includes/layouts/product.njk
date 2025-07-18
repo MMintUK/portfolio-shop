@@ -100,8 +100,7 @@ layout: layouts/base.njk
                                  value="{{ option.value }}"
                                  data-price="{{ option.price }}"
                                  data-in-stock="{{ option.inStock }}"
-                                 {%- if option.dependsOn -%} data-depends-on="{{ option.dependsOn | dump }}"{%- endif -%}
-                                 {%- if variant.required and loop.first -%} checked{%- endif -%}
+                                 {%- if variant.required -%} required{%- endif -%}
                                  {%- if not option.inStock -%} disabled{%- endif -%}>
                           <span class="variant-option-label">
                             {{ option.label }}
@@ -123,7 +122,7 @@ layout: layouts/base.njk
                     </div>
                   {%- else -%}
                     {# Dropdown for large option sets #}
-                    <select name="{{ variant.name | slug }}" class="variant-select">
+                    <select name="{{ variant.name | slug }}" class="variant-select"{%- if variant.required -%} required{%- endif -%}>
                       {%- if not variant.required -%}
                         <option value="">Choose {{ variant.name }}</option>
                       {%- endif -%}
@@ -131,7 +130,6 @@ layout: layouts/base.njk
                         <option value="{{ option.value }}" 
                                 data-price="{{ option.price }}"
                                 data-in-stock="{{ option.inStock }}"
-                                {%- if option.dependsOn -%} data-depends-on="{{ option.dependsOn | dump }}"{%- endif -%}
                                 {%- if not option.inStock -%} disabled{%- endif -%}>
                           {{ option.label }}
                           {%- if option.price != (basePrice or price) -%}

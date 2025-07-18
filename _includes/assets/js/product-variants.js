@@ -14,20 +14,26 @@ class ProductVariants {
   }
 
   init() {
+    // Start with disabled add to cart button
+    if (this.addToCartBtn) {
+      this.addToCartBtn.disabled = true;
+      this.addToCartBtn.classList.add('disabled');
+    }
+    
     this.bindEvents();
-    this.updateConditionalVariants();
-    this.updatePricing();
-    // Initial image update based on default selected variants
+    
+    // Delay initial validation to allow default selections to be processed
     setTimeout(() => {
+      this.updateAvailability();
+      this.updatePricing();
       this.updateProductImages();
-    }, 100);
+    }, 50);
   }
 
   bindEvents() {
     // Listen for changes on all variant inputs
     this.form.addEventListener('change', (e) => {
       if (e.target.matches('input[type="radio"], select')) {
-        this.updateConditionalVariants();
         this.updatePricing();
         this.updateAvailability();
         this.updateProductImages();
@@ -63,70 +69,46 @@ class ProductVariants {
     }
   }
 
-  updateConditionalVariants() {
-    // Get selected variants to check dependencies
-    const selectedVariants = this.getSelectedVariants();
-    
-    // Find all variant options that have dependencies
-    const conditionalOptions = this.form.querySelectorAll('[data-depends-on]');
-    
-    conditionalOptions.forEach(option => {
-      const dependsOn = option.dataset.dependsOn;
-      if (!dependsOn) return;
-      
-      try {
-        const dependencies = JSON.parse(dependsOn);
-        let shouldShow = true;
-        
-        // Check if all dependencies are met
-        for (const [depVariantName, depValue] of Object.entries(dependencies)) {
-          const selectedValue = selectedVariants[depVariantName]?.value;
-          if (selectedValue !== depValue) {
-            shouldShow = false;
-            break;
-          }
-        }
-        
-        // Show/hide the option and its parent label
-        const parentLabel = option.closest('.variant-option');
-        if (parentLabel) {
-          if (shouldShow) {
-            parentLabel.style.display = '';
-            option.disabled = false;
-          } else {
-            parentLabel.style.display = 'none';
-            option.disabled = true;
-            option.checked = false; // Uncheck if hidden
-          }
-        }
-      } catch (e) {
-        console.warn('Invalid dependsOn data:', dependsOn);
-      }
-    });
-  }
 
   updateAvailability() {
-    // Check if all required variants are selected and available
-    const requiredInputs = this.form.querySelectorAll('input[type="radio"][required], select[required]');
+    // Check if all required radio button groups have selections
     let allRequiredSelected = true;
     
-    requiredInputs.forEach(input => {
-      if (input.type === 'radio') {
-        const radioGroup = this.form.querySelectorAll(`input[name="${input.name}"]`);
-        const selectedRadio = Array.from(radioGroup).find(radio => radio.checked && !radio.disabled);
-        if (!selectedRadio || selectedRadio.dataset.inStock !== 'true') {
-          allRequiredSelected = false;
-        }
-      } else if (input.tagName === 'SELECT') {
-        const selectedOption = input.options[input.selectedIndex];
-        if (!selectedOption || !selectedOption.value || selectedOption.dataset.inStock !== 'true') {
-          allRequiredSelected = false;
-        }
+    // Find all required radio button groups
+    const requiredGroups = new Set();
+    this.form.querySelectorAll('input[type="radio"][required]').forEach(radio => {
+      requiredGroups.add(radio.name);
+    });
+    
+    // Check each required group has a selection
+    requiredGroups.forEach(groupName => {
+      const selected = this.form.querySelector(`input[name="${groupName}"]:checked`);
+      if (!selected) {
+        allRequiredSelected = false;
       }
     });
     
+    // Also check required select dropdowns
+    this.form.querySelectorAll('select[required]').forEach(select => {
+      const selectedOption = select.options[select.selectedIndex];
+      if (!selectedOption || !selectedOption.value) {
+        allRequiredSelected = false;
+      }
+    });
+    
+    // Update add to cart button
     if (this.addToCartBtn) {
       this.addToCartBtn.disabled = !allRequiredSelected;
+      
+      if (!allRequiredSelected) {
+        this.addToCartBtn.classList.add('disabled');
+        if (this.addToCartText) {
+          this.addToCartText.textContent = 'Select Options';
+        }
+      } else {
+        this.addToCartBtn.classList.remove('disabled');
+        // Price will be updated by updatePricing()
+      }
     }
   }
 
@@ -288,6 +270,33 @@ class ProductVariants {
     return Object.values(variants).every(variant => variant.inStock);
   }
 
+  validateAllRequiredVariants() {
+    // Check if all required radio button groups have selections
+    const requiredGroups = new Set();
+    this.form.querySelectorAll('input[type="radio"][required]').forEach(radio => {
+      requiredGroups.add(radio.name);
+    });
+    
+    // Check each required group has a selection
+    for (const groupName of requiredGroups) {
+      const selected = this.form.querySelector(`input[name="${groupName}"]:checked`);
+      if (!selected) {
+        return false;
+      }
+    }
+    
+    // Also check required select dropdowns
+    const requiredSelects = this.form.querySelectorAll('select[required]');
+    for (const select of requiredSelects) {
+      const selectedOption = select.options[select.selectedIndex];
+      if (!selectedOption || !selectedOption.value) {
+        return false;
+      }
+    }
+    
+    return true;
+  }
+
   getVariantDisplayName(variants) {
     const variantNames = [];
     
@@ -301,13 +310,19 @@ class ProductVariants {
   }
 
   addToCart(button) {
-    const variants = JSON.parse(button.dataset.productVariants || '{}');
+    // First, validate that all required variants are selected
+    if (!this.validateAllRequiredVariants()) {
+      alert('Please select all required options before adding to cart.');
+      return;
+    }
+    
+    const variants = this.getSelectedVariants();
     const variantDisplay = this.getVariantDisplayName(variants);
     
     const product = {
       id: button.dataset.productId + (variantDisplay ? `-${Object.values(variants).map(v => v.value || v).join('-')}` : ''),
       name: button.dataset.productName + (variantDisplay ? ` (${variantDisplay})` : ''),
-      price: parseFloat(button.dataset.productPrice),
+      price: this.calculateTotalPrice(variants),
       stripeId: button.dataset.stripeId,
       variants: variants,
       quantity: 1

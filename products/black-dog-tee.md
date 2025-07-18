@@ -22,6 +22,8 @@ images:
     variant: "white"
   - src: /assets/uploads/MMINT_APPAREL_ART_PRINTS_Portrait.jpg
     caption: Black Dog White Dog Tee - Lifestyle
+  - src: /assets/uploads/T-shirt_Chart-01.png
+    caption: T-shirt Size Chart
   - src: /assets/uploads/64b71abe-fc4b-45b0-bf3d-b5b2994b5b28.png
     caption: Black Dog White Dog Tee - Detail
   - src: /assets/uploads/537b0fc3-1f7b-4bca-9875-087ae627c203.png
@@ -43,75 +45,30 @@ position: 2
 layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/    
 variants:
-  - name: "Tee Type"
-    type: "option"
-    required: true
-    options:
-      - value: "short"
-        label: "Short Tee (Gildan 64000)"
-        price: 25
-        inStock: true
-      - value: "long"
-        label: "Long Tee (Bella 3001)"
-        price: 28
-        inStock: true
   - name: "Size"
     type: "size"
     required: true
-    conditional: true
     options:
-      # Short Tee Sizes
-      - value: "S-short"
+      - value: "S"
         label: "Small (46cm x 69cm)"
         price: 25
         inStock: true
-        dependsOn: { "tee-type": "short" }
-      - value: "M-short"
+      - value: "M"
         label: "Medium (51cm x 71cm)"
         price: 25
         inStock: true
-        dependsOn: { "tee-type": "short" }
-      - value: "L-short"
+      - value: "L"
         label: "Large (56cm x 74cm)"
         price: 25
         inStock: true
-        dependsOn: { "tee-type": "short" }
-      - value: "XL-short"
+      - value: "XL"
         label: "X-Large (61cm x 76cm)"
         price: 25
         inStock: true
-        dependsOn: { "tee-type": "short" }
-      - value: "XXL-short"
+      - value: "XXL"
         label: "XX-Large (66cm x 79cm)"
         price: 28
         inStock: true
-        dependsOn: { "tee-type": "short" }
-      # Long Tee Sizes
-      - value: "S-long"
-        label: "Small (46cm x 71cm)"
-        price: 28
-        inStock: true
-        dependsOn: { "tee-type": "long" }
-      - value: "M-long"
-        label: "Medium (51cm x 74cm)"
-        price: 28
-        inStock: true
-        dependsOn: { "tee-type": "long" }
-      - value: "L-long"
-        label: "Large (56cm x 76cm)"
-        price: 28
-        inStock: true
-        dependsOn: { "tee-type": "long" }
-      - value: "XL-long"
-        label: "X-Large (61cm x 79cm)"
-        price: 28
-        inStock: true
-        dependsOn: { "tee-type": "long" }
-      - value: "XXL-long"
-        label: "XX-Large (66cm x 81cm)"
-        price: 30
-        inStock: true
-        dependsOn: { "tee-type": "long" }
   - name: "Color"
     type: "option"
     required: true
@@ -130,14 +87,11 @@ variants:
         inStock: true
 ---
 
-## Size Chart
+A classic t-shirt design featuring the striking Black Dog White Dog artwork. This comfortable, everyday wear piece brings art into your wardrobe.
 
-{% generateImage {
-  src: "/assets/uploads/T-shirt_Chart-01.png",
-  alt: "T-shirt Size Chart",
-  classes: "size-chart-image",
-  outputWidths: ["600", "800", "1200"],
-  viewportSizes: "(max-width: 768px) 100vw, 600px"
-} %}
-
-*Width is from underarm seam to underarm seam. Height is from the highest point of the collar to the bottom of the t-shirt.
+**Product Details:**
+- 100% premium cotton
+- Pre-shrunk fabric
+- Comfortable fit
+- Machine washable
+- Screen printed design
