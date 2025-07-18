@@ -16,7 +16,8 @@ layout: layouts/base.njk
                 <div class="thumbnail-item {% if loop.first %}active{% endif %}" 
                      data-index="{{ loop.index0 }}"
                      data-full-src="{{ image.src }}"
-                     data-alt="{{ image.caption or title }}">
+                     data-alt="{{ image.caption or title }}"
+                     {%- if image.variant -%} data-variant="{{ image.variant }}"{%- endif -%}>
                   {% generateImage {
                     src: image.src,
                     alt: image.caption or title,
@@ -33,7 +34,8 @@ layout: layouts/base.njk
               <div class="thumbnail-item active" 
                    data-index="0"
                    data-full-src="{{ images[0].src }}"
-                   data-alt="{{ images[0].caption or title }}">
+                   data-alt="{{ images[0].caption or title }}"
+                   {%- if images[0].variant -%} data-variant="{{ images[0].variant }}"{%- endif -%}>
                 {% generateImage {
                   src: images[0].src,
                   alt: images[0].caption or title,

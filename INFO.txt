@@ -1,5 +1,30 @@
 
-# MMINT.UK Portfolio & E-commerce Site Development Guide
+Alternative development options:
+```bash
+# Basic Eleventy server (without serverless functions)
+npm run serve
+
+## Building the Site
+```bash
+# Production build
+npm run build
+# or if permissions needed:
+sudo npm run build
+
+## Git Workflow
+```bash
+# Check status
+git status
+
+# Add changes
+sudo git add .
+
+# Commit changes
+sudo git commit -m "update"
+
+# Push to GitHub
+sudo git push origin main
+```
 
 ## Adding New Content
 
@@ -54,33 +79,6 @@ Additional product details (markdown supported)
 - Use TinaCMS for easier content editing: `npm run dev`
 - Access TinaCMS admin at: http://localhost:4001/admin
 
-
-Alternative development options:
-```bash
-# Basic Eleventy server (without serverless functions)
-npm run serve
-
-## Building the Site
-```bash
-# Production build
-npm run build
-# or if permissions needed:
-sudo npm run build
-
-## Git Workflow
-```bash
-# Check status
-git status
-
-# Add changes
-sudo git add .
-
-# Commit changes
-sudo git commit -m "update"
-
-# Push to GitHub
-sudo git push origin main
-```
 
 ## Prerequisites
 - Node.js (v16+ recommended)

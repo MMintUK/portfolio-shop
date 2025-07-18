@@ -16,6 +16,10 @@ class ProductVariants {
   init() {
     this.bindEvents();
     this.updatePricing();
+    // Initial image update based on default selected variants
+    setTimeout(() => {
+      this.updateProductImages();
+    }, 100);
   }
 
   bindEvents() {
@@ -24,6 +28,7 @@ class ProductVariants {
       if (e.target.matches('input[type="radio"], select')) {
         this.updatePricing();
         this.updateAvailability();
+        this.updateProductImages();
       }
     });
   }
@@ -78,6 +83,98 @@ class ProductVariants {
     
     if (this.addToCartBtn) {
       this.addToCartBtn.disabled = !allRequiredSelected;
+    }
+  }
+
+  updateProductImages() {
+    // Get selected variants
+    const variants = this.getSelectedVariants();
+    
+    // Find images that match the selected variants
+    const matchingImages = this.findMatchingImages(variants);
+    
+    if (matchingImages.length > 0) {
+      // Switch to the first matching image
+      this.switchToImage(matchingImages[0]);
+    }
+  }
+
+  findMatchingImages(selectedVariants) {
+    const allThumbnails = document.querySelectorAll('.thumbnail-item');
+    const matchingImages = [];
+    
+    allThumbnails.forEach((thumbnail, index) => {
+      const img = thumbnail.querySelector('img');
+      if (!img) return;
+      
+      // Check if image has variant data attributes or if the src matches variant patterns
+      const imageSrc = img.src || thumbnail.dataset.fullSrc || '';
+      const imageAlt = img.alt || thumbnail.dataset.alt || '';
+      const imageVariant = thumbnail.dataset.variant;
+      
+      // Look for variant matches in various ways
+      for (const [variantName, variantData] of Object.entries(selectedVariants)) {
+        const variantValue = variantData.value.toLowerCase();
+        
+        // First check for exact variant data attribute match (highest priority)
+        if (imageVariant && imageVariant.toLowerCase() === variantValue) {
+          matchingImages.push({
+            index: index,
+            thumbnail: thumbnail,
+            priority: this.getImagePriority(variantName, variantValue) + 5 // Higher priority for exact matches
+          });
+          break;
+        }
+        // Then check if image src or alt contains the variant value
+        else if (imageSrc.toLowerCase().includes(variantValue) || 
+                 imageAlt.toLowerCase().includes(variantValue)) {
+          matchingImages.push({
+            index: index,
+            thumbnail: thumbnail,
+            priority: this.getImagePriority(variantName, variantValue)
+          });
+          break;
+        }
+      }
+    });
+    
+    // Sort by priority (higher priority first)
+    return matchingImages.sort((a, b) => b.priority - a.priority);
+  }
+
+  getImagePriority(variantName, variantValue) {
+    // Size variants get higher priority for image switching
+    if (variantName.toLowerCase().includes('size')) {
+      return 10;
+    }
+    // Color variants get medium priority
+    if (variantName.toLowerCase().includes('color') || variantName.toLowerCase().includes('colour')) {
+      return 5;
+    }
+    // Other variants get lower priority
+    return 1;
+  }
+
+  switchToImage(imageData) {
+    // Use the existing product gallery if available
+    if (window.productGallery && typeof window.productGallery.goToImage === 'function') {
+      window.productGallery.goToImage(imageData.index);
+    } else {
+      // Fallback: directly manipulate the main image
+      const mainImage = document.getElementById('gallery-main-image');
+      if (mainImage && imageData.thumbnail) {
+        const fullSrc = imageData.thumbnail.dataset.fullSrc || 
+                        imageData.thumbnail.querySelector('img')?.src;
+        if (fullSrc) {
+          mainImage.src = fullSrc;
+          
+          // Update active states
+          document.querySelectorAll('.thumbnail-item').forEach(thumb => {
+            thumb.classList.remove('active');
+          });
+          imageData.thumbnail.classList.add('active');
+        }
+      }
     }
   }
 
