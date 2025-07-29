@@ -3,11 +3,12 @@ draft: false
 title: "I AM THE MOON - Original Painting"
 description: |
   Original mixed media painting created for the 'Decked Out' Exhibition in Seoul. A powerful piece exploring lunar symbolism and personal identity. This artwork has been sold.
-price: 1850
+price: 1000
 sku: "I-AM-THE-MOON-PAINTING"
 stripeProductId: "prod_painting_moon"
 inStock: false
-featured: false
+inventory: 0
+featured: true
 category: "paintings"
 images:
   - src: /assets/uploads/Iam_The_Moon_Rob_Green_Wyllie_1800.jpg
@@ -24,7 +25,7 @@ dimensions:
 date: 2024-01-21T10:00:00.000Z
 position: 3
 layout: layouts/product.njk
-permalink: /shop/{{ title | slug }}/
+permalink: /shop/i-am-the-moon-painting/
 ---
 
 This powerful original painting was created for the 'Decked Out' Exhibition in Noksapyeong, Seoul. The piece explores themes of lunar symbolism and personal identity through mixed media techniques.

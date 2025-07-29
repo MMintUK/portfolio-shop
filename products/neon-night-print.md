@@ -1,66 +1,75 @@
 ---
 draft: false
-title: "NEON NIGHT Print"
+title: "NEON NIGHT | Print"
 description: |
   Street-art piece bringing together sensuality and culture, featuring a captivating figure against vibrant Japanese typography. Bold, seductive, and utterly mesmerising.
-price: 45
-basePrice: 45
+price: 20
+basePrice: 20
 sku: "NEON-NIGHT-PRINT"
 stripeProductId: "prod_print_neon_night"
 inStock: true
-featured: false
+inventory: -1
+featured: true
 category: "prints"
 variants:
   - name: "Size"
     type: "size"
     required: true
     options:
-      - value: "A4"
-        label: "A4 (21 x 29.7 cm)"
-        price: 45
+      - value: "30cm x 30cm"
+        label: "30cm x 30cm"
+        price: 20
         inStock: true
-      - value: "A3"
-        label: "A3 (29.7 x 42 cm)"
-        price: 65
+      - value: "50cm x 50cm"
+        label: "50cm x 50cm"
+        price: 30
         inStock: true
-      - value: "A2"
-        label: "A2 (42 x 59.4 cm)"
-        price: 95
+      - value: "70cm x 70cm"
+        label: "70cm x 70cm"
+        price: 50
         inStock: true
   - name: "Frame"
     type: "option"
-    required: false
+    required: true
     options:
       - value: "none"
-        label: "No Frame"
-        price: 0
+        label: "Unframed"
+        priceBySize:
+          "30cm x 30cm": 20
+          "50cm x 50cm": 30
+          "70cm x 70cm": 50
         inStock: true
-      - value: "black"
-        label: "Black Frame"
-        price: 25
-        inStock: true
-      - value: "white"
-        label: "White Frame"
-        price: 25
+      - value: "pine"
+        label: "Pine Frame"
+        priceBySize:
+          "30cm x 30cm": 40
+          "50cm x 50cm": 60
+          "70cm x 70cm": 100
         inStock: true
 images:
+  - src: /assets/uploads/Neon_Night_Print_70_70_Framed.jpg
+    caption: 70cm x 70cm Framed
+    variant: "pine-70cm"
+  - src: /assets/uploads/Neon_Night_Print_50_50_Framed.jpg
+    caption: 50cm x 50cm Framed
+    variant: "pine-50cm"      
+  - src: /assets/uploads/Neon_Night_Print_30_30_Framed.jpg
+    caption: 30cm x 30cm Framed
+    variant: "pine-30cm"
   - src: /assets/uploads/Neon_Night_Print_1660.jpg
-    caption: NEON NIGHT Print
-  - src: /assets/uploads/Neon_Night_Print_Framed_1060.jpg
-    caption: NEON NIGHT Print Framed
-dimensions:
-  weight: "250gsm premium paper"
-  finish: "Matte finish"
+    caption: Unframed Print
+    variant: "none"    
+  - src: /assets/uploads/Neon_Night_Mock_Up_1174.jpg
+    caption: In  Situ    
 date: 2024-01-13T10:00:00.000Z
-position: 8
+position: 1
 layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---
-
-This striking street-art piece combines sensuality and culture in a captivating composition. The artwork features vibrant Japanese typography creating a bold and mesmerising visual experience.
+*Includes VAT & Shipping
 
 **Print Details:**
-- Premium 250gsm paper stock
-- Matte finish for reduced glare
-- Professional printing
-- Ready to frame or display
+- Premium 250gsm Paper Stock
+- Professional Printing
+- Pine Wood Frame*
+- Shatterproof Plexiglass*

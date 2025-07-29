@@ -1,5 +1,32 @@
 /* Shop Styles */
 
+/* Force light theme for shop and product pages */
+[data-current="shop"],
+[data-current="shop"] body,
+html[data-current="shop"],
+.product-page,
+.page.product-page,
+body:has(.product-page),
+body:has(.page.product-page) {
+  --color-background: #ffffff !important;
+  --color-text: #101010 !important;
+  --color-link: #101010 !important;
+}
+
+[data-current="shop"] body,
+body:has(.product-page),
+body:has(.page.product-page) {
+  background: #ffffff !important;
+  color: #101010 !important;
+}
+
+/* Override image display window background for light theme */
+[data-current="shop"] .image-display-window,
+body:has(.product-page) .image-display-window,
+body:has(.page.product-page) .image-display-window {
+  background: #ffffff !important;
+}
+
 /* Shop columns layout */
 .columns--shop {
   /* Inherit the base columns layout */
@@ -162,8 +189,36 @@
 }
 
 .product-images-column {
-  flex: 1.5;
+  flex: 1.5 !important;
   position: relative;
+  min-width: 0; /* Allow flexbox shrinking */
+  overflow: hidden; /* Prevent content from breaking layout */
+}
+
+/* Ensure consistent layout across all products */
+.product-container .product-images-column {
+  flex: 1.5 !important;
+  width: 60% !important;
+}
+
+.product-container .product-content-column {
+  flex: 1 !important;
+  width: 40% !important;
+}
+
+/* Force layout consistency with explicit width values */
+body .product-container .product-images-column {
+  flex: 1.5 !important;
+  width: 60% !important;
+  flex-basis: 60% !important;
+  min-width: 0 !important; /* Allow flexbox shrinking */
+  overflow: hidden !important; /* Prevent content from breaking layout */
+}
+
+body .product-container .product-content-column {
+  flex: 1 !important;
+  width: 40% !important;
+  flex-basis: 40% !important;
 }
 
 /* Gallery System - Rebuilt from scratch */
@@ -171,6 +226,9 @@
   margin: 0 !important;
   padding: 0 !important;
   width: 100%;
+  max-width: 100%; /* Ensure gallery doesn't exceed container */
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent any overflow from affecting layout */
 }
 
 /* Main Image Display Window - Perfect square container */
@@ -183,8 +241,9 @@
   border-radius: 2px;
   position: relative;
   overflow: hidden;
-  max-width: none;
-  max-height: none;
+  max-width: 100%; /* Constrain to container width */
+  box-sizing: border-box; /* Include padding in width calculation */
+  flex-shrink: 0; /* Don't let this shrink in flex container */
 }
 
 /* Square window maintains aspect ratio on all screen sizes */
@@ -235,10 +294,19 @@
   padding: 0 !important;
   margin: 16px 0 0 0 !important;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;
+  /* Ensure the gallery container doesn't break layout */
+  min-width: 0; /* Allow flexbox shrinking */
+  flex-shrink: 1;
+  /* Calculate minimum width needed to prevent layout break */
+  min-height: 80px; /* Match thumbnail height */
+  /* Force constrain within parent regardless of content width */
+  contain: layout size;
 }
 
 /* Webkit scrollbar styling */
@@ -263,6 +331,8 @@
 .thumbnail-item {
   width: 80px;
   height: 80px;
+  min-width: 80px;
+  max-width: 80px; /* Prevent expansion */
   background: #f8f8f8;
   border: none;
   border-radius: 0;
@@ -270,6 +340,7 @@
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .thumbnail-item:hover {
@@ -448,17 +519,32 @@
   }
   
   .product-images-column {
-    flex: none;
+    flex: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    width: 100%;
+    width: 100% !important;
+    flex-basis: auto !important;
   }
   
   .product-content-column {
-    flex: none;
+    flex: none !important;
     margin: 0 !important;
     padding: var(--space) !important;
-    width: 100%;
+    width: 100% !important;
+    flex-basis: auto !important;
+  }
+  
+  /* Override desktop specific rules on mobile */
+  body .product-container .product-images-column {
+    flex: none !important;
+    width: 100% !important;
+    flex-basis: auto !important;
+  }
+
+  body .product-container .product-content-column {
+    flex: none !important;
+    width: 100% !important;
+    flex-basis: auto !important;
   }
   
   /* Project pages - reverse column order on mobile */

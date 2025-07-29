@@ -1,13 +1,14 @@
 ---
 draft: false
-title: "KIM JONG UN & FRIENDS Print"
+title: "KIM JONG UN & FRIENDS | Print"
 description: |
   Political collage artwork originally commissioned for a magazine focusing on human rights issues in North Korea. A provocative piece that sheds light on injustices.
-price: 45
-basePrice: 45
+price: 20
+basePrice: 20
 sku: "KIM-JONG-UN-PRINT"
 stripeProductId: "prod_print_kim_jong_un"
 inStock: true
+inventory: -1
 featured: false
 category: "prints"
 variants:
@@ -15,50 +16,63 @@ variants:
     type: "size"
     required: true
     options:
-      - value: "A4"
-        label: "A4 (21 x 29.7 cm)"
-        price: 45
+      - value: "30cm x 42cm"
+        label: "30cm x 42cm"
+        price: 20
         inStock: true
-      - value: "A3"
-        label: "A3 (29.7 x 42 cm)"
-        price: 65
+      - value: "50cm x 70cm"
+        label: "50cm x 70cm"
+        price: 30
         inStock: true
-      - value: "A2"
-        label: "A2 (42 x 59.4 cm)"
-        price: 95
+      - value: "70cm x 100cm"
+        label: "70cm x 100cm"
+        price: 40
         inStock: true
   - name: "Frame"
     type: "option"
-    required: false
+    required: true
     options:
       - value: "none"
-        label: "No Frame"
-        price: 0
+        label: "Unframed"
+        priceBySize:
+          "30cm x 42cm": 20
+          "50cm x 70cm": 30
+          "70cm x 100cm": 40
         inStock: true
-      - value: "black"
-        label: "Black Frame"
-        price: 25
-        inStock: true
-      - value: "white"
-        label: "White Frame"
-        price: 25
+      - value: "pine"
+        label: "Pine Frame"
+        priceBySize:
+          "30cm x 42cm": 40
+          "50cm x 70cm": 70
+          "70cm x 100cm": 110
         inStock: true
 images:
+  - src: /assets/uploads/Kim-jong-un-and-friends-70-100.jpg
+    caption: 70cm x 100cm Framed
+    variant: "pine-70cm"
+  - src: /assets/uploads/Kim-jong-un-and-friends-50-70.jpg
+    caption: 50cm x 70cm Framed
+    variant: "pine-50cm"
+  - src: /assets/uploads/Kim-jong-un-and-friends-30-42.jpg
+    caption: 30cm x 42cm Framed
+    variant: "pine-30cm"
   - src: /assets/uploads/Kim-jong-un-and-friends-1800.jpg
-    caption: KIM JONG UN & FRIENDS Print
+    caption: Unframed Print
+    variant: "none"
+  - src: /assets/uploads/Kim-jong-un-and-friends-1800.jpg
+    caption: KIM JONG UN & FRIENDS Print            
 dimensions:
   weight: "250gsm premium paper"
   finish: "Matte finish"
 date: 2024-01-17T10:00:00.000Z
-position: 4
+position: 8
 layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---
-
-This provocative political collage was originally commissioned for a magazine focusing on human rights issues in North Korea. The piece uses visual satire to comment on political situations and human rights.
+*Includes VAT & Shipping
 
 **Print Details:**
-- Premium 250gsm paper stock
-- Matte finish for reduced glare
-- Professional printing
-- Ready to frame or display
+- Premium 250gsm Paper Stock
+- Professional Printing
+- Pine Wood Frame*
+- Shatterproof Plexiglass*

@@ -8,6 +8,7 @@ basePrice: 25
 sku: "IKAROA-POUCH"
 stripeProductId: "prod_ikaroa_pouch"
 inStock: true
+inventory: -1
 featured: true
 category: "apparel"
 variants:
@@ -37,7 +38,7 @@ dimensions:
   finish: "Durable zipper closure"
   care: "Spot clean only"
 date: 2024-01-26T10:00:00.000Z
-position: 4
+position: 8
 layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---

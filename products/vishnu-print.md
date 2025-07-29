@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 title: "VISHNU Print"
 description: |
   Vishnu the Preserver and guardian, protector of the order of things (dharma). This artwork captures the divine essence of one of Hinduism's principal deities.
@@ -8,7 +8,8 @@ basePrice: 45
 sku: "VISHNU-PRINT"
 stripeProductId: "prod_print_vishnu"
 inStock: true
-featured: false
+inventory: -1
+featured: true
 category: "prints"
 variants:
   - name: "Size"
@@ -44,7 +45,7 @@ variants:
         price: 25
         inStock: true
 images:
-  - src: /assets/uploads/hannam_gallery_1660_rob_green.jpg
+  - src: /assets/uploads/hannam_gallery_seoul_rob_green_1660_02.jpg
     caption: VISHNU Print Gallery Display
   - src: /assets/uploads/hannam_gallery_1660.jpg
     caption: VISHNU Print in Gallery

@@ -8,7 +8,8 @@ basePrice: 45
 sku: "MONKEY-TERRORIST-PRINT"
 stripeProductId: "prod_print_monkey_terrorist"
 inStock: true
-featured: false
+inventory: -1
+featured: true
 category: "prints"
 variants:
   - name: "Size"
@@ -44,15 +45,17 @@ variants:
         price: 25
         inStock: true
 images:
-  - src: /assets/uploads/Monkey_Terrorist_Rob_Green_MMINT_1080.jpg
-    caption: Monkey Terrorist Print
   - src: /assets/uploads/Monkey_Terrorist_MMINT_Rob_Green_Artist_30_20.jpg
-    caption: Monkey Terrorist Detail
+    caption: Monkey Terrorist Print
+  - src: /assets/uploads/Monkey_Terrorist_MMINT_Rob_Green_Artist_36_24.jpg
+    caption: Monkey Terrorist Print
+  - src: /assets/uploads/Monkey_Terrorist_MMINT_Rob_Green_Artist_18_12.jpg
+    caption: Monkey Terrorist Print    
 dimensions:
   weight: "250gsm premium paper"
   finish: "Matte finish"
 date: 2024-01-16T10:00:00.000Z
-position: 5
+position: 8
 layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---

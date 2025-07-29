@@ -3,11 +3,12 @@ draft: false
 title: "NIGHT - Original Stencil on Wood"
 description: |
   Original stencil artwork on wood panel. A striking monochromatic piece exploring themes of darkness and urban landscapes.
-price: 850
+price: 1000
 sku: "NIGHT-PAINTING"
 stripeProductId: "prod_painting_night"
 inStock: true
-featured: false
+inventory: 1
+featured: true
 category: "paintings"
 images:
   - src: /assets/uploads/untitled_wood_panel_rob_green_mmint_1660.jpg
@@ -22,7 +23,7 @@ dimensions:
 date: 2024-01-19T10:00:00.000Z
 position: 2
 layout: layouts/product.njk
-permalink: /shop/{{ title | slug }}/
+permalink: /shop/night-painting/
 ---
 
 This powerful stencil artwork on wood captures the essence of urban nightlife through bold contrasts and striking imagery. Created using traditional stencil techniques on a wooden panel.

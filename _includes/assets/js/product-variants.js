@@ -51,6 +51,9 @@ class ProductVariants {
       this.currentPrice.textContent = `£${totalPrice.toFixed(2)}`;
     }
     
+    // Update dynamic price differences for priceBySize options
+    this.updateDynamicPriceDifferences(variants);
+    
     // Update add to cart button
     if (this.addToCartBtn && this.addToCartText) {
       this.addToCartText.textContent = `Add to Cart - £${totalPrice.toFixed(2)}`;
@@ -67,6 +70,43 @@ class ProductVariants {
       this.addToCartBtn.dataset.productPrice = totalPrice.toFixed(2);
       this.addToCartBtn.dataset.productVariants = JSON.stringify(variants);
     }
+  }
+
+  updateDynamicPriceDifferences(variants) {
+    // Find the current size
+    const sizeVariant = Object.values(variants).find(v => 
+      v.value && (v.value.includes('cm') || v.value.includes('inch') || v.value.toLowerCase().includes('size'))
+    );
+    
+    if (!sizeVariant) return;
+    
+    // Update dynamic price differences
+    const dynamicPriceDiffs = document.querySelectorAll('.dynamic-price-diff');
+    dynamicPriceDiffs.forEach(diffElement => {
+      const input = diffElement.closest('.variant-option').querySelector('input');
+      if (input && input.dataset.priceBySize) {
+        try {
+          const priceBySize = JSON.parse(input.dataset.priceBySize);
+          const basePrice = parseFloat(diffElement.dataset.basePrice) || this.basePrice;
+          const framePrice = priceBySize[sizeVariant.value];
+          
+          if (framePrice !== undefined) {
+            const totalFramedPrice = sizeVariant.price + framePrice;
+            const difference = totalFramedPrice - sizeVariant.price;
+            
+            if (difference > 0) {
+              diffElement.textContent = `+£${difference}`;
+            } else if (difference < 0) {
+              diffElement.textContent = `-£${Math.abs(difference)}`;
+            } else {
+              diffElement.textContent = '';
+            }
+          }
+        } catch (e) {
+          console.warn('Failed to parse priceBySize for dynamic pricing:', e);
+        }
+      }
+    });
   }
 
 
@@ -129,11 +169,18 @@ class ProductVariants {
     const allThumbnails = document.querySelectorAll('.thumbnail-item');
     const matchingImages = [];
     
+    // Get frame and size selections
+    const frameVariant = Object.entries(selectedVariants).find(([name, data]) => 
+      name.toLowerCase().includes('frame')
+    );
+    const sizeVariant = Object.entries(selectedVariants).find(([name, data]) => 
+      name.toLowerCase().includes('size') || data.value.includes('cm')
+    );
+    
     allThumbnails.forEach((thumbnail, index) => {
       const img = thumbnail.querySelector('img');
       if (!img) return;
       
-      // Check if image has variant data attributes or if the src matches variant patterns
       const imageSrc = img.src || thumbnail.dataset.fullSrc || '';
       const imageAlt = img.alt || thumbnail.dataset.alt || '';
       const imageVariant = thumbnail.dataset.variant;
@@ -141,29 +188,58 @@ class ProductVariants {
       let bestMatch = null;
       let bestPriority = -1;
       
-      // Look for variant matches in various ways - check ALL variants to find the best match
-      for (const [variantName, variantData] of Object.entries(selectedVariants)) {
-        const variantValue = variantData.value.toLowerCase();
-        let currentPriority = -1;
+      // For frame-based image switching, construct the expected variant string
+      if (frameVariant && sizeVariant && imageVariant) {
+        const frameValue = frameVariant[1].value;
+        const sizeValue = sizeVariant[1].value;
         
-        // First check for exact variant data attribute match (highest priority)
-        if (imageVariant && imageVariant.toLowerCase() === variantValue) {
-          currentPriority = this.getImagePriority(variantName, variantValue) + 5; // Higher priority for exact matches
+        // Check for composite variant match (e.g., "black-70cm")
+        if (frameValue !== 'none') {
+          const expectedVariant = `${frameValue}-${sizeValue.replace(' x ', '').replace('cm x cm', 'cm')}`;
+          if (imageVariant.toLowerCase() === expectedVariant.toLowerCase()) {
+            bestMatch = {
+              index: index,
+              thumbnail: thumbnail,
+              priority: 15 // Highest priority for exact composite match
+            };
+          }
+        } else {
+          // For "none" frame, look for exact "none" variant
+          if (imageVariant.toLowerCase() === 'none') {
+            bestMatch = {
+              index: index,
+              thumbnail: thumbnail,
+              priority: 10 // High priority for unframed match
+            };
+          }
         }
-        // Then check if image src or alt contains the variant value
-        else if (imageSrc.toLowerCase().includes(variantValue) || 
-                 imageAlt.toLowerCase().includes(variantValue)) {
-          currentPriority = this.getImagePriority(variantName, variantValue);
-        }
-        
-        // Keep track of the best match for this image
-        if (currentPriority > bestPriority) {
-          bestPriority = currentPriority;
-          bestMatch = {
-            index: index,
-            thumbnail: thumbnail,
-            priority: currentPriority
-          };
+      }
+      
+      // Fallback: check individual variant matches
+      if (!bestMatch) {
+        for (const [variantName, variantData] of Object.entries(selectedVariants)) {
+          const variantValue = variantData.value.toLowerCase();
+          let currentPriority = -1;
+          
+          // Check for exact variant data attribute match
+          if (imageVariant && imageVariant.toLowerCase() === variantValue) {
+            currentPriority = this.getImagePriority(variantName, variantValue) + 5;
+          }
+          // Check if image src or alt contains the variant value
+          else if (imageSrc.toLowerCase().includes(variantValue) || 
+                   imageAlt.toLowerCase().includes(variantValue)) {
+            currentPriority = this.getImagePriority(variantName, variantValue);
+          }
+          
+          // Keep track of the best match for this image
+          if (currentPriority > bestPriority) {
+            bestPriority = currentPriority;
+            bestMatch = {
+              index: index,
+              thumbnail: thumbnail,
+              priority: currentPriority
+            };
+          }
         }
       }
       
@@ -219,9 +295,24 @@ class ProductVariants {
     // Get radio button selections
     const radioInputs = this.form.querySelectorAll('input[type="radio"]:checked');
     radioInputs.forEach(input => {
+      let price = 0;
+      let priceBySize = null;
+      
+      // Check if this input has priceBySize data
+      if (input.dataset.priceBySize) {
+        try {
+          priceBySize = JSON.parse(input.dataset.priceBySize);
+        } catch (e) {
+          console.warn('Failed to parse priceBySize data:', input.dataset.priceBySize);
+        }
+      } else if (input.dataset.price) {
+        price = parseFloat(input.dataset.price);
+      }
+      
       variants[input.name] = {
         value: input.value,
-        price: parseFloat(input.dataset.price),
+        price: price,
+        priceBySize: priceBySize,
         inStock: input.dataset.inStock === 'true'
       };
     });
@@ -231,9 +322,23 @@ class ProductVariants {
     selectInputs.forEach(select => {
       if (select.value) {
         const selectedOption = select.options[select.selectedIndex];
+        let price = 0;
+        let priceBySize = null;
+        
+        if (selectedOption.dataset.priceBySize) {
+          try {
+            priceBySize = JSON.parse(selectedOption.dataset.priceBySize);
+          } catch (e) {
+            console.warn('Failed to parse priceBySize data:', selectedOption.dataset.priceBySize);
+          }
+        } else if (selectedOption.dataset.price) {
+          price = parseFloat(selectedOption.dataset.price);
+        }
+        
         variants[select.name] = {
           value: select.value,
-          price: parseFloat(selectedOption.dataset.price),
+          price: price,
+          priceBySize: priceBySize,
           inStock: selectedOption.dataset.inStock === 'true'
         };
       }
@@ -245,21 +350,30 @@ class ProductVariants {
   calculateTotalPrice(variants) {
     let totalPrice = this.basePrice;
     
-    // For products with variants, use the highest priced variant as base
-    // or calculate based on the specific variant pricing logic
-    const variantPrices = Object.values(variants).map(v => v.price).filter(p => !isNaN(p));
+    // Find the size variant to use as reference for priceBySize calculations
+    const sizeVariant = Object.values(variants).find(v => 
+      v.value && (v.value.includes('cm') || v.value.includes('inch') || v.value.toLowerCase().includes('size'))
+    );
     
-    if (variantPrices.length > 0) {
-      // For prints and apparel, typically use the selected variant price
-      // For add-ons like frames, add to base price
-      const maxPrice = Math.max(...variantPrices);
-      totalPrice = maxPrice;
-      
-      // Add any additional options (like frames for prints)
-      const additionalOptions = Object.values(variants).filter(v => v.price > 0 && v.price !== maxPrice);
-      additionalOptions.forEach(option => {
-        totalPrice += option.price;
-      });
+    const sizeValue = sizeVariant ? sizeVariant.value : null;
+    
+    // Calculate prices for each variant
+    const calculatedPrices = [];
+    
+    Object.values(variants).forEach(variant => {
+      if (variant.priceBySize && sizeValue && variant.priceBySize[sizeValue] !== undefined) {
+        // Use size-specific pricing
+        calculatedPrices.push(parseFloat(variant.priceBySize[sizeValue]));
+      } else if (variant.price && !isNaN(variant.price)) {
+        // Use regular pricing
+        calculatedPrices.push(variant.price);
+      }
+    });
+    
+    if (calculatedPrices.length > 0) {
+      // Use absolute pricing: take the highest priceBySize value as the total price
+      // This allows setting absolute prices for framed vs unframed combinations
+      totalPrice = Math.max(...calculatedPrices);
     }
     
     return totalPrice;
