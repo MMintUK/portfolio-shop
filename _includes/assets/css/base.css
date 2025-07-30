@@ -273,6 +273,15 @@ img {
 
 }
 
+@media (min-width: 900px) {
+
+	.columns {
+		-moz-column-count: 3;
+       column-count: 3;
+	}
+
+}
+
 /* Small Desktop Breakpoint */
 
 @media (min-width: 840px) {

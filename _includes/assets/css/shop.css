@@ -27,9 +27,30 @@ body:has(.page.product-page) .image-display-window {
   background: #ffffff !important;
 }
 
-/* Shop columns layout */
+/* Shop columns layout - Use CSS Grid for better filtering support */
 .columns--shop {
-  /* Inherit the base columns layout */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--space) * 1.25);
+}
+
+/* Responsive grid layout matching the base columns system */
+@media (min-width: 540px) {
+  .columns--shop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .columns--shop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1140px) {
+  .columns--shop {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* Shop Category Filters */
@@ -264,7 +285,7 @@ body .product-container .product-content-column {
 /* Zoom effect on hover */
 .image-display-window:hover .gallery-main-image {
   object-fit: cover;
-  transform: scale(2);
+  transform: scale(var(--optimal-zoom-scale, 2));
   transform-origin: center;
 }
 
@@ -272,7 +293,7 @@ body .product-container .product-content-column {
 @media (max-width: 768px) {
   .image-display-window.mobile-zoomed .gallery-main-image {
     object-fit: cover;
-    transform: scale(2);
+    transform: scale(var(--optimal-zoom-scale, 2));
     transform-origin: center;
   }
 }
@@ -560,6 +581,7 @@ body .product-container .product-content-column {
   .project-page .product-images-column {
     order: 2;
   }
+  
   
   /* Project page mobile spacing to match product page */
   .project-page .product-content-column {

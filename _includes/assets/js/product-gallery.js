@@ -252,8 +252,20 @@ class ProductGallery {
   }
   
   optimizeImageDisplay(img) {
-    // All images now use object-fit: contain within the square window
-    // No additional styling needed as CSS handles the square aspect ratio
+    // Calculate optimal zoom scale based on image vs container dimensions
+    const containerRect = this.displayWindow.getBoundingClientRect();
+    const containerSize = Math.min(containerRect.width, containerRect.height);
+    
+    // Calculate the scale needed to show image at full resolution
+    const scaleX = img.naturalWidth / containerSize;
+    const scaleY = img.naturalHeight / containerSize;
+    const maxScale = Math.max(scaleX, scaleY);
+    
+    // Don't zoom smaller than current size, and cap at a reasonable maximum
+    const optimalScale = Math.min(Math.max(maxScale, 1), 4);
+    
+    // Store the optimal scale as a CSS custom property
+    this.mainImage.style.setProperty('--optimal-zoom-scale', optimalScale);
   }
   
   updateActiveStates(activeIndex) {
