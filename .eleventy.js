@@ -81,7 +81,7 @@ module.exports = function(eleventyConfig) {
 
     // Filter out unsupported formats that might cause issues on Netlify
     const supportedFormats = outputFormats.filter(format => 
-      format !== 'heif' && format !== 'heic'
+      format !== 'heif' && format !== 'heic' && format !== 'avif'
     );
 
     let metadata;
