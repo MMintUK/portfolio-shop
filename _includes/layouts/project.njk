@@ -7,8 +7,11 @@ section: project
   <div class="product-container">
     <div class="product-images-column">
       <div class="product-images">
-        {# Display images first #}
-        {% if images %}
+        {# Check if this is a video project by looking for video tags in the content #}
+        {% set isVideoProject = layoutContent and ('<video' in layoutContent or 'youtube.com' in layoutContent or 'youtu.be' in layoutContent) %}
+        
+        {# Display images only if this is NOT a video project #}
+        {% if images and not isVideoProject %}
           {% for image in images %}
             {# Make an array of the enabled image formats from settings.yaml #}
             {% set outputFormats = [] %}
@@ -43,6 +46,13 @@ section: project
           {% endfor %}
         {% endif %}
 
+        {# Display video content directly in the images column for video projects #}
+        {% if isVideoProject and layoutContent %}
+          <div class="project-video-content">
+            {{ layoutContent | safe }}
+          </div>
+        {% endif %}
+        
         {# Videos will be moved here by JavaScript #}
         <div id="project-videos-container"></div>
       </div>
@@ -63,7 +73,7 @@ section: project
           </div>
         {% endif %}
 
-        {% if layoutContent %}
+        {% if layoutContent and not isVideoProject %}
           <div class="product-additional-info">
             {{ layoutContent | safe }}
           </div>
