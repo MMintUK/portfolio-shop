@@ -13,6 +13,6 @@ date: 2024-05-22T13:01:11.245Z
 
  <!-- Add your local MP4 video -->
   <video width="100%" height="auto" controls>
-    <source src="/assets/videos/ai_wei_wei.mp4" type="video/mp4">
+    <source src="/assets/uploads/ai_wei_wei.mp4" type="video/mp4">
   </video>
  
