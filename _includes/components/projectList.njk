@@ -10,47 +10,94 @@
 
 					<figure>
 
-						{# Images are output in the order they appear in project frontmatter #}
-      			{# and can be ordered in Tina CMS using drag and drop #}
-
-						{# Set the first project image from the project #}
-						{% set image = "" %}
-						{% for i in project.data.images %}
-							{% if loop.first %}
-								{% set image = i %}
+						{# Check if this project contains video content #}
+						{% set hasVideo = false %}
+						{% set videoSrc = "" %}
+						{% if project.templateContent and '<video' in project.templateContent %}
+							{% set hasVideo = true %}
+							{# More robust video source detection using regex-like patterns #}
+							{% set contentLower = project.templateContent | lower %}
+							{% if 'ai_wei_wei.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/ai_wei_wei.mp4" %}
+							{% elif 'ikaroa_holographic_sticker_rob_green.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/IKAROA_Holographic_Sticker_Rob_Green.mp4" %}
+							{% elif 'rob_green_ikaroa_web.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/rob_green_Ikaroa_web.mp4" %}
+							{% elif 'tiger_lair_rob_green_new.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/Tiger_Lair_Rob_Green_NEW.mp4" %}
+							{% elif 'tiger_balm_rob_green.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/TIGER_BALM_Rob_Green.mp4" %}
+							{% elif 'tiger_lair_winter_rob_green.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/TIGER_LAIR_Winter_Rob_Green.mp4" %}
+							{% elif 'noe_alonzo_rob_green_hong_kong_day.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/Noe_Alonzo_Rob_Green_Hong_Kong_Day.mp4" %}
+							{% elif 'noe_alonzo_rob_green_seoul_night.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/Noe_Alonzo_Rob_Green_Seoul_Night.mp4" %}
+							{% elif 'acid_spiv_rob_green.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/ACID_Spiv_Rob_Green.mp4" %}
+							{% elif 'acid_psoman_rob_green.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/ACID_Psoman_Rob_Green.mp4" %}
+							{% elif 'huitzilopochli_opti_rob_green_artist_mmint_mmint-uk.mp4' in contentLower %}
+								{% set videoSrc = "/assets/uploads/huitzilopochli_opti_rob_green_artist_mmint_mmint-uk.mp4" %}
+							{# Add debug info for unmatched videos #}
+							{% elif '<video' in project.templateContent %}
+								{# This is a video project but we couldn't match the file - leave videoSrc empty for debugging #}
+								{% set videoSrc = "" %}
 							{% endif %}
-						{% endfor %}
+						{% endif %}
 
-						{# Make an array of the enabled image formats from settings.yaml #}
-						{% set outputFormats = [] %}
-						{% for format, i in settings.images %}
-							{% if i.enabled === true %}
-								{{ '' if outputFormats.push(format) }}
-							{% endif %}
-						{% endfor %}
+						{% if hasVideo and videoSrc %}
+							{# Show GIF thumbnail for video projects #}
+							<div class="video-gif-thumbnail">
+								{% set gifSrc = videoSrc | getVideoGif %}
+								<img 
+									src="{{ gifSrc }}" 
+									alt="{{ project.data.title }} - Video Preview"
+									class="project-gif-thumbnail"
+									loading="{{ 'eager' if loop.first else 'lazy' }}"
+									width="100%" 
+									height="auto">
+							</div>
+						{% else %}
+							{# Show static image thumbnail for non-video projects #}
+							{# Set the first project image from the project #}
+							{% set image = "" %}
+							{% for i in project.data.images %}
+								{% if loop.first %}
+									{% set image = i %}
+								{% endif %}
+							{% endfor %}
 
-						{# Create an object for our project thumbnail image parameters which we can then
-        		destructure inside our shortcode function. See eleventy.js for what's going on #}
-						{% set params = 
-							{
-								"src": image.src,
-								"alt": image.caption or title,
-								"loadingType": "eager" if (loop.first and section != "project") else "lazy",
-								"viewportSizes": "(min-width: 1140px) 22vw, (min-width: 540px) 45vw, 85vw",
-								"outputWidths": [
-									settings.config.image_grid_width_sm,
-									settings.config.image_grid_width_md,
-									settings.config.image_grid_width_lg
-								],
-								"outputFormats": outputFormats,
-								"outputQualityJpeg": settings.images.jpeg.quality,
-								"outputQualityWebp": settings.images.webp.quality,
-								"outputQualityAvif": settings.images.avif.quality
-							}
-						%}
+							{# Make an array of the enabled image formats from settings.yaml #}
+							{% set outputFormats = [] %}
+							{% for format, i in settings.images %}
+								{% if i.enabled === true %}
+									{{ '' if outputFormats.push(format) }}
+								{% endif %}
+							{% endfor %}
 
-						{# The image shortcode #}
-						{% generateImage params %}
+							{# Create an object for our project thumbnail image parameters #}
+							{% set params = 
+								{
+									"src": image.src,
+									"alt": image.caption or title,
+									"loadingType": "eager" if (loop.first and section != "project") else "lazy",
+									"viewportSizes": "(min-width: 1140px) 22vw, (min-width: 540px) 45vw, 85vw",
+									"outputWidths": [
+										settings.config.image_grid_width_sm,
+										settings.config.image_grid_width_md,
+										settings.config.image_grid_width_lg
+									],
+									"outputFormats": outputFormats,
+									"outputQualityJpeg": settings.images.jpeg.quality,
+									"outputQualityWebp": settings.images.webp.quality,
+									"outputQualityAvif": settings.images.avif.quality
+								}
+							%}
+
+							{# The image shortcode #}
+							{% generateImage params %}
+						{% endif %}
 						
 						<figcaption class="pb--1{% if settings.theme.theme_features.show_project_grid_titles === false %} hide{% endif %}">
 

@@ -12,7 +12,7 @@ date: 2022-09-22T13:02:11.245Z
 ---
 
  <!-- Add your local MP4 video -->
-  <video width="100%" height="auto" controls>
+  <video width="100%" height="auto" controls autoplay muted loop>
     <source src="/assets/uploads/huitzilopochli_opti_rob_green_artist_mmint_mmint-uk.mp4" type="video/mp4">
   </video>
 

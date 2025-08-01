@@ -3,8 +3,8 @@ draft: false
 title: "IKAROA | Accessory Pouch"
 description: |
   Elevate your accessory game with our 'IKAROA' pouch. This unique accessory pouch showcases a mesmerising black and white illustration that beautifully blends Japanese and Maori influences. It's an artful celebration of cultural fusion in a timeless pop art style.
-price: 25
-basePrice: 25
+price: 16
+basePrice: 16
 sku: "IKAROA-POUCH"
 stripeProductId: "prod_ikaroa_pouch"
 inStock: true
@@ -18,11 +18,11 @@ variants:
     options:
       - value: "large"
         label: "Large 30cm x 21cm"
-        price: 35
+        price: 18
         inStock: true
       - value: "small"
         label: "Small 21cm x 15cm"
-        price: 25
+        price: 15
         inStock: true
 images:
   - src: /assets/uploads/IKAROA-Pouch-large.png

@@ -328,11 +328,22 @@ img {
 
 /* Desktop Breakpoint */
 
-@media (min-width: 1140px) {
+@media (min-width: 1280px) {
 
 	.grid__item--span-4 {
 		grid-column: span 2/5;
 	}
+
+	.columns {
+		-moz-column-count: 3;
+       column-count: 3;
+	}
+
+}
+
+/* Large Desktop Breakpoint */
+
+@media (min-width: 1400px) {
 
 	.columns {
 		-moz-column-count: 4;

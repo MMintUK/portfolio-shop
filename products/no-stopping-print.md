@@ -65,6 +65,9 @@ images:
   - src: /assets/uploads/No_Stopping_Print_30_45_Framed.jpg
     caption: 30cm x 45cm Framed
     variant: "pine-30cm"
+  - src: /assets/uploads/No_Stopping_3000_Unframed.jpg
+    caption: Unframed
+    variant: "none"    
 additionalImages:
   - src: /assets/uploads/no-stopping-1660.jpg
     caption: Unframed Print Detail

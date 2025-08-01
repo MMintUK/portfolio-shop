@@ -16,6 +16,9 @@ const embedYouTube = require("eleventy-plugin-youtube-embed");
 
 module.exports = function(eleventyConfig) {
 
+  // Add GIF generator plugin
+  eleventyConfig.addPlugin(require('./_plugins/gif-generator.js'));
+
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
   eleventyConfig.addPlugin(embedEverything, {

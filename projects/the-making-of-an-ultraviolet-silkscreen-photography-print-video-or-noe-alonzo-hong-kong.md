@@ -12,7 +12,7 @@ date: 2022-10-23T13:02:11.245Z
 ---
 
  <!-- Add your local MP4 video -->
-  <video width="100%" height="auto" controls>
+  <video width="100%" height="auto" controls autoplay loop>
     <source src="/assets/uploads/Noe_Alonzo_Rob_Green_Hong_Kong_Day.mp4" type="video/mp4">
   </video>
 
