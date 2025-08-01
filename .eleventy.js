@@ -79,21 +79,44 @@ module.exports = function(eleventyConfig) {
     // Remove it from the image path if it exists
     src = src.startsWith("/") ? src.slice(1) : src;
 
-    let metadata = await Image(src, {
-      widths: outputWidths,
-      sharpJpegOptions: { quality: outputQualityJpeg },
-      sharpWebpOptions: { quality: outputQualityWebp },
-      sharpAvifOptions: { quality: outputQualityAvif },
-      formats: outputFormats,
-      urlPath: "/assets/images/",
-      outputDir: "./_site/assets/images/",
-      cacheOptions: {
-        // If image is a remote URL, this is the amount of time before 11ty fetches a fresh copy
-        duration: "5y",
-        directory: ".cache",
-        removeUrlQueryParams: true,
-      },
-    });
+    // Filter out unsupported formats that might cause issues on Netlify
+    const supportedFormats = outputFormats.filter(format => 
+      format !== 'heif' && format !== 'heic'
+    );
+
+    let metadata;
+    try {
+      metadata = await Image(src, {
+        widths: outputWidths,
+        sharpJpegOptions: { quality: outputQualityJpeg },
+        sharpWebpOptions: { quality: outputQualityWebp },
+        sharpAvifOptions: { quality: outputQualityAvif },
+        formats: supportedFormats,
+        urlPath: "/assets/images/",
+        outputDir: "./_site/assets/images/",
+        cacheOptions: {
+          // If image is a remote URL, this is the amount of time before 11ty fetches a fresh copy
+          duration: "5y",
+          directory: ".cache",
+          removeUrlQueryParams: true,
+        },
+      });
+    } catch (error) {
+      console.error(`Error processing image ${src}:`, error.message);
+      // Fallback to JPEG only if other formats fail
+      metadata = await Image(src, {
+        widths: outputWidths,
+        sharpJpegOptions: { quality: outputQualityJpeg },
+        formats: ['jpeg'],
+        urlPath: "/assets/images/",
+        outputDir: "./_site/assets/images/",
+        cacheOptions: {
+          duration: "5y",
+          directory: ".cache",
+          removeUrlQueryParams: true,
+        },
+      });
+    }
 
     let lowsrc = metadata.jpeg[0];
 
