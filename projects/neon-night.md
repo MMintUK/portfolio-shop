@@ -13,4 +13,4 @@ images:
 
 date: 2023-11-10T09:12:06.264Z
 ---
-**[SHOP NOW](https://shop.mmint.uk/products/neon-night-framed-print)**
+<a href="/shop/" class="btn-shop-now">SHOP NOW</a>

@@ -6,10 +6,10 @@ description: |
 year: 22/09/2023
 position: 2
 images:
-  - src: /assets/uploads/Monkey_Terrorist_Rob_Green_MMINT_1080.jpg
+  - src: /assets/uploads/Monkey_Terrorist_Graff_1080.png
     caption: Monkey Terrorist
-  - src: /assets/uploads/Monkey_Terrorist_MMINT_Rob_Green_Artist_30_20.jpg
+  - src: /assets/uploads/Monkey_Terrorist_60_40.jpg
     caption: Monkey Terrorist
 date: 2023-09-22T10:26:09.471Z
 ---
-**[SHOP NOW](https://shop.mmint.uk/products/monkey-terrorist-framed-print-1)**
+<a href="/shop/" class="btn-shop-now">SHOP NOW</a>

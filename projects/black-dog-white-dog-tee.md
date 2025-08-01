@@ -10,4 +10,4 @@ images:
     caption: Black Dog White Dog Tee
 date: 2023-08-24T13:02:11.245Z
 ---
-**[SHOP NOW](https://shop.mmint.uk/products/white-dog)**
+<a href="/shop/" class="btn-shop-now">SHOP NOW</a>

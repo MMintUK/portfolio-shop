@@ -17,6 +17,7 @@ class ProductGallery {
     this.images = [];
     this.isLoading = false;
     this.isMobileZoomed = false;
+    this.isUpdatingVariants = false; // Prevent infinite loops
     
     if (this.galleryWidget && this.mainImage && this.thumbnailContainer) {
       this.init();
@@ -31,6 +32,15 @@ class ProductGallery {
     // Load first image
     if (this.images.length > 0) {
       this.showImage(0);
+    } else {
+      // If no images found initially, try again after a short delay
+      // This handles cases where layout changes affect element visibility
+      setTimeout(() => {
+        this.collectImageData();
+        if (this.images.length > 0) {
+          this.showImage(0);
+        }
+      }, 100);
     }
   }
   
@@ -193,15 +203,27 @@ class ProductGallery {
   updateDisplayWindowSize() {
     if (!this.displayWindow) return;
     
-    const container = this.displayWindow.closest('.product-images-column');
-    if (container) {
-      const containerWidth = container.offsetWidth;
-      
-      // Ensure window doesn't exceed container width
-      this.displayWindow.style.maxWidth = `${containerWidth}px`;
-      
-      // Remove any height overrides to maintain CSS square aspect ratio
+    // Check if we're on mobile (where product-images-column uses display: contents)
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+      // On mobile, use viewport width minus padding
+      const viewportWidth = window.innerWidth;
+      const padding = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--space') || '16px');
+      this.displayWindow.style.maxWidth = `${viewportWidth}px`;
       this.displayWindow.style.height = '';
+    } else {
+      // Desktop: use the product-images-column container
+      const container = this.displayWindow.closest('.product-images-column');
+      if (container) {
+        const containerWidth = container.offsetWidth;
+        
+        // Ensure window doesn't exceed container width
+        this.displayWindow.style.maxWidth = `${containerWidth}px`;
+        
+        // Remove any height overrides to maintain CSS square aspect ratio
+        this.displayWindow.style.height = '';
+      }
     }
   }
   
@@ -276,6 +298,243 @@ class ProductGallery {
         thumbnail.classList.remove('active');
       }
     });
+    
+    // Update variant form to match the selected image
+    this.updateVariantsFromImage(activeIndex);
+  }
+  
+  updateVariantsFromImage(imageIndex) {
+    // Prevent infinite loops between gallery and variant updates
+    if (this.isUpdatingVariants) return;
+    
+    const imageData = this.images[imageIndex];
+    if (!imageData || !imageData.thumbnail) return;
+    
+    // Find the product form
+    const productForm = document.getElementById('product-form');
+    if (!productForm) return;
+    
+    // Set flag to prevent variant system from updating gallery
+    this.isUpdatingVariants = true;
+    
+    const variant = imageData.thumbnail.dataset.variant;
+    const caption = imageData.thumbnail.dataset.alt || imageData.alt || '';
+    const imageSrc = imageData.fullSrc || '';
+    
+    // Debug logging
+    console.log('Gallery updating variants for image:', imageIndex, {
+      variant,
+      caption,
+      imageSrc: imageSrc.substring(imageSrc.lastIndexOf('/') + 1) // just filename
+    });
+    
+    // Try variant attribute first
+    if (variant) {
+      this.setVariantFromString(variant, productForm);
+    } 
+    // Fallback: try to extract variant info from caption or filename
+    else if (caption || imageSrc) {
+      this.setVariantFromImageInfo(caption, imageSrc, productForm);
+    }
+    
+    // Reset flag after a short delay
+    setTimeout(() => {
+      this.isUpdatingVariants = false;
+    }, 100);
+  }
+  
+  setVariantFromImageInfo(caption, imageSrc, form) {
+    // Try to extract variant information from caption or image filename
+    const info = `${caption} ${imageSrc}`.toLowerCase();
+    
+    // Check for color variants
+    const colors = ['black', 'white', 'grey', 'gray', 'red', 'blue', 'green', 'yellow', 'pink', 'navy', 'brown'];
+    const foundColor = colors.find(color => info.includes(color));
+    if (foundColor) {
+      this.selectVariantByValue(foundColor, form);
+    }
+    
+    // Check for size variants (T-shirt sizes)
+    const sizes = ['xs', 'small', 'medium', 'large', 'xl', 'xxl', 's', 'm', 'l'];
+    const foundSize = sizes.find(size => {
+      // Look for exact matches or common size patterns
+      return info.includes(` ${size} `) || info.includes(`_${size}_`) || 
+             info.includes(`${size}.`) || info.includes(`${size},`) ||
+             info.endsWith(size);
+    });
+    if (foundSize) {
+      this.selectVariantByValue(foundSize.toUpperCase(), form);
+    }
+  }
+  
+  setVariantFromString(variantString, form) {
+    // Handle different variant patterns
+    if (variantString === 'none') {
+      // Select unframed option
+      this.selectFrameVariant('none', form);
+    } else if (variantString.includes('-')) {
+      // Handle composite variants like "pine-90cm", "black-45cm", etc.
+      const parts = variantString.split('-');
+      if (parts.length >= 2) {
+        const frameType = parts[0]; // e.g., "pine", "black", "white"
+        const sizePart = parts[1]; // e.g., "90cm", "45cm"
+        
+        // Select frame variant
+        this.selectFrameVariant(frameType, form);
+        
+        // Select size variant - try to match with size options
+        this.selectSizeVariant(sizePart, form);
+      }
+    } else {
+      // Try to match single variants
+      this.selectVariantByValue(variantString, form);
+    }
+  }
+  
+  selectFrameVariant(frameType, form) {
+    // Find frame-related inputs (radio buttons or select)
+    const frameInputs = form.querySelectorAll('input[name*="frame" i], select[name*="frame" i]');
+    
+    frameInputs.forEach(input => {
+      if (input.type === 'radio') {
+        // For radio buttons, check if the value matches
+        if (input.value.toLowerCase() === frameType.toLowerCase() || 
+            (frameType === 'none' && (input.value === 'none' || input.value === 'unframed'))) {
+          input.checked = true;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      } else if (input.tagName === 'SELECT') {
+        // For select dropdowns
+        const options = Array.from(input.options);
+        const matchingOption = options.find(option => 
+          option.value.toLowerCase() === frameType.toLowerCase() ||
+          (frameType === 'none' && (option.value === 'none' || option.value === 'unframed'))
+        );
+        if (matchingOption) {
+          input.value = matchingOption.value;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+    });
+  }
+  
+  selectSizeVariant(sizePart, form) {
+    // Find size-related inputs
+    const sizeInputs = form.querySelectorAll('input[name*="size" i], select[name*="size" i]');
+    
+    // Create mapping for common size patterns
+    const sizeMap = {
+      '45cm': ['45cm x 30cm', '45 x 30', '45cm', '45'],
+      '60cm': ['60cm x 40cm', '60 x 40', '60cm', '60'],
+      '90cm': ['90cm x 60cm', '90 x 60', '90cm', '90']
+    };
+    
+    // Get possible matches for this size part
+    const possibleMatches = sizeMap[sizePart] || [sizePart];
+    
+    console.log('Selecting size variant:', sizePart, 'possible matches:', possibleMatches);
+    
+    let matchFound = false; // Prevent multiple selections
+    
+    sizeInputs.forEach(input => {
+      if (matchFound) return; // Skip if we already found a match
+      
+      if (input.type === 'radio') {
+        // For radio buttons, check against all possible matches
+        const inputValue = input.value.toLowerCase();
+        console.log('Checking radio button:', input.value, 'against possible matches:', possibleMatches);
+        
+        const found = possibleMatches.some(match => {
+          const matchValue = match.toLowerCase();
+          const exactMatch = inputValue === matchValue;
+          
+          // For precise matching of dimensions, we need to be careful about partial matches
+          let preciseMatch = false;
+          
+          if (exactMatch) {
+            preciseMatch = true;
+          } else if (matchValue.includes('cm x')) {
+            // Full dimension format - must be exact match
+            preciseMatch = false;
+          } else if (matchValue.endsWith('cm')) {
+            // Size format like "60cm" - check if input starts with this dimension
+            const sizeNumber = matchValue.replace('cm', '');
+            // Input should start with the size number followed by 'cm'
+            preciseMatch = inputValue.startsWith(sizeNumber + 'cm');
+          } else {
+            // For other formats, use word boundary matching
+            const regex = new RegExp('\\b' + matchValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b');
+            preciseMatch = regex.test(inputValue);
+          }
+          
+          console.log(`  Match "${match}": exact=${exactMatch}, precise=${preciseMatch}`);
+          return preciseMatch;
+        });
+        
+        if (found) {
+          console.log('✓ Found matching radio button:', input.value);
+          input.checked = true;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+          matchFound = true; // Mark that we found a match
+        } else {
+          console.log('✗ No match for radio button:', input.value);
+        }
+      } else if (input.tagName === 'SELECT' && !matchFound) {
+        // For select dropdowns
+        const options = Array.from(input.options);
+        const matchingOption = options.find(option => {
+          return possibleMatches.some(match => {
+            const optionValue = option.value.toLowerCase();
+            const matchValue = match.toLowerCase();
+            return optionValue === matchValue || optionValue.includes(matchValue);
+          });
+        });
+        
+        if (matchingOption) {
+          console.log('Found matching select option:', matchingOption.value);
+          input.value = matchingOption.value;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+    });
+  }
+  
+  selectVariantByValue(variantValue, form) {
+    // Try to find any input that matches this variant value
+    const allInputs = form.querySelectorAll('input[type="radio"], select');
+    const lowerValue = variantValue.toLowerCase();
+    
+    allInputs.forEach(input => {
+      if (input.type === 'radio') {
+        const inputValue = input.value.toLowerCase();
+        const inputLabel = input.nextElementSibling?.textContent?.toLowerCase() || '';
+        
+        // Check exact match, partial match, or label match
+        if (inputValue === lowerValue || 
+            inputValue.includes(lowerValue) || 
+            lowerValue.includes(inputValue) ||
+            inputLabel.includes(lowerValue)) {
+          input.checked = true;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      } else if (input.tagName === 'SELECT') {
+        const options = Array.from(input.options);
+        const matchingOption = options.find(option => {
+          const optionValue = option.value.toLowerCase();
+          const optionText = option.textContent.toLowerCase();
+          
+          return optionValue === lowerValue || 
+                 optionValue.includes(lowerValue) || 
+                 lowerValue.includes(optionValue) ||
+                 optionText.includes(lowerValue);
+        });
+        
+        if (matchingOption) {
+          input.value = matchingOption.value;
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+    });
   }
   
   nextImage() {
@@ -313,9 +572,17 @@ class ProductGallery {
   goToImage(index) {
     this.showImage(index);
   }
+  
+  // Check if gallery is currently updating variants (to prevent loops)
+  isUpdatingVariantsFromGallery() {
+    return this.isUpdatingVariants;
+  }
 }
 
 // Initialize gallery when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  window.productGallery = new ProductGallery();
+  // Add a small delay to ensure CSS layout changes have been applied
+  setTimeout(() => {
+    window.productGallery = new ProductGallery();
+  }, 50);
 });

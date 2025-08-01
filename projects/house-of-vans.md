@@ -20,4 +20,4 @@ images:
 date: 2014-09-22T13:02:11.245Z
 ---
 
-**[SHOP NOW](https://shop.mmint.uk/products/ello-tote-bag)**
+<a href="/shop/" class="btn-shop-now">SHOP NOW</a>

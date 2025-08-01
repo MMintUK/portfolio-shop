@@ -77,8 +77,6 @@ images:
   - src: /assets/uploads/a718598e-407f-4f47-8174-7c07edaf7408.jpg
     caption: Black Dog White Dog Tee - White
     variant: "white"
-  - src: /assets/uploads/MMINT_APPAREL_ART_PRINTS_Portrait.jpg
-    caption: Black Dog White Dog Tee - Lifestyle
   - src: /assets/uploads/T-shirt_Chart-01.png
     caption: T-shirt Size Chart
   - src: /assets/uploads/64b71abe-fc4b-45b0-bf3d-b5b2994b5b28.png
@@ -92,7 +90,10 @@ images:
   - src: /assets/uploads/5f94fbe2-2421-40d7-8c18-57fe94576af5.jpg
     caption: Black Dog White Dog Tee - Detail
   - src: /assets/uploads/cfbc83ac-af7e-4265-ad5f-3bc732af28f6.png
-    caption: Black Dog White Dog Tee - Detail    
+    caption: Black Dog White Dog Tee - Detail
+additionalImages:
+  - src: /assets/uploads/MMINT_APPAREL_ART_PRINTS_Portrait.jpg
+    caption: MockUp     
 dimensions:
   care: "Machine wash cold, tumble dry low"
   material: "100% Cotton"

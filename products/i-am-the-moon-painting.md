@@ -17,6 +17,9 @@ images:
     caption: I AM THE MOON Detail View
   - src: /assets/uploads/iam_the_moon_rob_green__mmint_1080.jpg
     caption: I AM THE MOON Close-up Detail
+additionalImages:
+  - src: /assets/uploads/Iam_The_Moon_Rob_Green_Wyllie_1800.jpg
+    caption: I AM THE MOON Original Painting  
 dimensions:
   width: "90cm"
   height: "120cm"

@@ -59,8 +59,9 @@ images:
   - src: /assets/uploads/Kim-jong-un-and-friends-1800.jpg
     caption: Unframed Print
     variant: "none"
-  - src: /assets/uploads/Kim-jong-un-and-friends-1800.jpg
-    caption: KIM JONG UN & FRIENDS Print            
+additionalImages:
+  - src: /assets/uploads/kim_jong_un_-_friends_rob_green_artist_-mmint-uk_japan_street_art_graffiti_1440_opti.jpg
+    caption: Detail             
 dimensions:
   weight: "250gsm premium paper"
   finish: "Matte finish"

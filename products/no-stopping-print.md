@@ -64,7 +64,10 @@ images:
     variant: "pine-50cm"
   - src: /assets/uploads/No_Stopping_Print_30_45_Framed.jpg
     caption: 30cm x 45cm Framed
-    variant: "pine-30cm"    
+    variant: "pine-30cm"
+additionalImages:
+  - src: /assets/uploads/no-stopping-1660.jpg
+    caption: Unframed Print Detail
 dimensions:
   weight: "250gsm premium paper"
   finish: "Matte finish"

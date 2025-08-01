@@ -10,4 +10,4 @@ images:
     caption: Ello Hoodie
 date: 2023-10-04T10:14:33.896Z
 ---
- Infuse your fashion with playfulness through this delightful illustration. Your new fashion buddy is here to bring a smile to your style! **[SHOP NOW](https://shop.mmint.uk/products/ello-uni-sex-hoodie)**
+ Infuse your fashion with playfulness through this delightful illustration. Your new fashion buddy is here to bring a smile to your style! <a href="/shop/" class="btn-shop-now">SHOP NOW</a>

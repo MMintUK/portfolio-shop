@@ -3,8 +3,8 @@ draft: false
 title: "Monkey Terrorist Print"
 description: |
   A sarcastic observation of media narratives and how masses are misinformed. This piece examines false narratives propagated by major media outlets and their effects on society.
-price: 45
-basePrice: 45
+price: 20
+basePrice: 20
 sku: "MONKEY-TERRORIST-PRINT"
 stripeProductId: "prod_print_monkey_terrorist"
 inStock: true
@@ -16,41 +16,49 @@ variants:
     type: "size"
     required: true
     options:
-      - value: "A4"
-        label: "A4 (21 x 29.7 cm)"
-        price: 45
+      - value: "45cm x 30cm"
+        label: "45cm x 30cm"
+        price: 20
         inStock: true
-      - value: "A3"
-        label: "A3 (29.7 x 42 cm)"
-        price: 65
+      - value: "60cm x 40cm"
+        label: "60cm x 40cm"
+        price: 30
         inStock: true
-      - value: "A2"
-        label: "A2 (42 x 59.4 cm)"
-        price: 95
+      - value: "90cm x 60cm"
+        label: "90cm x 60cm"
+        price: 40
         inStock: true
   - name: "Frame"
     type: "option"
-    required: false
+    required: true
     options:
       - value: "none"
-        label: "No Frame"
-        price: 0
+        label: "Unframed"
+        priceBySize:
+          "45cm x 30cm": 20
+          "60cm x 40cm": 30
+          "90cm x 60cm": 40
         inStock: true
-      - value: "black"
-        label: "Black Frame"
-        price: 25
-        inStock: true
-      - value: "white"
-        label: "White Frame"
-        price: 25
+      - value: "pine"
+        label: "Pine Frame"
+        priceBySize:
+          "45cm x 30cm": 40
+          "60cm x 40cm": 60
+          "90cm x 60cm": 100
         inStock: true
 images:
-  - src: /assets/uploads/Monkey_Terrorist_MMINT_Rob_Green_Artist_30_20.jpg
-    caption: Monkey Terrorist Print
-  - src: /assets/uploads/Monkey_Terrorist_MMINT_Rob_Green_Artist_36_24.jpg
-    caption: Monkey Terrorist Print
-  - src: /assets/uploads/Monkey_Terrorist_MMINT_Rob_Green_Artist_18_12.jpg
-    caption: Monkey Terrorist Print    
+  - src: /assets/uploads/Monkey_Terrorist_90_60.jpg
+    caption: 90cm x 60cm Framed
+    variant: "pine-90cm"
+  - src: /assets/uploads/Monkey_Terrorist_60_40.jpg
+    caption: 60cm x 40cm Framed
+    variant: "pine-60cm"
+  - src: /assets/uploads/Monkey_Terrorist_45_30.jpg
+    caption: 45cm x 30cm Framed
+    variant: "pine-45cm"
+  - src: /assets/uploads/Monkey_Terrorist_Graff_1080.png
+    caption: Unframed Print
+    variant: "none"
 dimensions:
   weight: "250gsm premium paper"
   finish: "Matte finish"
@@ -60,10 +68,10 @@ layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---
 
-This thought-provoking piece examines the false narratives propagated by major media outlets and their effects on society. A sarcastic observation of how masses are unwittingly being misinformed and blinded.
+*Includes VAT & Shipping
 
 **Print Details:**
-- Premium 250gsm paper stock
-- Matte finish for reduced glare
-- Professional printing
-- Ready to frame or display
+- Premium 250gsm Paper Stock
+- Professional Printing
+- Pine Wood Frame*
+- Shatterproof Plexiglass*

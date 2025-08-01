@@ -10,4 +10,4 @@ images:
     caption: Ello Sticker
 date: 2023-10-23T18:04:14.662Z
 ---
-Spreading the smiles, one neon sticker at a time! 🤪 **[SHOP NOW](https://shop.mmint.uk/products/ello-sticker-pack-neon-yellow-green-2-pack)**
+Spreading the smiles, one neon sticker at a time! 🤪 <a href="/shop/" class="btn-shop-now">SHOP NOW</a>

@@ -153,6 +153,12 @@ class ProductVariants {
   }
 
   updateProductImages() {
+    // Check if gallery is currently updating variants to prevent infinite loops
+    if (window.productGallery && typeof window.productGallery.isUpdatingVariantsFromGallery === 'function' && 
+        window.productGallery.isUpdatingVariantsFromGallery()) {
+      return;
+    }
+    
     // Get selected variants
     const variants = this.getSelectedVariants();
     

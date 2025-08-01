@@ -59,8 +59,9 @@ images:
   - src: /assets/uploads/Neon_Night_Print_1660.jpg
     caption: Unframed Print
     variant: "none"    
-  - src: /assets/uploads/Neon_Night_Mock_Up_1174.jpg
-    caption: In  Situ    
+additionalImages:
+  - src: /assets/uploads/Neon_Night_Print_Mock_Up_1660.jpg
+    caption: In  Situ       
 date: 2024-01-13T10:00:00.000Z
 position: 1
 layout: layouts/product.njk

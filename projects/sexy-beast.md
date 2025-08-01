@@ -22,4 +22,4 @@ Don: Fat cunt!
 Gal: No, No, No!  
 Don: Yes, Yes, Yes!
 
-**[SHOP NOW](https://shop.mmint.uk/products/sexy-beast-framed-print)**
+<a href="/shop/" class="btn-shop-now">SHOP NOW</a>

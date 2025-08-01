@@ -59,6 +59,9 @@ images:
   - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_black_1080.png
     caption: Unframed Print
     variant: "none"
+additionalImages:
+  - src: /assets/uploads/ikaroa_rob_green_mmint_black_white_gallery_1880_opti.jpg
+    caption: MockUp    
 date: 2024-01-15T10:00:00.000Z
 position: 1
 layout: layouts/product.njk

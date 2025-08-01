@@ -19,4 +19,4 @@ images:
 date: 2020-05-20T13:02:11.245Z
 ---
 
-**[SHOP NOW](https://shop.mmint.uk/products/ikaroa-framed-print)**
+<a href="/shop/" class="btn-shop-now">SHOP NOW</a>

@@ -15,4 +15,4 @@ images:
 date: 2013-06-14T13:02:11.245Z
 ---
 
-**[SHOP NOW](https://shop.mmint.uk/products/red-lust)**
+<a href="/shop/" class="btn-shop-now">SHOP NOW</a>

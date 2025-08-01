@@ -233,9 +233,6 @@ img {
 	[data-current="shop"] main.p--2,
 	[data-current="project"] main.p--2,
 	[data-current="product"] main.p--2,
-	main.product-page {
-		padding: 0;
-	}
 	
 	/* Add top padding for project page to match product spacing after header */
 	main.project-page {

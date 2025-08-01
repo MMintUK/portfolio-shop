@@ -2,7 +2,7 @@
 draft: false
 title: NO STOPPING
 description: |
-  Why did the kitten cross the road? To challenge the 'NO STOPPING' sign of course! **[SHOP NOW](https://shop.mmint.uk/products/no-stopping-framed-print)** 
+  Why did the kitten cross the road? To challenge the 'NO STOPPING' sign of course! <a href="/shop/" class="btn-shop-now">SHOP NOW</a> 
 year: 13/09/2023
 position: 10
 images:
@@ -13,4 +13,4 @@ images:
 
 date: 2023-09-13T12:26:42.925Z
 ---
-**[SHOP NOW](https://shop.mmint.uk/products/no-stopping-framed-print)**
+<a href="/shop/" class="btn-shop-now">SHOP NOW</a>

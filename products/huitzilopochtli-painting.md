@@ -20,7 +20,10 @@ images:
   - src: /assets/uploads/HUITZILOPOCHTLI_MMINT_Detail_2160.jpg
     caption: Huitzilopochtli | Canvas & Bamboo Scroll
   - src: /assets/uploads/HUITZILOPOCHTLI_MMINT_Detail_03_2160.jpg
-    caption: Huitzilopochtli | Canvas & Bamboo Scroll  
+    caption: Huitzilopochtli | Canvas & Bamboo Scroll
+additionalImages:
+  - src: /assets/uploads/Rob-Green-Frames-MockUp_CUT_NEWSATEDIT.jpg
+    caption: MockUp       
 dimensions:
   width: "100cm"
   height: "70cm"

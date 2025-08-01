@@ -14,12 +14,16 @@ category: "apparel"
 images:
   - src: /assets/uploads/Hoodie_Zipped_Light_Black.jpg
     caption: Light black zipped hoodie
+    variant: "black"
   - src: /assets/uploads/Hoodie_Zipped_Light_Grey.jpg
     caption: Light grey zipped hoodie
+    variant: "grey"
   - src: /assets/uploads/Hoodie_White.jpg
     caption: White hoodie
+    variant: "white"
+additionalImages:
   - src: /assets/uploads/mmint.uk_black_hoodie_winter_1350_insta.jpg
-    caption: Black hoodie winter style    
+    caption: Model    
 variants:
   - name: "Size"
     type: "size"
