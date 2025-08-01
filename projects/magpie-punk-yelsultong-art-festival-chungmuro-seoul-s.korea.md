@@ -17,5 +17,5 @@ date: 2019-10-19T13:02:11.245Z
 
  <!-- Add your local MP4 video -->
   <video width="100%" height="auto" controls>
-    <source src="/assets/uploads/Yelsultong_Rob_Green.mp4" type="video/mp4">
+    <source src="/assets/uploads/yelsultong_art_festival_chungmuro_seoul_magpie_rob_green_artist_mmint_mural_street_art_video.mp4" type="video/mp4">
   </video>

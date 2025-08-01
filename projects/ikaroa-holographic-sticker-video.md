@@ -15,5 +15,3 @@ date: 2023-09-11T08:24:31.507Z
   <video width="100%" height="auto" controls>
     <source src="/assets/uploads/IKAROA_Holographic_Sticker_Rob_Green.mp4" type="video/mp4">
   </video>
-
-<a href="/shop/" class="btn-shop-now">SHOP NOW</a>  
