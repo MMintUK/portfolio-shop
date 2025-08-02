@@ -55,6 +55,11 @@ section: project
         
         {# Videos will be moved here by JavaScript #}
         <div id="project-videos-container"></div>
+        
+        {# Social Share Buttons - Mobile version (appears under images) #}
+        <div class="social-share-mobile">
+          {% include "components/socialShare.njk" %}
+        </div>
       </div>
     </div>
 
@@ -78,6 +83,11 @@ section: project
             {{ layoutContent | safe }}
           </div>
         {% endif %}
+
+        {# Social Share Buttons - Desktop version #}
+        <div class="social-share-desktop">
+          {% include "components/socialShare.njk" %}
+        </div>
       </div>
     </div>
   </div>

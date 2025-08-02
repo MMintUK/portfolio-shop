@@ -1104,3 +1104,88 @@ body .product-container .product-content-column {
     flex-direction: column;
   }
 }
+
+/* Social Share Styles */
+.social-share {
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.share-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--color-text, #101010);
+  font-size: 1rem;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  text-decoration: none;
+  color: var(--color-text, #101010);
+  background: transparent;
+  border: none;
+}
+
+.share-btn:hover {
+  opacity: 0.7;
+}
+
+.share-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Desktop/Mobile positioning */
+.social-share-mobile {
+  display: none;
+}
+
+.social-share-desktop {
+  display: block;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .social-share-mobile {
+    display: block;
+  }
+  
+  .social-share-desktop {
+    display: none;
+  }
+  
+  .social-share-mobile .social-share {
+    text-align: center;
+  }
+  
+  .social-share-mobile .share-buttons {
+    justify-content: center;
+  }
+  
+  .share-buttons {
+    gap: 0.75rem;
+  }
+  
+  .share-btn {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .share-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+}
