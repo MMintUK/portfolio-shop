@@ -1,13 +1,17 @@
 /* Shop Styles */
 
-/* Force light theme for shop and product pages */
+/* Force light theme for shop, product, and cart pages */
 [data-current="shop"],
 [data-current="shop"] body,
 html[data-current="shop"],
 .product-page,
 .page.product-page,
 body:has(.product-page),
-body:has(.page.product-page) {
+body:has(.page.product-page),
+.cart-page,
+.page.cart-page,
+body:has(.cart-page),
+body:has(.page.cart-page) {
   --color-background: #ffffff !important;
   --color-text: #101010 !important;
   --color-link: #101010 !important;
@@ -15,7 +19,9 @@ body:has(.page.product-page) {
 
 [data-current="shop"] body,
 body:has(.product-page),
-body:has(.page.product-page) {
+body:has(.page.product-page),
+body:has(.cart-page),
+body:has(.page.cart-page) {
   background: #ffffff !important;
   color: #101010 !important;
 }
@@ -23,7 +29,9 @@ body:has(.page.product-page) {
 /* Override image display window background for light theme */
 [data-current="shop"] .image-display-window,
 body:has(.product-page) .image-display-window,
-body:has(.page.product-page) .image-display-window {
+body:has(.page.product-page) .image-display-window,
+body:has(.cart-page) .image-display-window,
+body:has(.page.cart-page) .image-display-window {
   background: #ffffff !important;
 }
 
@@ -32,6 +40,8 @@ body:has(.page.product-page) .image-display-window {
   display: grid;
   grid-template-columns: 1fr;
   gap: calc(var(--space) * 1.25);
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Responsive grid layout matching the base columns system */
@@ -63,6 +73,8 @@ body:has(.page.product-page) .image-display-window {
 .shop-filters {
   text-align: left;
   margin: 2rem 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .filter-nav {
@@ -71,10 +83,29 @@ body:has(.page.product-page) .image-display-window {
   align-items: center;
 }
 
-/* Mobile view - center the filters */
+/* Mobile view - center the filters and prevent overflow */
 @media (max-width: 768px) {
   .shop-filters {
     text-align: center;
+  }
+  
+  .filter-nav {
+    gap: 1rem; /* Reduce gap on mobile */
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .filter-nav {
+    gap: 0.75rem; /* Further reduce gap on very small screens */
+  }
+  
+  .filter-btn {
+    font-size: 0.9rem; /* Slightly smaller font */
+    padding: 0.4rem 0;
   }
 }
 
