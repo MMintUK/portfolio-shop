@@ -12,7 +12,7 @@ date: 2022-10-20T13:02:11.245Z
 ---
 
  <!-- Add your local MP4 video -->
-  <video width="100%" height="auto" controls autoplay loop>
+  <video width="100%" height="auto" controls autoplay loop muted>
     <source src="/assets/uploads/Noe_Alonzo_Rob_Green_Seoul_Night.mp4" type="video/mp4">
   </video>
 

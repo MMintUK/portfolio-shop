@@ -12,7 +12,7 @@ date: 2024-05-22T13:01:11.245Z
 ---
 
  <!-- Add your local MP4 video -->
-  <video width="100%" height="auto" controls autoplay loop>
+  <video width="100%" height="auto" controls autoplay loop muted>
     <source src="/assets/uploads/ai_wei_wei.mp4" type="video/mp4">
   </video>
  

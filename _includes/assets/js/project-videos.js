@@ -31,6 +31,9 @@ class ProjectVideoMover {
       videoClone.style.height = 'auto';
       videoClone.style.marginBottom = '2rem';
       
+      // Set up immediate audio unmuting for autoplay videos
+      this.setupAutoUnmute(videoClone);
+      
       // Generate poster if one doesn't exist
       this.generatePosterFrame(videoClone);
       
@@ -52,8 +55,153 @@ class ProjectVideoMover {
     const existingVideos = document.querySelectorAll('.project-video-content video');
     existingVideos.forEach(video => {
       this.generatePosterFrame(video);
+      this.setupAutoUnmute(video);
     });
   }
+
+  setupAutoUnmute(video) {
+    // Only handle videos with autoplay and controls
+    if (!video.hasAttribute('autoplay') || !video.hasAttribute('controls')) {
+      return;
+    }
+
+    console.log('🎬 Setting up auto-unmute for video:', video.src || video.querySelector('source')?.src);
+
+    let hasTriedUnmute = false;
+    let audioPromptShown = false;
+
+    // Function to try unmuting
+    const tryUnmute = async () => {
+      if (hasTriedUnmute) return;
+      hasTriedUnmute = true;
+
+      console.log('🎵 Attempting to unmute video...');
+      
+      try {
+        // Try to unmute immediately
+        video.muted = false;
+        
+        // Restart video to ensure audio plays
+        video.currentTime = 0;
+        await video.play();
+        
+        console.log('✅ Video successfully unmuted and playing with audio');
+        
+        // Verify audio is actually working after a short delay
+        setTimeout(() => {
+          if (video.muted) {
+            console.warn('⚠️ Video was re-muted by browser, showing prompt');
+            this.showAudioPrompt(video);
+          } else {
+            console.log('🎵 Audio confirmed working');
+          }
+        }, 500);
+        
+      } catch (error) {
+        console.warn('❌ Failed to unmute video automatically:', error);
+        this.showAudioPrompt(video);
+      }
+    };
+
+    // Try to unmute as soon as possible using multiple triggers
+    const immediateUnmute = () => {
+      // Try unmuting immediately on any user interaction
+      tryUnmute();
+    };
+
+    // Listen for any user interaction to enable audio
+    const interactionEvents = ['click', 'touchstart', 'keydown', 'mousemove'];
+    interactionEvents.forEach(event => {
+      document.addEventListener(event, immediateUnmute, { once: true });
+    });
+
+    // Also try when video events fire
+    video.addEventListener('loadeddata', tryUnmute, { once: true });
+    video.addEventListener('canplay', tryUnmute, { once: true });
+    video.addEventListener('play', tryUnmute, { once: true });
+
+    // Final fallback - show prompt if still muted after delay
+    setTimeout(() => {
+      if (video.muted && !audioPromptShown) {
+        console.log('🔇 Video still muted after attempts, showing audio prompt');
+        this.showAudioPrompt(video);
+      }
+    }, 2000);
+  }
+
+  showAudioPrompt(video) {
+    // Create prominent audio enable button
+    const prompt = document.createElement('div');
+    prompt.className = 'video-audio-prompt';
+    prompt.innerHTML = '🔊 Click to Enable Audio';
+    prompt.style.cssText = `
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ff4444;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      z-index: 1000;
+      cursor: pointer;
+      border: 3px solid white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    `;
+
+    // Add CSS animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes pulse {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.05); }
+        100% { transform: translate(-50%, -50%) scale(1); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Make video container relative for positioning
+    const wrapper = video.parentElement;
+    if (wrapper) {
+      wrapper.style.position = 'relative';
+      wrapper.appendChild(prompt);
+
+      // Handle click to enable audio
+      prompt.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        
+        try {
+          video.muted = false;
+          video.currentTime = 0;
+          await video.play();
+          
+          console.log('🎵 Audio enabled by user click');
+          
+          // Remove prompt
+          prompt.style.opacity = '0';
+          setTimeout(() => prompt.remove(), 300);
+          
+        } catch (error) {
+          console.error('Failed to enable audio:', error);
+        }
+      });
+
+      // Auto-hide prompt if video gets unmuted elsewhere
+      const checkMuted = () => {
+        if (!video.muted && prompt.parentElement) {
+          prompt.style.opacity = '0';
+          setTimeout(() => prompt.remove(), 300);
+        }
+      };
+      
+      video.addEventListener('volumechange', checkMuted);
+    }
+  }
+
 
   generatePosterFrame(video) {
     // Skip if video already has a poster
