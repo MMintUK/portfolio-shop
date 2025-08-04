@@ -7,6 +7,7 @@ class ProductVariants {
     this.currentPrice = document.getElementById('current-price');
     this.basePrice = this.addToCartBtn ? parseFloat(this.addToCartBtn.dataset.productPrice) : 0;
     this.hasVariants = this.addToCartBtn ? this.addToCartBtn.dataset.hasVariants === 'true' : false;
+    this.isUpdatingFromGallery = false;
     
     if (this.hasVariants && this.form) {
       this.init();
@@ -36,9 +37,39 @@ class ProductVariants {
       if (e.target.matches('input[type="radio"], select')) {
         this.updatePricing();
         this.updateAvailability();
-        this.updateProductImages();
+        
+        // Update images for variant changes that should trigger image updates
+        if (!this.isUpdatingFromGallery && this.shouldUpdateImages(e.target)) {
+          this.updateProductImages();
+        }
       }
     });
+  }
+
+  // Check if the changed input should trigger image updates
+  shouldUpdateImages(input) {
+    const name = input.name.toLowerCase();
+    console.log('Checking if should update images for input:', name, input.value);
+    
+    // Update images for any variant that could affect visual appearance
+    const shouldUpdate = name.includes('color') || name.includes('colour') || 
+           name.includes('frame') || name.includes('style') ||
+           name.includes('variant') || name.includes('option') ||
+           name.includes('size'); // Add size since it can affect which image to show
+    
+    console.log('Should update images:', shouldUpdate);
+    return shouldUpdate;
+  }
+
+  // Method for gallery to signal that it's updating variants
+  setUpdatingFromGallery(isUpdating) {
+    this.isUpdatingFromGallery = isUpdating;
+    if (isUpdating) {
+      // Clear the flag after a short delay to prevent permanent blocking
+      setTimeout(() => {
+        this.isUpdatingFromGallery = false;
+      }, 100);
+    }
   }
 
   updatePricing() {
@@ -153,21 +184,33 @@ class ProductVariants {
   }
 
   updateProductImages() {
+    // Prevent infinite loops when gallery is updating variants
+    if (this.isUpdatingFromGallery) {
+      console.log('Skipping image update - currently updating from gallery');
+      return;
+    }
+    
     // Check if gallery is currently updating variants to prevent infinite loops
     if (window.productGallery && typeof window.productGallery.isUpdatingVariantsFromGallery === 'function' && 
         window.productGallery.isUpdatingVariantsFromGallery()) {
+      console.log('Skipping image update - gallery is updating variants');
       return;
     }
     
     // Get selected variants
     const variants = this.getSelectedVariants();
+    console.log('Updating product images for variants:', variants);
     
     // Find images that match the selected variants
     const matchingImages = this.findMatchingImages(variants);
+    console.log('Found matching images:', matchingImages.length, matchingImages);
     
     if (matchingImages.length > 0) {
       // Switch to the first matching image
+      console.log('Switching to image:', matchingImages[0]);
       this.switchToImage(matchingImages[0]);
+    } else {
+      console.log('No matching images found for variants:', variants);
     }
   }
 

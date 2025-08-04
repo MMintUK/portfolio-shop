@@ -35,38 +35,15 @@ body:has(.page.cart-page) .image-display-window {
   background: #ffffff !important;
 }
 
-/* Shop columns layout - Use CSS Grid for better filtering support */
-.columns--shop {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: calc(var(--space) * 1.25);
-  max-width: 100%;
-  overflow-x: hidden;
-}
+/* Shop now uses masonry columns layout like projects */
+/* The .columns--projects class from base.css handles the masonry layout */
 
-/* Responsive grid layout matching the base columns system */
-@media (min-width: 540px) {
-  .columns--shop {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 900px) {
-  .columns--shop {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1280px) {
-  .columns--shop {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1400px) {
-  .columns--shop {
-    grid-template-columns: repeat(4, 1fr);
-  }
+/* Override specific shop product styling for consistency with projects */
+.columns--projects .product-price {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0.25rem 0 0 0;
+  color: var(--color-text, #101010);
 }
 
 /* Shop Category Filters */
@@ -141,7 +118,7 @@ body:has(.page.cart-page) .image-display-window {
   display: none;
 }
 
-.columns--shop .product-price {
+.product-price {
   font-size: 0.9rem;
   font-weight: bold;
   margin: 0.25rem 0 0 0;
@@ -225,9 +202,9 @@ body:has(.page.cart-page) .image-display-window {
 }
 
 .out-of-stock-btn {
-  background: #ccc;
-  color: #666;
-  border: 1px solid #ccc;
+  background: var(--color-background, #ffffff);
+  color: var(--color-text, #101010);
+  border: 1px solid var(--color-text, #101010);
   padding: 0.75rem 1.5rem;
   cursor: not-allowed;
   font-size: 1rem;
@@ -235,6 +212,7 @@ body:has(.page.cart-page) .image-display-window {
   display: inline-block;
   text-align: center;
   font-family: inherit;
+  transition: all 0.3s ease;
 }
 
 /* Product Page Styles */
@@ -616,8 +594,9 @@ body .product-container .product-content-column {
   .product-page .thumbnail-gallery-widget {
     order: 2;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 var(--space) !important; /* Add horizontal padding to match other sections */
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   /* Ensure image display window works properly on mobile */

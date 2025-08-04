@@ -3,8 +3,8 @@ draft: false
 title: "SEXY BEAST | Print"
 description: |
   Film poster illustration for Jonathan Glazer's cult classic featuring the unforgettable performances of Ray Winstone, Ben Kingsley and Ian McShane. Professional silkscreen print capturing the film's intensity.
-price: 27.50
-basePrice: 27.50
+price: 45
+basePrice: 45
 sku: "SEXY-BEAST-PRINT"
 stripeProductId: "prod_print_sexy_beast"
 inStock: true
@@ -18,12 +18,16 @@ variants:
     options:
       - value: "40cm x 50cm"
         label: "40cm x 50cm"
-        price: 27.50
+        price: 45
         inStock: true
       - value: "45cm x 60cm"
         label: "45cm x 60cm"
-        price: 30
+        price: 50
         inStock: true
+      - value: "60cm x 80cm"
+        label: "60cm x 80cm"
+        price: 60
+        inStock: true        
   - name: "Frame"
     type: "option"
     required: true
@@ -31,20 +35,25 @@ variants:
       - value: "none"
         label: "Unframed"
         priceBySize:
-          "40cm x 50cm": 27.50
-          "45cm x 60cm": 30
+          "40cm x 50cm": 45
+          "45cm x 60cm": 50
+          "60cm x 80cm": 60         
         inStock: true
       - value: "pine"
         label: "Pine Frame"
         priceBySize:
-          "40cm x 50cm": 55
-          "45cm x 60cm": 60
+          "40cm x 50cm": 80
+          "45cm x 60cm": 90
+          "60cm x 80cm": 105          
         inStock: true
 images:
-  - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-18-24-framed.png
+  - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-60-80-framed.png
+    caption: 60cm x 80cm Framed
+    variant: "pine-60cm"
+  - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-45-60-framed.png
     caption: 45cm x 60cm Framed
     variant: "pine-45cm"
-  - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-16-20-framed.png
+  - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-40-50-framed.png
     caption: 40cm x 50cm Framed
     variant: "pine-40cm"
   - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-16-20.png

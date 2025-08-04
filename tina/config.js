@@ -118,7 +118,6 @@ export default defineConfig({
             description: "Product category",
             options: [
               { value: "prints", label: "Art Prints" },
-              { value: "apparel", label: "Apparel" },
               { value: "stickers", label: "Stickers" },
               { value: "original", label: "Original Art" },
             ],

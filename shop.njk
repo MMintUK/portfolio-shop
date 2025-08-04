@@ -11,14 +11,13 @@ section: shop
     <!-- Category Filter -->
     <section class="shop-filters mb--4">
       <nav class="filter-nav">
-        <button class="filter-btn" data-category="all">ALL</button>
-        <button class="filter-btn active" data-category="prints">PRINTS</button>
+        <button class="filter-btn active" data-category="all">ALL</button>
+        <button class="filter-btn" data-category="prints">PRINTS</button>
         <button class="filter-btn" data-category="paintings">PAINTINGS</button>
-        <button class="filter-btn" data-category="apparel">APPAREL</button>
       </nav>
     </section>
 
-    <section class="columns columns--shop" id="shop-products">
+    <section class="columns columns--projects" id="shop-products">
       {% for product in collections.products | reverse %}
         <div class="columns__item mb--1 product-item" data-category="{{ product.data.category or 'other' }}">
           <a href="{{ product.url | url }}">

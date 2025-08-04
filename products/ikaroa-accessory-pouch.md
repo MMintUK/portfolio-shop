@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 title: "IKAROA | Accessory Pouch"
 description: |
   Elevate your accessory game with our 'IKAROA' pouch. This unique accessory pouch showcases a mesmerising black and white illustration that beautifully blends Japanese and Maori influences. It's an artful celebration of cultural fusion in a timeless pop art style.
@@ -10,7 +10,7 @@ stripeProductId: "prod_ikaroa_pouch"
 inStock: true
 inventory: -1
 featured: true
-category: "apparel"
+category: "stickers"
 variants:
   - name: "Size"
     type: "size" 

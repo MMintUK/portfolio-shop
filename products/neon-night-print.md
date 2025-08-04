@@ -3,8 +3,8 @@ draft: false
 title: "NEON NIGHT | Print"
 description: |
   Street-art piece bringing together sensuality and culture, featuring a captivating figure against vibrant Japanese typography. Bold, seductive, and utterly mesmerising.
-price: 20
-basePrice: 20
+price: 40
+basePrice: 40
 sku: "NEON-NIGHT-PRINT"
 stripeProductId: "prod_print_neon_night"
 inStock: true
@@ -18,15 +18,15 @@ variants:
     options:
       - value: "30cm x 30cm"
         label: "30cm x 30cm"
-        price: 20
+        price: 40
         inStock: true
       - value: "50cm x 50cm"
         label: "50cm x 50cm"
-        price: 30
+        price: 50
         inStock: true
       - value: "70cm x 70cm"
         label: "70cm x 70cm"
-        price: 50
+        price: 65
         inStock: true
   - name: "Frame"
     type: "option"
@@ -35,25 +35,25 @@ variants:
       - value: "none"
         label: "Unframed"
         priceBySize:
-          "30cm x 30cm": 20
-          "50cm x 50cm": 30
-          "70cm x 70cm": 50
+          "30cm x 30cm": 40
+          "50cm x 50cm": 50
+          "70cm x 70cm": 65
         inStock: true
       - value: "pine"
         label: "Pine Frame"
         priceBySize:
-          "30cm x 30cm": 40
-          "50cm x 50cm": 60
-          "70cm x 70cm": 100
+          "30cm x 30cm": 70
+          "50cm x 50cm": 90
+          "70cm x 70cm": 120
         inStock: true
 images:
-  - src: /assets/uploads/Neon_Night_Print_70_70_Framed.jpg
+  - src: /assets/uploads/Neon_Night_Print_70_70_Framed.png
     caption: 70cm x 70cm Framed
     variant: "pine-70cm"
-  - src: /assets/uploads/Neon_Night_Print_50_50_Framed.jpg
+  - src: /assets/uploads/Neon_Night_Print_50_50_Framed.png
     caption: 50cm x 50cm Framed
     variant: "pine-50cm"      
-  - src: /assets/uploads/Neon_Night_Print_30_30_Framed.jpg
+  - src: /assets/uploads/Neon_Night_Print_30_30_Framed.png
     caption: 30cm x 30cm Framed
     variant: "pine-30cm"
   - src: /assets/uploads/Neon_Night_Print_1660.jpg

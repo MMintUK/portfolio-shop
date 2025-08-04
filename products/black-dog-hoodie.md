@@ -1,10 +1,10 @@
 ---
-draft: false
+draft: true
 title: "Black Dog White Dog | Hoodie"
 description: |
-  Comfortable and stylish hoodie featuring [your design]. Perfect for everyday wear with a premium feel.
-price: 45
-basePrice: 45
+  Step into the enchanting fusion of art and fashion with our paper-cut black and white illustration collection. Embrace the irresistible allure of paper-cut aesthetics and get ready ready to turn heads
+price: 60
+basePrice: 60
 sku: "HOODIE-001"
 stripeProductId: "prod_hoodie123"
 inStock: true
@@ -12,15 +12,16 @@ inventory: -1
 featured: true
 category: "apparel"
 images:
-  - src: /assets/uploads/Hoodie_Zipped_Light_Black.jpg
-    caption: Light black zipped hoodie
+  - src: /assets/uploads/black_dog_hoodie_black_2000.jpg
+    caption:  Black zipped hoodie
     variant: "black"
-  - src: /assets/uploads/Hoodie_Zipped_Light_Grey.jpg
-    caption: Light grey zipped hoodie
-    variant: "grey"
-  - src: /assets/uploads/Hoodie_White.jpg
-    caption: White hoodie
-    variant: "white"
+  - src: /assets/uploads/black_dog_hoodie__dark_grey_2000.jpg
+    caption: Dark grey zipped hoodie
+    variant: "dark_grey"
+  - src: /assets/uploads/black_dog_zipped_hoodie_front_black.jpg
+    caption: Black zipped hoodie
+  - src: /assets/uploads/black_dog_zipped_hoodie_front_dark_grey.jpg
+    caption: Dark grey zipped hoodie    
 additionalImages:
   - src: /assets/uploads/mmint.uk_black_hoodie_winter_1350_insta.jpg
     caption: Model    
@@ -29,25 +30,25 @@ variants:
     type: "size"
     required: true
     options:
+      - value: "XS"
+        label: "Extra Small (48cm x 64cm)"
+        price: 60
+        inStock: true
       - value: "S"
-        label: "Small"
-        price: 45
+        label: "Small (51.5cm x 66cm)"
+        price: 60
         inStock: true
       - value: "M"
-        label: "Medium"
-        price: 45
+        label: "Medium (55cm x 68cm)"
+        price: 60
         inStock: true
       - value: "L"
-        label: "Large"
-        price: 45
+        label: "Large (58.5cm x 70cm)"
+        price: 60
         inStock: true
       - value: "XL"
-        label: "Extra Large"
-        price: 48
-        inStock: true
-      - value: "XXL"
-        label: "XX Large"
-        price: 50
+        label: "Extra Large (62cm x 72cm)"
+        price: 60
         inStock: true
   - name: "Color"
     type: "option"
@@ -55,15 +56,11 @@ variants:
     options:
       - value: "black"
         label: "Black"
-        price: 45
+        price: 60
         inStock: true
-      - value: "grey"
-        label: "Grey"
-        price: 45
-        inStock: true
-      - value: "white"
-        label: "White"
-        price: 45
+      - value: "dark_grey"
+        label: "Dark Grey"
+        price: 60
         inStock: true
 dimensions:
   care: "Machine wash cold, tumble dry low"
@@ -86,3 +83,7 @@ A premium quality hoodie that combines comfort and style. Perfect for layering o
 - Ribbed cuffs and hem
 - Machine washable
 - Screen printed design
+
+## Size Chart
+
+![Hoodie Size Chart](/assets/uploads/Hoodie_Chart_New.png)

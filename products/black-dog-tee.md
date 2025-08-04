@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 title: "Black Dog White Dog Tee"
 description: |
   Step into the enchanting fusion of art and fashion with our paper-cut black and white illustration collection. Embrace the irresistible allure of paper-cut aesthetics and get ready ready to turn heads!
@@ -29,7 +29,7 @@ variants:
         price: 25
         inStock: true
       - value: "XL"
-        label: "X-Large (61cm x 76cm)"
+        label: "Extra Large (61cm x 76cm)"
         price: 25
         inStock: true
       - value: "XXL"
@@ -42,30 +42,15 @@ variants:
     options:
       - value: "black"
         label: "Black"
-        priceBySize:
-          "S": 25
-          "M": 25
-          "L": 25
-          "XL": 25
-          "XXL": 28
+        price: 28
         inStock: true
       - value: "grey"
         label: "Grey"
-        priceBySize:
-          "S": 25
-          "M": 25
-          "L": 25
-          "XL": 25
-          "XXL": 28
+        price: 28
         inStock: true
       - value: "white"
         label: "White"
-        priceBySize:
-          "S": 25
-          "M": 25
-          "L": 25
-          "XL": 25
-          "XXL": 28
+        price: 28
         inStock: true
 images:
   - src: /assets/uploads/70ac9df1-cdb6-425b-a145-6d2a8b02808e.jpg
@@ -77,6 +62,8 @@ images:
   - src: /assets/uploads/a718598e-407f-4f47-8174-7c07edaf7408.jpg
     caption: Black Dog White Dog Tee - White
     variant: "white"
+  - src: /assets/uploads/MMINT_APPAREL_ART_PRINTS_Portrait.jpg
+    caption: Black Dog White Dog Tee - Lifestyle
   - src: /assets/uploads/T-shirt_Chart-01.png
     caption: T-shirt Size Chart
   - src: /assets/uploads/64b71abe-fc4b-45b0-bf3d-b5b2994b5b28.png
@@ -90,10 +77,7 @@ images:
   - src: /assets/uploads/5f94fbe2-2421-40d7-8c18-57fe94576af5.jpg
     caption: Black Dog White Dog Tee - Detail
   - src: /assets/uploads/cfbc83ac-af7e-4265-ad5f-3bc732af28f6.png
-    caption: Black Dog White Dog Tee - Detail
-additionalImages:
-  - src: /assets/uploads/MMINT_APPAREL_ART_PRINTS_Portrait.jpg
-    caption: MockUp     
+    caption: Black Dog White Dog Tee - Detail    
 dimensions:
   care: "Machine wash cold, tumble dry low"
   material: "100% Cotton"
