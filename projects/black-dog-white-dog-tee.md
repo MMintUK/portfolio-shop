@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 title: BLACK DOG WHITE DOG | Tee
 description: |
   Our brand-new 'Black Dog White Dog', this little beaut will become your go-to piece for any occasion!

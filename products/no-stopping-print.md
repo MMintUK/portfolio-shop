@@ -2,7 +2,7 @@
 draft: false
 title: "NO STOPPING | Print"
 description: |
-  Why did the kitten cross the road? To challenge the 'NO STOPPING' sign of course! A playful street art piece with a humorous twist on urban signage.
+
 price: 40
 basePrice: 40
 sku: "NO-STOPPING-PRINT"
@@ -80,7 +80,6 @@ layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---
 
-A playful street art piece that puts a humorous twist on urban signage. This charming print features a kitten challenging authority in the most adorable way possible.
 
 *Includes VAT & Shipping
 

@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 title: Ello | Hoodie
 description: >
   Meet our character with a cheeky charm!

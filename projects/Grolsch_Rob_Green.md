@@ -7,9 +7,9 @@ description: |
 year: 14/06/2023
 position: 10
 images:
-  - src: /assets/uploads/Grolsch_Rob_Green_artist_art_Illustration_1800.jpg
-    caption: Grolsch
   - src: /assets/uploads/Grolsch_Rob_Green_artist_art_Illustration_1080_02.jpg
+    caption: Grolsch
+  - src: /assets/uploads/Grolsch_Rob_Green_artist_art_Illustration_1800.jpg
     caption: Grolsch
   - src: /assets/uploads/Grolsch_Rob_Green_artist_art_Illustration_1080_03.jpg
     caption: Grolsch
