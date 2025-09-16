@@ -59,7 +59,7 @@ dimensions:
   paper: "Hahnemühle Photo Rag Metallic 350GSM"
   frame: "Solid Wood Frame"
 date: 2025-08-18T10:00:00.000Z
-position: 2
+position: 1
 layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---

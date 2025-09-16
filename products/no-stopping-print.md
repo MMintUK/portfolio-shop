@@ -58,7 +58,7 @@ dimensions:
   paper: "Premium 200gsm Paper"
   frame: "Pine Wood Frame - Shatterproof Plexiglass"
 date: 2024-01-14T10:00:00.000Z
-position: 7
+position: 9
 layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---

@@ -41,10 +41,10 @@ variants:
           "75cm x 75cm": 300          
         inStock: true
 images:
-  - src: /assets/uploads/Screenshot From 2025-08-18 19-14-58.png
+  - src: /assets/uploads/Spirals_Framed_MockUp_02_30_30_alt.png
     caption: 51cm x 51cm Framed
     variant: "framed-51cm"
-  - src: /assets/uploads/Screenshot From 2025-08-18 19-14-58.png
+  - src: /assets/uploads/Spirals_Framed_MockUp_02_30_30_alt.png
     caption: 75cm x 75cm Framed
     variant: "framed-75cm"
   - src: /assets/uploads/PHYLLOTACTIC_POST_SQUARE-09_TEST.png
@@ -55,7 +55,7 @@ dimensions:
   paper: "Premium 350gsm Paper"
   frame: "Pine Wood Frame - Shatterproof Plexiglass"
 date: 2025-08-18T10:00:00.000Z
-position: 1
+position: 2
 layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---

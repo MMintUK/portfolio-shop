@@ -21,7 +21,7 @@ dimensions:
   material: "Stencil on wood panel"
   finish: "Sealed"
 date: 2024-01-19T10:00:00.000Z
-position: 2
+position: 5
 layout: layouts/product.njk
 permalink: /shop/night-painting/
 ---

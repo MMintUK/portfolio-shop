@@ -67,7 +67,7 @@ dimensions:
   weight: "250gsm premium paper"
   finish: "Matte finish"
 date: 2024-01-18T10:00:00.000Z
-position: 2
+position: 10
 layout: layouts/product.njk
 permalink: /shop/{{ title | slug }}/
 ---

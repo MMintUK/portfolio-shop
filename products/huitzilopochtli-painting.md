@@ -30,7 +30,7 @@ dimensions:
   material: "Mixed media on canvas"
   finish: "Varnished"
 date: 2024-01-20T10:00:00.000Z
-position: 1
+position: 3
 layout: layouts/product.njk
 permalink: /shop/huitzilopochtli-painting/
 ---

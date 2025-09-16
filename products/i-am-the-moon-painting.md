@@ -26,7 +26,7 @@ dimensions:
   material: "Mixed media on canvas"
   finish: "Varnished"
 date: 2024-01-21T10:00:00.000Z
-position: 3
+position: 11
 layout: layouts/product.njk
 permalink: /shop/i-am-the-moon-painting/
 ---

@@ -18,7 +18,7 @@ section: shop
     </section>
 
     <section class="columns columns--projects" id="shop-products">
-      {% for product in collections.products | reverse %}
+      {% for product in collections.products %}
         <div class="columns__item mb--1 product-item" data-category="{{ product.data.category or 'other' }}">
           <a href="{{ product.url | url }}">
             <figure>
