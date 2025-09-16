@@ -373,6 +373,15 @@ img {
 /* Header Navigation */
 .header-logo {
 	justify-self: start;
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+}
+
+.header-logo-icon {
+	height: 1cap;
+	width: auto;
+	vertical-align: baseline;
 }
 
 .header-nav {
@@ -563,4 +572,15 @@ img {
 .responsive-video {
 	width: 100%;
 	height: auto;
-}	
+}
+
+/* Text Selection Styles - Black and White to match site themes */
+::selection {
+	background-color: var(--color-text);
+	color: var(--color-background);
+}
+
+::-moz-selection {
+	background-color: var(--color-text);
+	color: var(--color-background);
+}

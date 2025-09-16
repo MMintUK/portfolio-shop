@@ -161,24 +161,32 @@ class ProductGallery {
       this.mainImage.style.transformOrigin = 'center';
     });
     
-    // Touch events for mobile
+    // Touch events for mobile - only prevent default when zooming is intended
     this.displayWindow.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      this.isMobileZoomed = true;
-      this.displayWindow.classList.add('mobile-zoomed');
-      
-      const touch = e.touches[0];
-      const rect = this.displayWindow.getBoundingClientRect();
-      const x = ((touch.clientX - rect.left) / rect.width) * 100;
-      const y = ((touch.clientY - rect.top) / rect.height) * 100;
-      
-      this.mainImage.style.transformOrigin = `${x}% ${y}%`;
+      // Only prevent default on the image itself, not on text content
+      const target = e.target;
+      if (target === this.mainImage || target === this.displayWindow) {
+        e.preventDefault();
+        this.isMobileZoomed = true;
+        this.displayWindow.classList.add('mobile-zoomed');
+        
+        const touch = e.touches[0];
+        const rect = this.displayWindow.getBoundingClientRect();
+        const x = ((touch.clientX - rect.left) / rect.width) * 100;
+        const y = ((touch.clientY - rect.top) / rect.height) * 100;
+        
+        this.mainImage.style.transformOrigin = `${x}% ${y}%`;
+      }
     });
     
     this.displayWindow.addEventListener('touchmove', (e) => {
       if (!this.isMobileZoomed) return;
       
-      e.preventDefault(); // Prevent scrolling
+      // Only prevent scrolling when we're actually zooming
+      if (this.displayWindow.classList.contains('mobile-zoomed')) {
+        e.preventDefault();
+      }
+      
       const touch = e.touches[0];
       const rect = this.displayWindow.getBoundingClientRect();
       const x = ((touch.clientX - rect.left) / rect.width) * 100;

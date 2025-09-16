@@ -39,8 +39,8 @@ variants:
           "60cm x 40cm": 50
           "90cm x 60cm": 65
         inStock: true
-      - value: "pine"
-        label: "Pine Frame"
+      - value: "framed"
+        label: "Framed"
         priceBySize:
           "45cm x 30cm": 70
           "60cm x 40cm": 90
@@ -49,13 +49,13 @@ variants:
 images:
   - src: /assets/uploads/ikaroa-framed-90-60.png
     caption: 90cm x 60cm Framed
-    variant: "pine-90cm"
+    variant: "framed-90cm"
   - src: /assets/uploads/ikaroa-framed-60-40.png
     caption: 60cm x 40cm Framed
-    variant: "pine-60cm"
+    variant: "framed-60cm"
   - src: /assets/uploads/ikaroa-framed-45-30.png
     caption: 45cm x 30cm Framed
-    variant: "pine-45cm"
+    variant: "framed-45cm"
   - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_black_1080.png
     caption: Unframed Print
     variant: "none"

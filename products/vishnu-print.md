@@ -33,15 +33,11 @@ variants:
     required: false
     options:
       - value: "none"
-        label: "No Frame"
+        label: "Unframed"
         price: 0
         inStock: true
-      - value: "black"
-        label: "Black Frame"
-        price: 30
-        inStock: true
-      - value: "white"
-        label: "White Frame"
+      - value: "framed"
+        label: "Framed"
         price: 30
         inStock: true
 images:

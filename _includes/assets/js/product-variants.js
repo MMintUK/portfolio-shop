@@ -22,6 +22,7 @@ class ProductVariants {
     }
     
     this.bindEvents();
+    this.initializeDefaultSelections();
     
     // Delay initial validation to allow default selections to be processed
     setTimeout(() => {
@@ -41,6 +42,33 @@ class ProductVariants {
         // Update images for variant changes that should trigger image updates
         if (!this.isUpdatingFromGallery && this.shouldUpdateImages(e.target)) {
           this.updateProductImages();
+        }
+      }
+    });
+  }
+
+  initializeDefaultSelections() {
+    // Select the first radio button in each required group if none are selected
+    const radioGroups = {};
+    
+    // Group radio buttons by name
+    this.form.querySelectorAll('input[type="radio"]').forEach(radio => {
+      if (!radioGroups[radio.name]) {
+        radioGroups[radio.name] = [];
+      }
+      radioGroups[radio.name].push(radio);
+    });
+    
+    // For each group, if no radio is checked, check the first one
+    Object.values(radioGroups).forEach(group => {
+      const hasChecked = group.some(radio => radio.checked);
+      if (!hasChecked && group.length > 0) {
+        // Check the first available (non-disabled) radio button
+        const firstAvailable = group.find(radio => !radio.disabled);
+        if (firstAvailable) {
+          firstAvailable.checked = true;
+          // Trigger change event to update styling and functionality
+          firstAvailable.dispatchEvent(new Event('change', { bubbles: true }));
         }
       }
     });

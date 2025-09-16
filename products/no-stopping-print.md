@@ -1,10 +1,10 @@
 ---
 draft: false
-title: "NO STOPPING | Print"
+title: "NO STOPPING | Giclée Print"
 description: |
 
-price: 40
-basePrice: 40
+price: 50
+basePrice: 50
 sku: "NO-STOPPING-PRINT"
 stripeProductId: "prod_print_no_stopping"
 inStock: true
@@ -16,22 +16,14 @@ variants:
     type: "size"
     required: true
     options:
-      - value: "30cm x 45cm"
-        label: "30cm x 45cm"
-        price: 40
-        inStock: true
-      - value: "50cm x 70cm"
-        label: "50cm x 70cm"
+      - value: "42cm x 59cm"
+        label: "A2 - 42cm x 59cm"
         price: 50
         inStock: true
-      - value: "60cm x 90cm"
-        label: "60cm x 90cm"
-        price: 60
-        inStock: true
-      - value: "70cm x 100cm"
-        label: "70cm x 100cm"
-        price: 65
-        inStock: true
+      - value: "59cm x 84cm"
+        label: "A1 - 59cm x 84cm"
+        price: 70
+        inStock: true        
   - name: "Frame"
     type: "option"
     required: true
@@ -39,41 +31,32 @@ variants:
       - value: "none"
         label: "Unframed"
         priceBySize:
-          "30cm x 45cm": 40
-          "50cm x 70cm": 50
-          "60cm x 90cm": 60
-          "70cm x 100cm": 65
+          "42cm x 59cm": 50
+          "59cm x 84cm": 70         
         inStock: true
-      - value: "pine"
-        label: "Pine Frame"
+      - value: "framed"
+        label: "Framed"
         priceBySize:
-          "30cm x 45cm": 70
-          "50cm x 70cm": 90
-          "60cm x 90cm": 105
-          "70cm x 100cm": 120
+          "42cm x 59cm": 100
+          "59cm x 84cm": 150          
         inStock: true
 images:
-  - src: /assets/uploads/No_Stopping_Print_70_100_Framed.png
-    caption: 70cm x 100cm Framed
-    variant: "pine-70cm"
-  - src: /assets/uploads/No_Stopping_Print_60_90_Framed.png
-    caption: 60cm x 90cm Framed
-    variant: "pine-60cm"
-  - src: /assets/uploads/No_Stopping_Print_50_70_Framed.png
-    caption: 50cm x 70cm Framed
-    variant: "pine-50cm"
-  - src: /assets/uploads/No_Stopping_Print_30_45_Framed.png
-    caption: 30cm x 45cm Framed
-    variant: "pine-30cm"
-  - src: /assets/uploads/No_Stopping_3000_Unframed.jpg
-    caption: Unframed
+  - src: /assets/uploads/No_Stopping_A2_Framed.png
+    caption: 42cm x 59cm Framed
+    variant: "framed-42cm"
+  - src: /assets/uploads/No_Stopping_A1_Framed.png
+    caption: 59cm x 84cm Framed
+    variant: "framed-59cm"
+  - src: /assets/uploads/No_Stopping_A1_A2_Unframed.png
+    caption: Unframed Print
     variant: "none"    
 additionalImages:
   - src: /assets/uploads/no-stopping-1660.jpg
     caption: Unframed Print Detail
 dimensions:
-  weight: "250gsm premium paper"
-  finish: "Matte finish"
+  print: "Professional Giclée Printing"
+  paper: "Premium 200gsm Paper"
+  frame: "Pine Wood Frame - Shatterproof Plexiglass"
 date: 2024-01-14T10:00:00.000Z
 position: 7
 layout: layouts/product.njk
@@ -82,9 +65,3 @@ permalink: /shop/{{ title | slug }}/
 
 
 *Includes VAT & Shipping
-
-**Print Details:**
-- Premium 250gsm Paper Stock
-- Professional Printing
-- Pine Wood Frame*
-- Shatterproof Plexiglass*

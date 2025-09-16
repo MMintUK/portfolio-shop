@@ -39,8 +39,8 @@ variants:
           "45cm x 60cm": 50
           "60cm x 80cm": 60         
         inStock: true
-      - value: "pine"
-        label: "Pine Frame"
+      - value: "framed"
+        label: "Framed"
         priceBySize:
           "40cm x 50cm": 80
           "45cm x 60cm": 90
@@ -49,13 +49,13 @@ variants:
 images:
   - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-60-80-framed.png
     caption: 60cm x 80cm Framed
-    variant: "pine-60cm"
+    variant: "framed-60cm"
   - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-45-60-framed.png
     caption: 45cm x 60cm Framed
-    variant: "pine-45cm"
+    variant: "framed-45cm"
   - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-40-50-framed.png
     caption: 40cm x 50cm Framed
-    variant: "pine-40cm"
+    variant: "framed-40cm"
   - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-16-20.png
     caption: Unframed Print
     variant: "none"

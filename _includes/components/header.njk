@@ -3,6 +3,9 @@
 	<div class="grid grid--header">
 
 		<a href="{{ '/' | url }}" class="grid__item header-logo link-nocolor">
+      <svg class="header-logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 36 1082 1008">
+        <path fill="currentColor" d="m1080.1 36.4h-131.3-41.6l-151 350.5-152.8-350.5h-117.8l-156.8 354.4-150-354.4h-44.9-133.8-0.2v1008.2h131.3 41.6l151-350.5 152.8 350.5h117.8l156.8-354.4 150 354.4h44.9 133.8 0.2zm-946.2 794.9v-572.6l125.8 288.4zm405.9 57.9l-148.8-351.5 149.1-346 148.8 351.4zm280.5-355.4l125.7-284.2v572.6z"/>
+      </svg>
       {# SEO: home page header title should be inside a h1 tag #}
       {% if page.url == "/" %}
 				<h1>{{ settings.metadata.site_title }}</h1>

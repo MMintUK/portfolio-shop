@@ -802,6 +802,13 @@ body .product-container .product-content-column {
   text-align: center;
 }
 
+/* Add extra space between back to shop and related products on desktop */
+@media (min-width: 769px) {
+  .product-nav {
+    margin-bottom: 5rem;
+  }
+}
+
 .back-to-shop {
   text-decoration: none;
   color: var(--color-text, #101010);
@@ -844,7 +851,7 @@ body .product-container .product-content-column {
 }
 
 .remove-item-btn {
-  background: #dc3545;
+  background: #d92356;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -903,7 +910,7 @@ body .product-container .product-content-column {
 }
 
 .required {
-  color: #dc3545;
+  color: #d92356;
   margin-left: 0.25rem;
 }
 
@@ -931,7 +938,7 @@ body .product-container .product-content-column {
 }
 
 .variant-option input[type="radio"] {
-  margin-right: 0.5rem;
+  display: none;
 }
 
 .variant-option input[type="radio"]:checked + .variant-option-label {
@@ -970,7 +977,7 @@ body .product-container .product-content-column {
 
 .out-of-stock-label {
   font-size: 0.85rem;
-  color: #ff6b6b;
+  color: #d92356;
   margin-top: 0.25rem;
 }
 

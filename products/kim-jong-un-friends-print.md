@@ -39,8 +39,8 @@ variants:
           "50cm x 70cm": 50
           "70cm x 100cm": 65
         inStock: true
-      - value: "pine"
-        label: "Pine Frame"
+      - value: "framed"
+        label: "Framed"
         priceBySize:
           "30cm x 42cm": 70
           "50cm x 70cm": 90
@@ -49,13 +49,13 @@ variants:
 images:
   - src: /assets/uploads/Kim-jong-un-and-friends-70-100.png
     caption: 70cm x 100cm Framed
-    variant: "pine-70cm"
+    variant: "framed-70cm"
   - src: /assets/uploads/Kim-jong-un-and-friends-50-70.png
     caption: 50cm x 70cm Framed
-    variant: "pine-50cm"
+    variant: "framed-50cm"
   - src: /assets/uploads/Kim-jong-un-and-friends-30-42.png
     caption: 30cm x 42cm Framed
-    variant: "pine-30cm"
+    variant: "framed-30cm"
   - src: /assets/uploads/Kim-jong-un-and-friends-1800.jpg
     caption: Unframed Print
     variant: "none"

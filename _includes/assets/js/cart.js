@@ -233,7 +233,7 @@ Your order details are ready for Stripe checkout!`;
       position: fixed;
       top: 20px;
       right: 20px;
-      background: #28a745;
+      background: #28a75b;
       color: white;
       padding: 15px 20px;
       border-radius: 5px;

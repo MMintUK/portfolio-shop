@@ -39,8 +39,8 @@ variants:
           "50cm x 50cm": 50
           "70cm x 70cm": 65
         inStock: true
-      - value: "pine"
-        label: "Pine Frame"
+      - value: "framed"
+        label: "Framed"
         priceBySize:
           "30cm x 30cm": 70
           "50cm x 50cm": 90
@@ -49,13 +49,13 @@ variants:
 images:
   - src: /assets/uploads/Neon_Night_Print_70_70_Framed.png
     caption: 70cm x 70cm Framed
-    variant: "pine-70cm"
+    variant: "framed-70cm"
   - src: /assets/uploads/Neon_Night_Print_50_50_Framed.png
     caption: 50cm x 50cm Framed
-    variant: "pine-50cm"      
+    variant: "framed-50cm"      
   - src: /assets/uploads/Neon_Night_Print_30_30_Framed.png
     caption: 30cm x 30cm Framed
-    variant: "pine-30cm"
+    variant: "framed-30cm"
   - src: /assets/uploads/Neon_Night_Print_1660.jpg
     caption: Unframed Print
     variant: "none"    
