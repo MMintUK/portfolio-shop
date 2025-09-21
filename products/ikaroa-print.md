@@ -3,8 +3,10 @@ draft: false
 title: "IKAROA | Print"
 description: |
   Taking its name from the Maori word for 'the long fish that gave birth to all the stars in the Milky Way', this piece brings together Japanese and Maori culture within a retro framework.
-price: 40
-basePrice: 40
+
+  Hahnemuhle Photo-Rag 308gsm is a 100% cotton, premium archival paper with a smooth white surface texture.
+price: 100
+basePrice: 100
 sku: "IKAROA-PRINT"
 stripeProductId: "prod_print_ikaroa"
 inStock: true
@@ -16,17 +18,9 @@ variants:
     type: "size"
     required: true
     options:
-      - value: "45cm x 30cm"
-        label: "45cm x 30cm"
-        price: 40
-        inStock: true
-      - value: "60cm x 40cm"
-        label: "60cm x 40cm"
-        price: 50
-        inStock: true
-      - value: "90cm x 60cm"
-        label: "90cm x 60cm"
-        price: 65
+      - value: "75cm x 50cm"
+        label: "75cm x 50cm"
+        price: 100
         inStock: true
   - name: "Frame"
     type: "option"
@@ -35,43 +29,28 @@ variants:
       - value: "none"
         label: "Unframed"
         priceBySize:
-          "45cm x 30cm": 40
-          "60cm x 40cm": 50
-          "90cm x 60cm": 65
+          "75cm x 50cm": 100
         inStock: true
       - value: "framed"
         label: "Framed"
         priceBySize:
-          "45cm x 30cm": 70
-          "60cm x 40cm": 90
-          "90cm x 60cm": 105
+          "75cm x 50cm": 300
         inStock: true
 images:
-  - src: /assets/uploads/ikaroa-framed-90-60.png
-    caption: 90cm x 60cm Framed
-    variant: "framed-90cm"
-  - src: /assets/uploads/ikaroa-framed-60-40.png
-    caption: 60cm x 40cm Framed
-    variant: "framed-60cm"
-  - src: /assets/uploads/ikaroa-framed-45-30.png
-    caption: 45cm x 30cm Framed
-    variant: "framed-45cm"
+  - src: /assets/uploads/ikaroa_75_50_mockup.png
+    caption: 75cm x 50cm Framed
+    variant: "framed-75cm"
   - src: /assets/uploads/ikaroa_rob_green_artist_-mmint-uk_black_1080.png
     caption: Unframed Print
     variant: "none"
-additionalImages:
-  - src: /assets/uploads/ikaroa_rob_green_mmint_black_white_gallery_1880_opti.jpg
-    caption: MockUp    
+dimensions:
+  print: "Giclée Print"
+  paper: "Hahnemühle Photo Rag Metallic 308GSM"
+  frame: "Wood Frame - Shatterproof Plexiglass"       
 date: 2024-01-15T10:00:00.000Z
 position: 4
 layout: layouts/product.njk
-permalink: /shop/{{ title | slug }}/
+permalink: /shop/ikaroa-print/
 ---
 
 *Includes VAT & Shipping
-
-**Print Details:**
-- Premium 250gsm Paper Stock
-- Professional Printing
-- Pine Wood Frame*
-- Shatterproof Plexiglass*

@@ -1,4 +1,5 @@
 ---
+# BEYONDPRINT
 draft: false
 title: "Spirals 01 - Aurora"
 description: |
@@ -45,14 +46,17 @@ variants:
           "75cm x 75cm": 500          
         inStock: true
 images:
-  - src: /assets/uploads/Spirals_Framed_MockUp_01_30_30_alt.png
-    caption: Framed
-    variant: "framed"
-  - src: /assets/uploads/Spiral_01_Aurora.jpg
+  - src: /assets/uploads/Spiral_01_Box_Frame_75_75_Mockup_Beyond_Large_Frame_33mm.webp
+    caption: 75cm x 75cm Framed
+    variant: "framed-75cm"
+  - src: /assets/uploads/Spiral_01_Box_Frame_50_50_Mockup_Beyond_Standard_Frame_20mm.webp
+    caption: 50cm x 50cm Framed
+    variant: "framed-50cm"
+  - src: /assets/uploads/Spiral_01_Aurora.webp
     caption: Unframed Print
     variant: "none"
 additionalImages:
-  - src: /assets/uploads/Spirals_01_Mockup.jpg
+  - src: /assets/uploads/spiral_01_mockup_wall.webp
     caption: MockUp        
 dimensions:
   print: "Giclée Print"
