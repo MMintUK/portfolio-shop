@@ -1,5 +1,5 @@
 ---
-# BEYONDPRINT
+# BEYONDPRINT Large & Standard Box Frame, 75 x 75, 50 x 50, Black Spacer, 33mm & 20mm
 draft: false
 title: "Spirals 01 - Aurora"
 description: |

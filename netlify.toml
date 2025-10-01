@@ -13,6 +13,11 @@
 [dev]
   port = 4000
 
+# Environment variables for local development
+[build.environment]
+  STRIPE_PUBLISHABLE_KEY = "pk_test_socmrTD9DyM9vaVSNV7gfxdk"
+  STRIPE_SECRET_KEY = "sk_test_3AteXbnemSIFn5kypwFzwwXc"
+
 # Cache generated content between builds (e.g. images)
 [[plugins]]
 package = "netlify-plugin-11ty"

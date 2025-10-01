@@ -1,4 +1,5 @@
 ---
+# PRODIGI Box frame, 75 x 50 (30"x20"), 20mm, Hahnemühle photo rag, No Mount
 draft: false
 title: "IKAROA | Print"
 description: |
