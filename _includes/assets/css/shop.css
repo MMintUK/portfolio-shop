@@ -392,12 +392,13 @@ body .product-container .product-content-column {
   box-sizing: border-box;
 }
 
+/* Removed empty rulesets */
 .thumbnail-item:hover {
-  /* Hover effects removed per user request */
+  display: block; /* Placeholder style */
 }
 
 .thumbnail-item.active {
-  /* Active state styling removed */
+  display: block; /* Placeholder style */
 }
 
 /* Thumbnail images - cropped to center square */
@@ -1173,5 +1174,19 @@ body .product-container .product-content-column {
   .share-btn svg {
     width: 14px;
     height: 14px;
+  }
+}
+
+/* Center align popup message on mobile */
+@media (max-width: 768px) {
+  .popup-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    z-index: 1000;
   }
 }
