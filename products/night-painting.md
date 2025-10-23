@@ -11,10 +11,10 @@ inventory: 1
 featured: true
 category: "paintings"
 images:
-  - src: /assets/uploads/untitled_wood_panel_rob_green_mmint_1660.jpg
-    caption: NIGHT Original Stencil on Wood
   - src: /assets/uploads/untitled_wood_panel_detail_rob_green_mmint.jpg
     caption: NIGHT Detail View
+  - src: /assets/uploads/untitled_wood_panel_rob_green_mmint_1660.jpg
+    caption: NIGHT Original Stencil on Wood
 dimensions:
   width: "61cm"
   height: "122cm"

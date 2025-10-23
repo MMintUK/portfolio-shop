@@ -4,8 +4,8 @@ draft: false
 title: "Spirals 02 - Solstice"
 description: |
   Abstract spiral composition exploring mathematical patterns in nature. Professional giclée print on premium paper stock.
-price: 100
-basePrice: 100
+price: 70
+basePrice: 70
 sku: "SPIRALS-01-PRINT"
 stripeProductId: "prod_print_spirals_01"
 inStock: true
@@ -17,14 +17,15 @@ variants:
     type: "size"
     required: true
     options:
-      - value: "50cm x 50cm"
-        label: "50cm x 50cm"
-        price: 100
-        inStock: true
-      - value: "75cm x 75cm"
-        label: "75cm x 75cm"
-        price: 150
-        inStock: true        
+        - value: "75cm x 75cm"
+          label: "75cm x 75cm"
+          price: 100
+          inStock: true
+          checked: true
+        - value: "50cm x 50cm"
+          label: "50cm x 50cm"
+          price: 70
+          inStock: true
   - name: "Frame"
     type: "option"
     required: true
@@ -32,23 +33,24 @@ variants:
       - value: "none"
         label: "Unframed"
         priceBySize:
-          "50cm x 50cm": 100
-          "75cm x 75cm": 150   
+          "75cm x 75cm": 100
+          "50cm x 50cm": 70  
         inStock: true
       - value: "framed"
         label: "Framed"
         priceBySize:
+          "75cm x 75cm": 300
           "50cm x 50cm": 200
-          "75cm x 75cm": 300          
         inStock: true
+        checked: true
 images:
-  - src: /assets/uploads/Spiral_02_Box_Frame_50_50_Mockup_Prodgi_20mm.webp
-    caption: 50cm x 50cm Framed
-    variant: "framed-50cm"
   - src: /assets/uploads/Spiral_02_Box_Frame_75_75_Mockup_Prodgi_20mm.webp
     caption: 75cm x 75cm Framed
     variant: "framed-75cm"
-  - src: /assets/uploads/PHYLLOTACTIC_POST_SQUARE-09_TEST.png
+  - src: /assets/uploads/Spiral_02_Box_Frame_50_50_Mockup_Prodgi_20mm.webp
+    caption: 50cm x 50cm Framed
+    variant: "framed-50cm"
+  - src: /assets/uploads/Spirals_Framed_MockUp_02_30_30_alt.png
     caption: Unframed Print
     variant: "none"
 additionalImages:
@@ -57,7 +59,7 @@ additionalImages:
 dimensions:
   print: "Professional Gold Foil Printing"
   paper: "Premium 350gsm Paper"
-  frame: "Pine Wood Frame - Shatterproof Plexiglass"
+  frame: "Pine Wood Frame - Plexiglass"
 date: 2025-08-18T10:00:00.000Z
 position: 2
 layout: layouts/product.njk

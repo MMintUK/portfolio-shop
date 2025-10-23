@@ -21,13 +21,13 @@ variants:
     type: "size"
     required: true
     options:
-      - value: "50cm x 50cm"
-        label: "50cm x 50cm"
-        price: 100
-        inStock: true
       - value: "75cm x 75cm"
         label: "75cm x 75cm"
         price: 150
+        inStock: true
+      - value: "50cm x 50cm"
+        label: "50cm x 50cm"
+        price: 100
         inStock: true        
   - name: "Frame"
     type: "option"
@@ -36,15 +36,16 @@ variants:
       - value: "none"
         label: "Unframed"
         priceBySize:
-          "50cm x 50cm": 100
-          "75cm x 75cm": 150         
+          "75cm x 75cm": 150
+          "50cm x 50cm": 100         
         inStock: true
       - value: "framed"
         label: "Framed"
         priceBySize:
+          "75cm x 75cm": 500
           "50cm x 50cm": 375
-          "75cm x 75cm": 500          
         inStock: true
+        checked: true
 images:
   - src: /assets/uploads/Spiral_01_Box_Frame_75_75_Mockup_Beyond_Large_Frame_33mm.webp
     caption: 75cm x 75cm Framed
@@ -61,7 +62,7 @@ additionalImages:
 dimensions:
   print: "Giclée Print"
   paper: "Hahnemühle Photo Rag Metallic 350GSM"
-  frame: "Solid Wood Frame"
+  frame: "Solid Wood Frame - Glass"
 date: 2025-08-18T10:00:00.000Z
 position: 1
 layout: layouts/product.njk

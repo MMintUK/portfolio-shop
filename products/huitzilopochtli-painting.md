@@ -1,8 +1,8 @@
 ---
 draft: false
-title: "HUITZILOPOCHTLI"
+title: "HUITZILOPOCHTLI - LIMITED EDITION"
 description: |
-  Original mixed media painting on canvas depicting the Aztec god of war and sun. A story of wrath, retribution and triumph painted with acrylics, inks and metallic elements.
+  Our story begins with Coatlique, the earth goddess, who discovers a ball of feathers that leaves her pregnant. Her children, led by moon goddess Coyolxauhqui, refuse to believe her and vow to kill her, as a goddess could only give birth once. As they prepare their assault, Coatlique gives birth to Huitzilopochtli, the Aztec god of war and sun, who springs forth fully grown and armed. With a fire-snake, he beheads and dismembers his sister Coyolxauhqui, hurling her head into the sky to become the Moon, then slays his four hundred brothers who become the stars. This battle replays daily: Huitzilopochtli (the sun) chases Coyolxauhqui (the moon) across the skies by day, whilst battling through the underworld by night.
 price: 1000
 sku: "HUITZILOPOCHTLI-PAINTING"
 stripeProductId: "prod_painting_huitzilopochtli"
@@ -24,21 +24,13 @@ images:
 additionalImages:
   - src: /assets/uploads/Rob-Green-Frames-MockUp_CUT_NEWSATEDIT.jpg
     caption: MockUp       
-dimensions:
-  width: "100cm"
-  height: "70cm"
-  material: "Mixed media on canvas"
-  finish: "Varnished"
 date: 2024-01-20T10:00:00.000Z
 position: 3
 layout: layouts/product.njk
 permalink: /shop/huitzilopochtli-painting/
 ---
-
-This powerful original painting tells the story of Huitzilopochtli, the Aztec god of war and sun. The piece captures the moment of his birth and triumph over his siblings in vibrant colors and metallic accents.
-
 **Artwork Details:**
-- Original mixed media painting
-- Created with acrylics, inks and metallic elements
-- Ready to hang with professional framing
-- Signed and authenticated by the artist
+- Spraypaint on Canvas Scroll (70cm x 100cm)
+- Ultraviolet Sensitive Highlights
+- Bamboo & Handmade Rope Finish
+- Signed

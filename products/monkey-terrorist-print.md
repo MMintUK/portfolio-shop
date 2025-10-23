@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 title: "Monkey Terrorist Print"
 description: |
   A sarcastic observation of media narratives and how masses are misinformed. This piece examines false narratives propagated by major media outlets and their effects on society.

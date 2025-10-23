@@ -2,9 +2,9 @@
 draft: false
 title: "NEON NIGHT | Print"
 description: |
-  Street-art piece bringing together sensuality and culture, featuring a captivating figure against vibrant Japanese typography. Bold, seductive, and utterly mesmerising.
-price: 40
-basePrice: 40
+  A juxtaposition of fashion and Japanese poster typography. 
+price: 70
+basePrice: 70
 sku: "NEON-NIGHT-PRINT"
 stripeProductId: "prod_print_neon_night"
 inStock: true
@@ -16,18 +16,14 @@ variants:
     type: "size"
     required: true
     options:
-      - value: "30cm x 30cm"
-        label: "30cm x 30cm"
-        price: 40
-        inStock: true
-      - value: "50cm x 50cm"
-        label: "50cm x 50cm"
-        price: 50
-        inStock: true
-      - value: "70cm x 70cm"
-        label: "70cm x 70cm"
-        price: 65
-        inStock: true
+        - value: "75cm x 75cm"
+          label: "75cm x 75cm"
+          price: 100
+          inStock: true
+        - value: "50cm x 50cm"
+          label: "50cm x 50cm"
+          price: 70
+          inStock: true
   - name: "Frame"
     type: "option"
     required: true
@@ -35,33 +31,35 @@ variants:
       - value: "none"
         label: "Unframed"
         priceBySize:
-          "30cm x 30cm": 40
-          "50cm x 50cm": 50
-          "70cm x 70cm": 65
+          "50cm x 50cm": 70
+          "75cm x 75cm": 100
         inStock: true
       - value: "framed"
         label: "Framed"
         priceBySize:
-          "30cm x 30cm": 70
-          "50cm x 50cm": 90
-          "70cm x 70cm": 120
+          "50cm x 50cm": 200
+          "75cm x 75cm": 300
+        images:
+          - src: /assets/uploads/Neon_Night_50_50.webp
+            caption: 50cm x 50cm Framed
+            variant: "framed-50cm"
+          - src: /assets/uploads/Neon_Night_75_75.webp
+            caption: 75cm x 75cm Framed
+            variant: "framed-75cm"
         inStock: true
 images:
-  - src: /assets/uploads/Neon_Night_Print_70_70_Framed.png
-    caption: 70cm x 70cm Framed
-    variant: "framed-70cm"
-  - src: /assets/uploads/Neon_Night_Print_50_50_Framed.png
+  - src: /assets/uploads/Neon_Night_75_75.webp
+    caption: 75cm x 75cm Framed
+    variant: "framed-75cm"
+  - src: /assets/uploads/Neon_Night_50_50.webp
     caption: 50cm x 50cm Framed
-    variant: "framed-50cm"      
-  - src: /assets/uploads/Neon_Night_Print_30_30_Framed.png
-    caption: 30cm x 30cm Framed
-    variant: "framed-30cm"
+    variant: "framed-50cm"
   - src: /assets/uploads/Neon_Night_Print_1660.jpg
     caption: Unframed Print
-    variant: "none"    
-additionalImages:
-  - src: /assets/uploads/Neon_Night_Print_Mock_Up_1660.jpg
-    caption: In  Situ       
+    variant: "none"
+#additionalImages:
+#  - src: /assets/uploads/Neon_Night_Mockup.webp
+#    caption: MockUp            
 date: 2024-01-13T10:00:00.000Z
 position: 6
 layout: layouts/product.njk

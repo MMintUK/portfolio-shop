@@ -3,8 +3,8 @@ draft: false
 title: "KIM JONG UN & FRIENDS | Print"
 description: |
   Political collage artwork originally commissioned for a magazine focusing on human rights issues in North Korea. A provocative piece that sheds light on injustices.
-price: 40
-basePrice: 40
+price: 70
+basePrice: 70
 sku: "KIM-JONG-UN-PRINT"
 stripeProductId: "prod_print_kim_jong_un"
 inStock: true
@@ -16,17 +16,13 @@ variants:
     type: "size"
     required: true
     options:
-      - value: "30cm x 42cm"
-        label: "30cm x 42cm"
-        price: 40
+      - value: "A1 59cm x 84cm"
+        label: "A1 59cm x 84cm"
+        price: 100
         inStock: true
-      - value: "50cm x 70cm"
-        label: "50cm x 70cm"
-        price: 50
-        inStock: true
-      - value: "70cm x 100cm"
-        label: "70cm x 100cm"
-        price: 65
+      - value: "A2 42cm x 59cm"
+        label: "A2 42cm x 59cm"
+        price: 70
         inStock: true
   - name: "Frame"
     type: "option"
@@ -35,27 +31,29 @@ variants:
       - value: "none"
         label: "Unframed"
         priceBySize:
-          "30cm x 42cm": 40
-          "50cm x 70cm": 50
-          "70cm x 100cm": 65
+          "A1 59cm x 84cm": 100
+          "A2 42cm x 59cm": 70
         inStock: true
       - value: "framed"
         label: "Framed"
         priceBySize:
-          "30cm x 42cm": 70
-          "50cm x 70cm": 90
-          "70cm x 100cm": 120
+          "A1 59cm x 84cm": 300
+          "A2 42cm x 59cm": 250
+        images:
+          - src: /assets/uploads/Kim_A1.webp
+            caption: A1 59cm x 84cm Framed
+            variant: "framed-A1"
+          - src: /assets/uploads/Kim_A2.webp
+            caption: A2 42cm x 59cm Framed
+            variant: "framed-A2"
         inStock: true
 images:
-  - src: /assets/uploads/Kim-jong-un-and-friends-70-100.png
-    caption: 70cm x 100cm Framed
-    variant: "framed-70cm"
-  - src: /assets/uploads/Kim-jong-un-and-friends-50-70.png
-    caption: 50cm x 70cm Framed
-    variant: "framed-50cm"
-  - src: /assets/uploads/Kim-jong-un-and-friends-30-42.png
-    caption: 30cm x 42cm Framed
-    variant: "framed-30cm"
+  - src: /assets/uploads/Kim_A1.webp
+    caption: A1 59cm x 84cm Framed
+    variant: "framed-A1"
+  - src: /assets/uploads/Kim_A2.webp
+    caption: A2 42cm x 59cm Framed
+    variant: "framed-A2"
   - src: /assets/uploads/Kim-jong-un-and-friends-1800.jpg
     caption: Unframed Print
     variant: "none"
