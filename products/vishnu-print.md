@@ -1,52 +1,54 @@
 ---
-draft: true
+draft: false
 title: "VISHNU Print"
 description: |
   Vishnu the Preserver and guardian, protector of the order of things (dharma). This artwork captures the divine essence of one of Hinduism's principal deities.
-price: 40
-basePrice: 40
+price: 70
+basePrice: 70
 sku: "VISHNU-PRINT"
 stripeProductId: "prod_print_vishnu"
 inStock: true
 inventory: -1
-featured: true
+featured: false
 category: "prints"
 variants:
   - name: "Size"
     type: "size"
     required: true
     options:
-      - value: "A4"
-        label: "A4 (21 x 29.7 cm)"
-        price: 40
+      - value: "A1 59cm x 84cm"
+        label: "A1 59cm x 84cm"
+        price: 100
         inStock: true
-      - value: "A3"
-        label: "A3 (29.7 x 42 cm)"
-        price: 50
-        inStock: true
-      - value: "A2"
-        label: "A2 (42 x 59.4 cm)"
-        price: 65
+      - value: "A2 42cm x 59cm"
+        label: "A2 42cm x 59cm"
+        price: 70
         inStock: true
   - name: "Frame"
     type: "option"
-    required: false
+    required: true
     options:
       - value: "none"
         label: "Unframed"
-        price: 0
+        priceBySize:
+          "A1 59cm x 84cm": 100
+          "A2 42cm x 59cm": 70
         inStock: true
       - value: "framed"
         label: "Framed"
-        price: 30
-        inStock: true
+        priceBySize:
+          "A1 59cm x 84cm": 300
+          "A2 42cm x 59cm": 250
+        inStock: true            
+           
+
 images:
+  - src: /assets/uploads/vishnu_framed.webp
+    caption: VISHNU Framed
   - src: /assets/uploads/hannam_gallery_seoul_rob_green_1660_02.jpg
     caption: VISHNU Print Gallery Display
   - src: /assets/uploads/hannam_gallery_1660.jpg
-    caption: VISHNU Print in Gallery
-  - src: /assets/uploads/vishnu_art-print_rob_green_mmint_1456_03.jpg
-    caption: VISHNU Print Detail
+    caption: VISHNU Print in Gallery  
 dimensions:
   weight: "250gsm premium paper"
   finish: "Matte finish"

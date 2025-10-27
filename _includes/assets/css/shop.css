@@ -392,7 +392,7 @@ body .product-container .product-content-column {
   box-sizing: border-box;
 }
 
-/* Removed empty rulesets */
+/* Removed empty ruleset */
 .thumbnail-item:hover {
   display: block; /* Placeholder style */
 }
@@ -520,6 +520,7 @@ body .product-container .product-content-column {
 /* Project page styles - reusing product layout */
 .project-page .product-container {
   /* Inherits the two-column layout from product pages */
+  display: flex; /* Placeholder style */
 }
 
 .project-page .product-nav {

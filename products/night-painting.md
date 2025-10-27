@@ -13,6 +13,8 @@ category: "paintings"
 images:
   - src: /assets/uploads/untitled_wood_panel_detail_rob_green_mmint.jpg
     caption: NIGHT Detail View
+  - src: /assets/uploads/Neon_Night_Painting.webp
+    caption: NIGHT Full View
   - src: /assets/uploads/untitled_wood_panel_rob_green_mmint_1660.jpg
     caption: NIGHT Original Stencil on Wood
 dimensions:
