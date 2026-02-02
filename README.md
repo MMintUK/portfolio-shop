@@ -2,7 +2,7 @@ npm run build
 
 npm run serve
 
-sudo git add . && sudo git commit -m "update" && sudo git push origin main
+sudo git add . && git commit -m "update" && git push origin main
 
 
 [![Halide](screenshot.jpg?raw=true "Halide in dark mode")](https://halide.netlify.app)
