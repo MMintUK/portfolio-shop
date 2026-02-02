@@ -43,10 +43,9 @@ class StripeCheckout {
       return metaTag.content;
     }
     
-    // Fallback to environment key for development
-    const key = 'pk_test_socmrTD9DyM9vaVSNV7gfxdk';
-    console.warn('Using fallback Stripe publishable key');
-    return key;
+    // No fallback - key must be provided via environment variable
+    console.error('Stripe publishable key not found in meta tag');
+    return null;
   }
 
   async createCheckoutSession(cartItems) {

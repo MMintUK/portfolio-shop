@@ -17,9 +17,9 @@
   framework = "#custom"
 
 # Environment variables for local development
+# NOTE: Set STRIPE keys in Netlify UI > Site settings > Environment variables
+# Do not hardcode secrets here
 [build.environment]
-  STRIPE_PUBLISHABLE_KEY = "pk_test_socmrTD9DyM9vaVSNV7gfxdk"
-  STRIPE_SECRET_KEY = "sk_test_3AteXbnemSIFn5kypwFzwwXc"
 
 # Cache generated content between builds (e.g. images)
 [[plugins]]
