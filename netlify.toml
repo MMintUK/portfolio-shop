@@ -20,6 +20,8 @@
 # NOTE: Set STRIPE keys in Netlify UI > Site settings > Environment variables
 # Do not hardcode secrets here
 [build.environment]
+  # Allow Stripe publishable key in build output (it's meant to be public)
+  SECRETS_SCAN_OMIT_KEYS = "STRIPE_PUBLISHABLE_KEY"
 
 # Cache generated content between builds (e.g. images)
 [[plugins]]
