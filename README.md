@@ -5,6 +5,8 @@ npm run serve
 sudo git add . && git commit -m "update" && git push origin main
 
 
+A spiral born from nature's hidden code: the golden angle of 137.5° that governs sunflower seeds, galaxy arms, and seashell curves. This pattern reveals that from the smallest bloom to the farthest star, the universe breathes in spirals—an ancient geometry woven into the fabric of existence itself.
+
 [![Halide](screenshot.jpg?raw=true "Halide in dark mode")](https://halide.netlify.app)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Netlify Status](https://api.netlify.com/api/v1/badges/110e596b-182b-4702-8039-c5bd58f59b20/deploy-status)](https://app.netlify.com/sites/halide/deploys)
