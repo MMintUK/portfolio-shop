@@ -1,6 +1,6 @@
-sudo npm run build
+npm run build
 
-npm run dev
+npm run serve
 
 sudo git add . && sudo git commit -m "update" && sudo git push origin main
 
