@@ -2,7 +2,7 @@ npm run build
 
 npm run serve
 
-sudo git add . && git commit -m "update" && git push origin main
+git add . && git commit -m "update" && git push origin main
 
 
 A spiral born from nature's hidden code: the golden angle of 137.5° that governs sunflower seeds, galaxy arms, and seashell curves. This pattern reveals that from the smallest bloom to the farthest star, the universe breathes in spirals—an ancient geometry woven into the fabric of existence itself.
