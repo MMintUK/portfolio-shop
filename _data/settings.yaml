@@ -26,7 +26,7 @@ metadata:
     site_title: MMINT
     # meta description
     site_description: >-
-      A collection of works by Artist Robert Green that explore mythological, political and philosophical concepts through a lens of pop art and street art.
+      Art as catalyst for expanded awareness. Examining what shapes us and what we might yet become.
     # Adds a noindex <meta> tag on all site pages, be careful y'all!
     # Instead you can block indexing per-project with no_index: true
     no_index: false
