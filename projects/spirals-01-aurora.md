@@ -11,7 +11,8 @@ images:
     caption: Spirals 01 - Aurora Detail
   - src: /assets/uploads/Spiral_01_Aurora.webp
     caption: Spirals 01 - Aurora   
-  
+  - src: /assets/uploads/spiral_01_mockup_wall.webp
+    caption: MockUp 
 date: 2026-02-02T13:58:00.000Z
 ---
 

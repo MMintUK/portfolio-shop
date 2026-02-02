@@ -2,3 +2,7 @@
 
 # Local Netlify folder
 .netlify
+
+# Build output
+_site
+node_modules
