@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npx @11ty/eleventy",
     "watch": "npx @11ty/eleventy --watch",
-    "serve": "npx @11ty/eleventy --serve",
+    "serve": "npx @11ty/eleventy --serve --port=8099",
     "debug": "DEBUG=* npx @11ty/eleventy",
     "dev": "tinacms dev -c \"npm run serve\"",
     "tina:build": "tinacms build",

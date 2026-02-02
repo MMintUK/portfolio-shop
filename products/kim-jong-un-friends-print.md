@@ -40,18 +40,18 @@ variants:
           "A1 59cm x 84cm": 300
           "A2 42cm x 59cm": 250
         images:
-          - src: /assets/uploads/Kim_A1.webp
+          - src: /assets/uploads/Kim_white_frame_A1.webp
             caption: A1 59cm x 84cm Framed
             variant: "framed-A1"
-          - src: /assets/uploads/Kim_A2.webp
+          - src: /assets/uploads/Kim_white_frame_A2.webp
             caption: A2 42cm x 59cm Framed
             variant: "framed-A2"
         inStock: true
 images:
-  - src: /assets/uploads/Kim_A1.webp
+  - src: /assets/uploads/Kim_white_frame_A1.webp
     caption: A1 59cm x 84cm Framed
     variant: "framed-A1"
-  - src: /assets/uploads/Kim_A2.webp
+  - src: /assets/uploads/Kim_white_frame_A2.webp
     caption: A2 42cm x 59cm Framed
     variant: "framed-A2"
   - src: /assets/uploads/Kim-jong-un-and-friends-1800.jpg

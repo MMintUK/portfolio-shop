@@ -11,7 +11,10 @@
 
 # Development settings
 [dev]
-  port = 4000
+  port = 4002
+  command = "npm run serve"
+  targetPort = 8099
+  framework = "#custom"
 
 # Environment variables for local development
 [build.environment]

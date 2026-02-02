@@ -43,8 +43,12 @@ variants:
            
 
 images:
-  - src: /assets/uploads/vishnu_framed.webp
+  - src: /assets/uploads/vishnu_framed_01.webp
     caption: VISHNU Framed
+  - src: /assets/uploads/vishnu_framed_02.webp
+    caption: VISHNU Framed
+  - src: /assets/uploads/vishnu_detail.webp
+    caption: VISHNU Detail
   - src: /assets/uploads/hannam_gallery_seoul_rob_green_1660_02.jpg
     caption: VISHNU Print Gallery Display
   - src: /assets/uploads/hannam_gallery_1660.jpg

@@ -124,7 +124,7 @@ layout: layouts/base.njk
                         {%- for option in variant.options -%}
                           <label class="variant-option">
                             <input type="radio" 
-                                   name="{{ variant.name | slug }}" 
+                              name="{{ (variant.name or 'option') | slug }}" 
                                    value="{{ option.value }}"
                                    {%- if option.priceBySize -%}
                                    data-price-by-size="{{ option.priceBySize | dump }}"
@@ -145,7 +145,7 @@ layout: layouts/base.njk
                       </div>
                     {%- else -%}
                       {# Dropdown for large option sets #}
-                      <select name="{{ variant.name | slug }}" class="variant-select"{%- if variant.required -%} required{%- endif -%}>
+                      <select name="{{ (variant.name or 'option') | slug }}" class="variant-select"{%- if variant.required -%} required{%- endif -%}>
                         {%- if not variant.required -%}
                           <option value="">Choose {{ variant.name }}</option>
                         {%- endif -%}
@@ -195,8 +195,8 @@ layout: layouts/base.njk
             {%- if inStock -%}
               <button class="add-to-cart-btn btn-primary" 
                       id="add-to-cart-btn"
-                      data-product-id="{{ title | slug }}"
-                      data-product-name="{{ title }}"
+                      data-product-id="{{ (title or page.fileSlug) | slug }}"
+                      data-product-name="{{ title or page.fileSlug }}"
                       data-product-price="{{ basePrice or price }}"
                       data-stripe-id="{{ stripeProductId }}"
                       data-has-variants="{{ 'true' if variants and variants.length > 0 else 'false' }}">

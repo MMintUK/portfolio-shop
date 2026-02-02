@@ -99,6 +99,15 @@ class StripeCheckout {
         const errorText = await response.text();
         console.error('Error response text:', errorText);
         console.error('Response status:', response.status);
+
+        // Common local-dev pitfall: Eleventy dev server doesn't run Netlify Functions.
+        // If we got an HTML 404, give a clear hint.
+        const looksLikeHtml = /<!doctype html|<html\b/i.test(errorText);
+        if (response.status === 404 && looksLikeHtml) {
+          throw new Error(
+            'Netlify Function not found (404). If you are running the site with `npm run serve`, Netlify Functions will not run locally. Start the site with `netlify dev` so `/.netlify/functions/*` endpoints work.'
+          );
+        }
         
         // Try to parse as JSON, fallback to text
         let errorMessage;
@@ -127,6 +136,13 @@ class StripeCheckout {
       } catch (parseError) {
         console.error('Failed to parse JSON response:', parseError);
         console.error('Raw response text was:', responseText);
+
+        const looksLikeHtml = /<!doctype html|<html\b/i.test(responseText);
+        if (looksLikeHtml) {
+          throw new Error(
+            'Unexpected HTML response from checkout endpoint. This usually means Netlify Functions are not running locally. Use `netlify dev` instead of `npm run serve`.'
+          );
+        }
         throw new Error(`Invalid JSON response from server: ${responseText.substring(0, 200)}...`);
       }
     } catch (error) {

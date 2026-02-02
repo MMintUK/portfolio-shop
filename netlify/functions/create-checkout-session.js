@@ -6,6 +6,19 @@ exports.handler = async (event, context) => {
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
   };
 
+  const getBaseUrl = () => {
+    if (process.env.URL) return process.env.URL;
+    if (process.env.DEPLOY_PRIME_URL) return process.env.DEPLOY_PRIME_URL;
+
+    const requestHeaders = event && event.headers ? event.headers : {};
+    const host = requestHeaders['x-forwarded-host'] || requestHeaders.host;
+    const proto = requestHeaders['x-forwarded-proto'] || 'http';
+    if (host) return `${proto}://${host}`;
+
+    // Reasonable default for `netlify dev` based on netlify.toml
+    return 'http://localhost:4002';
+  };
+
   // Handle preflight requests
   if (event.httpMethod === 'OPTIONS') {
     return {
@@ -50,6 +63,7 @@ exports.handler = async (event, context) => {
     }
 
     // Create Stripe checkout session
+    const baseUrl = getBaseUrl().replace(/\/$/, '');
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: items.map(item => {
@@ -82,8 +96,8 @@ exports.handler = async (event, context) => {
         };
       }),
       mode: 'payment',
-      success_url: `${process.env.URL || 'https://localhost:8080'}/checkout-success/`,
-      cancel_url: `${process.env.URL || 'https://localhost:8080'}/checkout-cancelled/`,
+      success_url: `${baseUrl}/checkout-success/`,
+      cancel_url: `${baseUrl}/checkout-cancelled/`,
       // Collect customer email for receipts
       customer_creation: 'always',
       // Set locale to UK

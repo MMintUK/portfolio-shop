@@ -28,31 +28,7 @@ variants:
         label: "60cm x 80cm"
         price: 60
         inStock: true        
-  - name: "Frame"
-    type: "option"
-    required: true
-    options:
-      - value: "none"
-        label: "Unframed"
-        priceBySize:
-          "40cm x 50cm": 45
-          "45cm x 60cm": 50
-          "60cm x 80cm": 60         
-        inStock: true
-      - value: "framed"
-        label: "Framed"
-        priceBySize:
-          "40cm x 50cm": 80
-          "45cm x 60cm": 90
-          "60cm x 80cm": 105          
-        inStock: true
 images:
-  - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-60-80-framed.png
-    caption: 60cm x 80cm Framed
-    variant: "framed-60cm"
-  - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-45-60-framed.png
-    caption: 45cm x 60cm Framed
-    variant: "framed-45cm"
   - src: /assets/uploads/Sexy_Beast_Rob_Green_mmint.uk-40-50-framed.png
     caption: 40cm x 50cm Framed
     variant: "framed-40cm"
@@ -60,7 +36,7 @@ images:
     caption: Unframed Print
     variant: "none"
   - src: /assets/uploads/sexy_beast_rob_green_mmint-uk_1456.png
-    caption: SEXY BEAST Print                
+    caption: SEXY BEAST Print
   - src: /assets/uploads/sexy_beast_rob_green_mmint-uk_texture__detail_1440.jpg
     caption: SEXY BEAST Detail View
 dimensions:
