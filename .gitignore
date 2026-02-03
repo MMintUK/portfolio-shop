@@ -7,11 +7,9 @@
 _site
 node_modules
 
-# Video files (too large for GitHub)
+# Video files (too large for GitHub - host on Netlify LFS or CDN)
+# Note: Videos need to be manually uploaded to Netlify or stored elsewhere
 *.mp4
 *.mov
 *.avi
 *.webm
-
-# Generated GIFs
-assets/uploads/gifs/
