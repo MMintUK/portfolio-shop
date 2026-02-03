@@ -6,3 +6,12 @@
 # Build output
 _site
 node_modules
+
+# Video files (too large for GitHub)
+*.mp4
+*.mov
+*.avi
+*.webm
+
+# Generated GIFs
+assets/uploads/gifs/

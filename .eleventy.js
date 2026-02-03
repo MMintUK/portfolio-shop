@@ -82,6 +82,15 @@ module.exports = function(eleventyConfig) {
     // Remove it from the image path if it exists
     src = src.startsWith("/") ? src.slice(1) : src;
 
+    // Check if source is a GIF - handle animated GIFs differently
+    const isGif = src.toLowerCase().endsWith('.gif');
+    
+    if (isGif) {
+      // For GIFs, return simple img tag without processing to preserve animation
+      const gifUrl = src.startsWith('assets/') ? '/' + src : src;
+      return `<img src="${gifUrl}" alt="${alt}" class="${classes} hover-fade" loading="${loadingType}" decoding="async">`;
+    }
+
     // Filter out unsupported formats that might cause issues on Netlify
     const supportedFormats = outputFormats.filter(format => 
       format !== 'heif' && format !== 'heic' && format !== 'avif'
