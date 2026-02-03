@@ -14,5 +14,5 @@ date: 2026-02-03T00:00:00.000Z
 
 <!-- Add your local MP4 video -->
 <video width="100%" height="auto" controls autoplay loop muted>
-  <source src="/assets/uploads/Spirals_01_Landscape_Web_Rob_Green_MMINT.mp4" type="video/mp4">
+  <source src="/assets/uploads/Spirals_01_Landscape_Web_Rob_Green_MMINT_HD.mp4" type="video/mp4">
 </video>

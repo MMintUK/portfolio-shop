@@ -4,6 +4,11 @@ npm run serve
 
 git add . && git commit -m "update" && git push origin main
 
+Only use netlify deploy --prod --dir=_site if you have:
+
+Large files excluded from git (>100MB)
+Need to bypass the GitHub build for some reason
+Select the first option that's already highlighted: Use current git remote origin
 
 A spiral born from nature's hidden code: the golden angle of 137.5° that governs sunflower seeds, galaxy arms, and seashell curves. This pattern reveals that from the smallest bloom to the farthest star, the universe breathes in spirals—an ancient geometry woven into the fabric of existence itself.
 
